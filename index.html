@@ -632,22 +632,22 @@ table.xg td.fcur{background:rgba(217,119,6,0.4)!important;outline:2px solid var(
         <div class="pp-row">
           <div class="pp-field"><label data-k="headerBg" data-e="Header background">ڕەنگی سەرنووس</label>
             <select id="ppHeaderColor" onchange="updatePpPreview()">
-              <option value="#217346">🟩 کووردی سەوز</option>
-              <option value="#1e3a5f">🔵 شین تاریک</option>
-              <option value="#7c3aed">🟣 مۆر</option>
-              <option value="#b91c1c">🔴 سووری تاریک</option>
-              <option value="#374151">⬛ بەرق تاریک</option>
-              <option value="#0f766e">🩵 فیرووزەیی</option>
+              <option value="#217346"> کووردی سەوز</option>
+              <option value="#1e3a5f"> شین تاریک</option>
+              <option value="#7c3aed"> مۆر</option>
+              <option value="#b91c1c"> سووری تاریک</option>
+              <option value="#374151"> بەرق تاریک</option>
+              <option value="#0f766e"> فیرووزەیی</option>
             </select>
           </div>
           <div class="pp-field"><label data-k="altColor" data-e="Alternate row color">ڕەنگی ڕیزی جیاکار</label>
             <select id="ppAltColor" onchange="updatePpPreview()">
-              <option value="#f0faf4">💚 سەوز سووک</option>
-              <option value="#eff6ff">🔵 شین سووک</option>
-              <option value="#faf5ff">🟣 مۆر سووک</option>
-              <option value="#fef2f2">🔴 سوور سووک</option>
-              <option value="#f9fafb">⬜ بەرق سووک</option>
-              <option value="none">❌ بێ ڕەنگ</option>
+              <option value="#f0faf4"> سەوز سووک</option>
+              <option value="#eff6ff"> شین سووک</option>
+              <option value="#faf5ff"> مۆر سووک</option>
+              <option value="#fef2f2"> سوور سووک</option>
+              <option value="#f9fafb"> بەرق سووک</option>
+              <option value="none"> بێ ڕەنگ</option>
             </select>
           </div>
         </div>
@@ -1413,7 +1413,7 @@ ${bodyHTML}
 function buildTable(rows,headers,dirs,headerColor,altColor,zebra,border,startIdx,fontSize,fitPage,repeatHeader){
   let html=`<div class="page-block">`;
   if(startIdx===0){
-    html+=`<h2>📊 ${lang==='ku'?'خشتەی داتاکان':'Data Table'}</h2>`;
+    html+=`<h2> ${lang==='ku'?'':''}</h2>`;
     html+=`<div class="meta">${new Date().toLocaleDateString()} — ${rows.length} ${lang==='ku'?'ڕیز':'rows'}</div>`;
   }
   html+='<table>';
