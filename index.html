@@ -350,6 +350,7 @@ table.xg td.fcur{background:rgba(217,119,6,0.4)!important;outline:2px solid var(
     <button class="rb" onclick="setAlign('ar')"><i class="ti ti-align-right"></i></button>
     <button class="rb" onclick="setAlign('ac')"><i class="ti ti-align-center"></i></button>
     <button class="rb" onclick="setAlign('al')"><i class="ti ti-align-left"></i></button>
+    <button class="rb" onclick="centerAllCells()" title="Center All"><i class="ti ti-layout-grid"></i><span>سەنتەر</span></button>
   </div>
   <div class="rg">
     <button class="rb" onclick="openFind()"><i class="ti ti-search"></i><span data-k="find" data-e="Find">گەڕان</span></button>
@@ -765,6 +766,17 @@ const cl=c=>c<26?String.fromCharCode(65+c):String.fromCharCode(64+Math.floor(c/2
 function lc(s){s=(s||'A').toUpperCase().trim();return s.length===1?s.charCodeAt(0)-65:(s.charCodeAt(0)-64)*26+(s.charCodeAt(1)-65)}
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
 
+// ══ CENTER ALL CELLS ══
+function centerAllCells(){
+  for(let r=0;r<ROWS;r++) for(let c=0;c<COLS;c++){
+    const f=fmts[r][c];
+    f.cls=(f.cls||'').replace(/\b(ac|ar|al)\b/g,'').trim();
+    f.cls=((f.cls+' ac').trim());
+  }
+  renderGrid();
+  showToast(lang==='ku'?'هەموو خانەکان سەنتەردرا':'All cells centered');
+}
+
 // ══ ZOOM ══
 function applyZoom(){
   const scale=zoomLevel/100;
@@ -1137,8 +1149,10 @@ function startEdit(r,c){
 function commitEdit(){
   if(editR<0) return;
   const inp=document.getElementById('aInp');
-  if(inp) data[editR][editC]=inp.value;
+  const val=inp?inp.value:'';
   const r=editR, c=editC; editR=-1; editC=-1;
+  if(applySeq(r,c,val)) return;
+  data[r][c]=val;
   originalData=null; originalFmts=null;
   rcell(r,c); updateFBar(); updateStatus(); populateSortSel();
 }
@@ -1148,7 +1162,9 @@ function cellKD(e){
   else if(e.key==='Escape'){editR=-1;editC=-1;rcell(selR,selC)}
 }
 function fbarCommit(){
-  data[selR][selC]=document.getElementById('fbarInp').value;
+  const val=document.getElementById('fbarInp').value;
+  if(applySeq(selR,selC,val)) return;
+  data[selR][selC]=val;
   originalData=null; originalFmts=null;
   rcell(selR,selC); updateStatus(); populateSortSel();
 }
@@ -1201,12 +1217,40 @@ function toggleFmt(cls){
   rcell(selR,selC); updateRib();
 }
 function setAlign(a){
+  if(allSelected){
+    for(let r=0;r<ROWS;r++) for(let c=0;c<COLS;c++){
+      const f=fmts[r][c];
+      f.cls=(f.cls||'').replace(/\b(ac|ar|al)\b/g,'').trim();
+      f.cls=((f.cls+' '+a).trim());
+    }
+    renderGrid();
+    showToast(lang==='ku'?'هەموو خانەکان ئالیگرایی گۆڕدرا':'All cells aligned');
+    return;
+  }
   const f=fmts[selR][selC];
   f.cls=(f.cls||'').replace(/\b(ac|ar|al)\b/g,'').trim();
   f.cls=((f.cls+' '+a).trim());
   rcell(selR,selC);
 }
 function setNumFmt(v){fmts[selR][selC].numFmt=v; rcell(selR,selC)}
+
+// ══ SEQ(n) FUNCTION ══
+function applySeq(r,c,val){
+  const m=val.match(/^SEQ\((\d+)(?:,(\d+))?\)$/i);
+  if(!m) return false;
+  const count=parseInt(m[1]);
+  const start=m[2]!==undefined?parseInt(m[2]):1;
+  if(isNaN(count)||count<1||count>ROWS) return false;
+  for(let i=0;i<count;i++){
+    const tr=r+i;
+    if(tr>=ROWS) break;
+    data[tr][c]=String(start+i);
+  }
+  originalData=null; originalFmts=null;
+  renderGrid(); updateFBar(); updateStatus(); populateSortSel();
+  showToast(lang==='ku'?`SEQ: ${count} ژمارە داچووک`:`SEQ: ${count} numbers filled`);
+  return true;
+}
 
 // ══ STATUS ══
 function updateStatus(){
