@@ -109,13 +109,15 @@ body{font-family:'Outfit',sans-serif;background:var(--bg2);color:var(--text);dir
 .grid-wrap::-webkit-scrollbar-corner{background:var(--bg2)}
 
 table.xg{border-collapse:collapse;table-layout:fixed;min-width:max-content;user-select:none}
-table.xg th.corner{width:38px;min-width:38px;background:var(--bg3);border-right:1px solid var(--xborder);border-bottom:1px solid var(--xborder);position:sticky;top:0;right:0;z-index:7}
+table.xg th.corner{width:38px;min-width:38px;background:var(--bg3);border-right:1px solid var(--xborder);border-bottom:1px solid var(--xborder);position:sticky;top:0;right:0;z-index:7;cursor:pointer;transition:background .12s}
+table.xg th.corner:hover{background:var(--xsel)}
+table.xg th.corner.all-sel{background:var(--xsel);color:var(--green-text)}
 table.xg th.rn{width:38px;min-width:38px;background:var(--bg3);border-right:1px solid var(--xborder);border-bottom:1px solid var(--xborder);font-size:10px;color:var(--text2);text-align:center;font-weight:500;position:sticky;right:0;z-index:3;cursor:grab;padding:0 3px;transition:background .12s}
 table.xg th.rn:hover,table.xg th.rn:active{background:var(--xsel);color:var(--green-text)}
 table.xg th.rn.row-sel{background:var(--xsel);color:var(--green-text);font-weight:600}
 table.xg th.rn.row-drag-over{background:var(--amber-light)!important;border-top:2px solid var(--amber)!important}
 table.xg th.rn.row-dragging{opacity:0.4}
-table.xg th.ch{background:var(--xhead);color:#fff;border-left:1px solid rgba(255,255,255,0.1);border-bottom:2px solid var(--xbg3);font-size:11px;font-weight:600;text-align:center;padding:4px 3px;min-width:80px;width:100px;position:sticky;top:0;z-index:5;cursor:pointer;white-space:nowrap;transition:background .12s;line-height:1.3}
+table.xg th.ch{background:var(--xhead);color:#fff;border-left:1px solid rgba(255,255,255,0.1);border-bottom:2px solid var(--xbg3);font-size:11px;font-weight:600;text-align:center;padding:4px 3px;min-width:80px;width:100px;position:sticky;top:0;z-index:5;cursor:pointer;white-space:nowrap;transition:background .12s;line-height:1.3;overflow:visible;position:relative}
 table.xg th.ch:hover,table.xg th.ch:active{background:var(--xbg2)}
 table.xg th.ch.sort-asc .sa{display:inline-block}
 table.xg th.ch.sort-desc .sd{display:inline-block}
@@ -124,10 +126,15 @@ table.xg th.ch.col-sel{background:var(--xbg3);outline:2px solid #fff;outline-off
 table.xg th.ch.col-drag-over{background:var(--amber)!important;outline:2px solid var(--amber-text);outline-offset:-2px}
 table.xg th.ch.col-dragging{opacity:0.45}
 
+/* Column resize handle */
+.col-resize-handle{position:absolute;top:0;left:0;width:5px;height:100%;cursor:col-resize;z-index:10;background:transparent}
+.col-resize-handle:hover{background:rgba(255,255,255,0.3)}
+
 table.xg td{border:1px solid var(--xborder);padding:0;min-width:80px;width:100px;height:24px;vertical-align:middle;font-size:var(--cell-fs);color:var(--text);background:var(--bg);cursor:cell;position:relative;transition:background .05s}
 table.xg tr:nth-child(even) td{background:var(--xalt)}
 table.xg td.sel{background:var(--xsel)!important;outline:2px solid var(--xsel-bd);outline-offset:-2px;z-index:2}
 table.xg td.in-range{background:rgba(22,163,74,0.08)!important}
+table.xg td.all-selected{background:rgba(22,163,74,0.12)!important;outline:1px solid rgba(22,163,74,0.3);outline-offset:-1px}
 table.xg td input.ci{position:absolute;inset:0;border:none;outline:2px solid var(--xbg);outline-offset:-1px;background:var(--bg);font-family:inherit;font-size:var(--cell-fs);color:var(--text);padding:0 4px;z-index:10;width:100%;height:100%;direction:inherit}
 table.xg td .cv{padding:0 4px;display:block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;height:24px;line-height:24px;font-size:var(--cell-fs)}
 table.xg td.fb .cv{font-weight:700}
@@ -139,6 +146,10 @@ table.xg td.al .cv{text-align:left}
 table.xg td.num .cv{text-align:right;font-variant-numeric:tabular-nums}
 table.xg td.fhl{background:rgba(217,119,6,0.18)!important}
 table.xg td.fcur{background:rgba(217,119,6,0.4)!important;outline:2px solid var(--amber)!important}
+
+/* Resize cursor overlay */
+.resize-overlay{position:fixed;inset:0;cursor:col-resize;z-index:9999;display:none}
+.resize-line{position:fixed;top:0;bottom:0;width:2px;background:var(--xbg);z-index:9998;display:none;pointer-events:none}
 
 /* TABLE STYLE THEMES */
 .ts-default th.ch{background:var(--xhead);color:#fff}
@@ -534,7 +545,6 @@ table.xg td.fcur{background:rgba(217,119,6,0.4)!important;outline:2px solid var(
     </div>
     <div class="pp-body">
 
-      <!-- Orientation -->
       <div class="pp-section">
         <div class="pp-section-t"><i class="ti ti-file"></i> <span data-k="pageSettings" data-e="Page Settings">ڕێکخستنی لاپەڕە</span></div>
         <div class="orient-toggle">
@@ -574,7 +584,6 @@ table.xg td.fcur{background:rgba(217,119,6,0.4)!important;outline:2px solid var(
         </div>
       </div>
 
-      <!-- Rows per page -->
       <div class="pp-section">
         <div class="pp-section-t"><i class="ti ti-layout-rows"></i> <span data-k="rowsPerPage" data-e="Rows per page">ڕیز لە هەر لاپەڕەیەک</span></div>
         <div class="rpp-wrap">
@@ -584,7 +593,6 @@ table.xg td.fcur{background:rgba(217,119,6,0.4)!important;outline:2px solid var(
         </div>
       </div>
 
-      <!-- Options -->
       <div class="pp-section">
         <div class="pp-section-t"><i class="ti ti-adjustments"></i> <span data-k="options" data-e="Options">هەڵبژاردنەکان</span></div>
         <div class="pp-row">
@@ -617,7 +625,6 @@ table.xg td.fcur{background:rgba(217,119,6,0.4)!important;outline:2px solid var(
         </div>
       </div>
 
-      <!-- Column order -->
       <div class="pp-section">
         <div class="pp-section-t" style="justify-content:space-between">
           <span><i class="ti ti-columns"></i> <span data-k="colOrder" data-e="Columns (drag to reorder)">ستوونەکان — ئیشکاڵ بکە بۆ گۆڕانی ڕیز</span></span>
@@ -626,7 +633,6 @@ table.xg td.fcur{background:rgba(217,119,6,0.4)!important;outline:2px solid var(
         <div class="col-order-box" id="colOrderBox"></div>
       </div>
 
-      <!-- Header color -->
       <div class="pp-section">
         <div class="pp-section-t"><i class="ti ti-palette"></i> <span data-k="headerColor" data-e="Header style">ستایلی سەرنووس</span></div>
         <div class="pp-row">
@@ -653,7 +659,6 @@ table.xg td.fcur{background:rgba(217,119,6,0.4)!important;outline:2px solid var(
         </div>
       </div>
 
-      <!-- Live preview -->
       <div class="pp-section">
         <div class="pp-section-t"><i class="ti ti-eye"></i> <span data-k="preview" data-e="Preview (first 5 rows)">پێشبینی — ٥ ڕیزی یەکەم</span></div>
         <div class="pp-preview" id="ppPreviewTable"></div>
@@ -666,6 +671,10 @@ table.xg td.fcur{background:rgba(217,119,6,0.4)!important;outline:2px solid var(
     </div>
   </div>
 </div>
+
+<!-- Column resize overlay and line -->
+<div class="resize-overlay" id="resizeOverlay"></div>
+<div class="resize-line" id="resizeLine"></div>
 
 <div class="toast" id="toast"></div>
 
@@ -720,6 +729,7 @@ let clipboard=null, cutMode=false;
 let findMatches=[], findIdx=0;
 let sortCol=-1, sortDir='none';
 let originalData=null, originalFmts=null;
+let allSelected=false;
 
 // Print orientation state
 let ppOrient='portrait';
@@ -737,11 +747,17 @@ let dragColIdx=-1;
 // Row drag state
 let dragRowIdx=-1;
 
+// ══ COLUMN RESIZE STATE ══
+let resizing=false;
+let resizeColIdx=-1;
+let resizeStartX=0;
+let resizeStartW=0;
+
 function initData(){
   data=Array.from({length:ROWS},()=>Array(COLS).fill(''));
   fmts=Array.from({length:ROWS},()=>Array.from({length:COLS},()=>({cls:'',numFmt:''})));
   colW=Array(COLS).fill(100);
-  sortCol=-1; sortDir='none'; originalData=null; originalFmts=null;
+  sortCol=-1; sortDir='none'; originalData=null; originalFmts=null; allSelected=false;
 }
 initData();
 
@@ -872,15 +888,83 @@ function clearSort(){
   showToast(lang==='ku'?'ڕیزکردن پاككرایەوە':'Sort cleared');
 }
 
-function colClick(c){
+function colClick(c,e){
+  // Don't sort if we just finished resizing
+  if(resizing) return;
   document.getElementById('sortColSel').value=c;
   if(sortCol!==c) doQuickSort('asc');
   else if(sortDir==='asc') doQuickSort('desc');
   else clearSort();
 }
 
+// ══ SELECT ALL CELLS ══
+function selectAll(){
+  allSelected=!allSelected;
+  const corner=document.querySelector('th.corner');
+  if(corner) corner.classList.toggle('all-sel', allSelected);
+  if(allSelected){
+    document.querySelectorAll('table.xg td').forEach(td=>td.classList.add('all-selected'));
+    showToast(lang==='ku'?'هەموو خانەکان دیاریکران':'All cells selected');
+  } else {
+    document.querySelectorAll('table.xg td').forEach(td=>td.classList.remove('all-selected'));
+  }
+}
+
+// ══ COLUMN RESIZE ══
+function startColResize(e, c){
+  e.stopPropagation();
+  e.preventDefault();
+  resizing=true;
+  resizeColIdx=c;
+  resizeStartX=e.clientX;
+  resizeStartW=colW[c];
+
+  const overlay=document.getElementById('resizeOverlay');
+  const line=document.getElementById('resizeLine');
+  overlay.style.display='block';
+
+  // Get column header position for the line
+  const th=document.querySelector(`th.ch[data-c="${c}"]`);
+  if(th){
+    const rect=th.getBoundingClientRect();
+    line.style.display='block';
+    line.style.left=(rect.left)+'px';
+  }
+
+  function onMove(ev){
+    const dx=ev.clientX - resizeStartX;
+    const newW=Math.max(40, resizeStartW + dx);
+    colW[resizeColIdx]=newW;
+    // Update line position
+    const th2=document.querySelector(`th.ch[data-c="${resizeColIdx}"]`);
+    if(th2){
+      const r=th2.getBoundingClientRect();
+      line.style.left=(r.left)+'px';
+    }
+    // Live update column widths
+    document.querySelectorAll(`th.ch[data-c="${resizeColIdx}"], td[data-c="${resizeColIdx}"]`).forEach(el=>{
+      el.style.width=newW+'px';
+      el.style.minWidth=newW+'px';
+    });
+  }
+
+  function onUp(){
+    resizing=false;
+    overlay.style.display='none';
+    line.style.display='none';
+    document.removeEventListener('mousemove',onMove);
+    document.removeEventListener('mouseup',onUp);
+    // Full re-render to sync state
+    renderGrid();
+  }
+
+  document.addEventListener('mousemove',onMove);
+  document.addEventListener('mouseup',onUp);
+}
+
 // ══ COLUMN REORDER ══
 function colDragStart(e,c){
+  if(resizing) return;
   dragColIdx=c;
   e.dataTransfer.effectAllowed='move';
   e.dataTransfer.setData('text/plain','col:'+c);
@@ -937,12 +1021,10 @@ function rowDrop(e,toR){
   e.preventDefault();
   const fromR=dragRowIdx;
   if(fromR<0||fromR===toR) return rowDragEnd();
-  // Move row in data
   const dRow=data.splice(fromR,1)[0];
   const fRow=fmts.splice(fromR,1)[0];
   data.splice(toR,0,dRow);
   fmts.splice(toR,0,fRow);
-  // Keep total rows at ROWS by padding or trimming
   while(data.length<ROWS){data.push(Array(COLS).fill(''));fmts.push(Array.from({length:COLS},()=>({cls:'',numFmt:''})))}
   originalData=null; originalFmts=null;
   rowDragEnd();
@@ -954,18 +1036,20 @@ function rowDrop(e,toR){
 function renderGrid(){
   const g=document.getElementById('xg');
   g.className='xg '+currentTableStyle;
-  let h='<thead><tr>';
-  h+=`<th class="corner"></th>`;
+  const cornerAllSel=allSelected?' all-sel':'';
+  let h=`<thead><tr>`;
+  h+=`<th class="corner${cornerAllSel}" onclick="selectAll()" title="${lang==='ku'?'هەموو خانەکان دیاری بکە (Ctrl+A)':'Select all cells (Ctrl+A)'}"></th>`;
   for(let c=0;c<COLS;c++){
     let cls='ch';
     if(sortCol===c) cls+=sortDir==='asc'?' sort-asc':' sort-desc';
     h+=`<th class="${cls}" data-c="${c}" style="width:${colW[c]}px;min-width:${colW[c]}px"
       draggable="true"
-      onclick="colClick(${c})"
+      onclick="colClick(${c},event)"
       ondragstart="colDragStart(event,${c})"
       ondragover="colDragOver(event,${c})"
       ondragend="colDragEnd()"
       ondrop="colDrop(event,${c})">
+      <div class="col-resize-handle" onmousedown="startColResize(event,${c})"></div>
       <span class="sa">↑</span><span class="sd">↓</span>${cl(c)}</th>`;
   }
   h+='</tr></thead><tbody>';
@@ -981,6 +1065,7 @@ function renderGrid(){
       const f=fmts[r][c];
       let cls=f.cls||'';
       if(r===selR&&c===selC) cls+=' sel';
+      if(allSelected) cls+=' all-selected';
       const v=dv(r,c);
       h+=`<td class="${cls}" data-r="${r}" data-c="${c}" style="width:${colW[c]}px" onclick="sc(${r},${c})" ondblclick="startEdit(${r},${c})" oncontextmenu="openCtx(event,${r},${c})"><span class="cv">${esc(v)}</span></td>`;
     }
@@ -1003,13 +1088,21 @@ function rcell(r,c){
   const td=document.querySelector(`td[data-r="${r}"][data-c="${c}"]`);
   if(!td) return;
   const f=fmts[r][c];
-  td.className=(f.cls||'')+(r===selR&&c===selC?' sel':'');
+  let cls=(f.cls||'')+(r===selR&&c===selC?' sel':'')+(allSelected?' all-selected':'');
+  td.className=cls;
   td.querySelector('.cv').innerHTML=esc(dv(r,c));
 }
 
 // ══ SELECTION ══
 function sc(r,c){
   if(editR>=0) commitEdit();
+  // Clear all-selected when clicking a cell
+  if(allSelected){
+    allSelected=false;
+    const corner=document.querySelector('th.corner');
+    if(corner) corner.classList.remove('all-sel');
+    document.querySelectorAll('table.xg td.all-selected').forEach(td=>td.classList.remove('all-selected'));
+  }
   const prev=document.querySelector('td.sel');
   if(prev) prev.classList.remove('sel');
   selR=r; selC=c;
@@ -1071,6 +1164,16 @@ document.addEventListener('keydown',e=>{
     e.preventDefault();
     const[dr,dc]=nav[e.key];
     sc(Math.max(0,Math.min(ROWS-1,selR+dr)),Math.max(0,Math.min(COLS-1,selC+dc)));
+    return;
+  }
+  // Ctrl+A — select all
+  if((e.ctrlKey||e.metaKey)&&e.key==='a'){
+    e.preventDefault();
+    allSelected=true;
+    const corner=document.querySelector('th.corner');
+    if(corner) corner.classList.add('all-sel');
+    document.querySelectorAll('table.xg td').forEach(td=>td.classList.add('all-selected'));
+    showToast(lang==='ku'?'هەموو خانەکان دیاریکران':'All cells selected');
     return;
   }
   if((e.key==='Delete'||e.key==='Backspace')&&!e.target.tagName.match(/INPUT|TEXTAREA/)){
@@ -1364,10 +1467,8 @@ function executePrint(){
   const pageDir=lang==='en'?'ltr':'rtl';
   const pageCSS=`@page{size:${pageSize} ${ppOrient};margin:${marginV}mm ${marginH}mm}`;
 
-  // Build table rows, inserting page-break divs based on rowsPerPage
   let bodyHTML='';
   if(rowsPerPage>0){
-    // Split into chunks
     for(let start=0;start<rows.length;start+=rowsPerPage){
       if(start>0) bodyHTML+=`<div class="pg-break"></div>`;
       const chunk=rows.slice(start,start+rowsPerPage);
@@ -1413,7 +1514,7 @@ ${bodyHTML}
 function buildTable(rows,headers,dirs,headerColor,altColor,zebra,border,startIdx,fontSize,fitPage,repeatHeader){
   let html=`<div class="page-block">`;
   if(startIdx===0){
-    html+=`<h2> ${lang==='ku'?'':''}</h2>`;
+    html+=`<h2></h2>`;
     html+=`<div class="meta">${new Date().toLocaleDateString()} — ${rows.length} ${lang==='ku'?'ڕیز':'rows'}</div>`;
   }
   html+='<table>';
