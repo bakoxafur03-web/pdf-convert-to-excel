@@ -221,6 +221,46 @@ table.xg td.fcur{background:rgba(217,119,6,0.4)!important;outline:2px solid var(
 .btn-l2x{padding:11px;border:none;border-radius:var(--r);background:var(--xbg);color:#fff;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:6px;transition:all .15s;flex:1}
 .btn-l2x:hover,.btn-l2x:active{background:var(--xbg2)}
 
+/* ══ SAVED LISTS PANEL ══ */
+.saved-lists-section{background:var(--bg);border:1px solid var(--border);border-radius:var(--rl);padding:10px 12px}
+.saved-lists-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.saved-lists-title{font-size:11px;font-weight:600;color:var(--text2);display:flex;align-items:center;gap:4px;text-transform:uppercase;letter-spacing:.5px}
+.saved-lists-count{font-size:10px;background:var(--xbg);color:#fff;padding:1px 7px;border-radius:99px;font-weight:600}
+.save-list-row{display:flex;gap:6px}
+.save-name-inp{flex:1;padding:5px 8px;border:1px solid var(--border-md);border-radius:var(--r);font-family:inherit;font-size:12px;background:var(--bg2);color:var(--text)}
+.save-name-inp:focus{outline:2px solid var(--xbg);outline-offset:-1px}
+.btn-save-list{padding:5px 12px;border:none;border-radius:var(--r);background:var(--xbg);color:#fff;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:5px;transition:all .15s;flex-shrink:0}
+.btn-save-list:hover{background:var(--xbg2)}
+.saved-list-items{display:flex;flex-direction:column;gap:5px;margin-top:8px;max-height:180px;overflow-y:auto}
+.saved-list-item{display:flex;align-items:center;gap:7px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:6px 9px;cursor:pointer;transition:all .15s}
+.saved-list-item:hover{border-color:var(--xbg);background:var(--green-light)}
+.sli-icon{font-size:14px;color:var(--xbg);flex-shrink:0}
+.sli-info{flex:1;min-width:0}
+.sli-name{font-size:12px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sli-meta{font-size:10px;color:var(--text2);margin-top:1px}
+.sli-load{background:var(--xbg);color:#fff;border:none;border-radius:4px;padding:3px 8px;font-size:10px;font-weight:600;cursor:pointer;font-family:inherit;flex-shrink:0;transition:all .12s}
+.sli-load:hover{background:var(--xbg2)}
+.sli-del{background:none;border:none;cursor:pointer;color:var(--text3);font-size:13px;padding:2px;flex-shrink:0;transition:color .12s;line-height:1}
+.sli-del:hover{color:var(--red)}
+.no-saved{font-size:11px;color:var(--text3);text-align:center;padding:12px 0;display:flex;flex-direction:column;align-items:center;gap:4px}
+.no-saved i{font-size:22px}
+
+/* ══ COLUMN SWAP BUTTONS ══ */
+.col-swap-bar{background:var(--bg);border-bottom:1px solid var(--border);display:none;align-items:center;padding:4px 8px;gap:6px;flex-shrink:0;overflow-x:auto;scrollbar-width:none}
+.col-swap-bar.show{display:flex}
+.col-swap-bar::-webkit-scrollbar{display:none}
+.col-swap-label{font-size:11px;color:var(--text2);flex-shrink:0;font-weight:500}
+.swap-step{display:flex;align-items:center;gap:4px}
+.swap-sel{border:1px solid var(--border-md);border-radius:var(--r);padding:3px 6px;background:var(--bg2);color:var(--text);font-family:inherit;font-size:11px;cursor:pointer;height:28px;min-width:65px}
+.btn-swap{display:flex;align-items:center;gap:4px;padding:4px 10px;border:none;border-radius:var(--r);font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .15s;height:28px;white-space:nowrap;flex-shrink:0}
+/* Blue top button (right-to-left numbered, like image top row 5 4 3 2 1) */
+.btn-swap-blue{background:#3b6fd4;color:#fff;}
+.btn-swap-blue:hover{background:#2857b8}
+/* Orange bottom button (left-to-right numbered, like image bottom row 1 2 3 4 5) */
+.btn-swap-orange{background:#e07832;color:#fff;}
+.btn-swap-orange:hover{background:#c5621a}
+.swap-arrow{font-size:13px;color:var(--text3)}
+
 /* STATUS BAR */
 .sbar{height:26px;background:var(--xbg);color:rgba(255,255,255,0.9);display:flex;align-items:center;padding:0 10px;gap:12px;font-size:10px;flex-shrink:0}
 .sbar-item{display:flex;align-items:center;gap:3px;opacity:.85}
@@ -259,15 +299,12 @@ table.xg td.fcur{background:rgba(217,119,6,0.4)!important;outline:2px solid var(
 .pp-cbr{display:flex;align-items:center;gap:6px}
 .pp-cbr input{width:14px;height:14px;cursor:pointer;accent-color:var(--xbg)}
 .pp-cbr span{font-size:12px}
-
-/* ORIENTATION TOGGLE */
 .orient-toggle{display:flex;gap:6px}
 .orient-btn{flex:1;padding:8px 6px;border:2px solid var(--border-md);border-radius:var(--r);cursor:pointer;background:var(--bg2);color:var(--text2);font-family:inherit;font-size:11px;font-weight:500;transition:all .15s;display:flex;flex-direction:column;align-items:center;gap:4px}
 .orient-btn:hover{border-color:var(--xbg);color:var(--xbg)}
 .orient-btn.active{border-color:var(--xbg);background:var(--green-light);color:var(--green-text)}
 .orient-icon{display:flex;align-items:center;justify-content:center}
 .orient-icon svg{display:block}
-
 .col-order-box{border:1px solid var(--border-md);border-radius:var(--r);background:var(--bg2);overflow:hidden;max-height:180px;overflow-y:auto}
 .col-order-item{display:flex;align-items:center;gap:8px;padding:6px 10px;cursor:grab;border-bottom:1px solid var(--border);font-size:12px;transition:background .1s;user-select:none}
 .col-order-item:last-child{border-bottom:none}
@@ -289,14 +326,11 @@ table.xg td.fcur{background:rgba(217,119,6,0.4)!important;outline:2px solid var(
 .pp-btn.pri:hover{background:var(--xbg2)}
 .pp-btn.sec{background:none;border:1px solid var(--border-md);color:var(--text)}
 .pp-btn.sec:hover{background:var(--bg2)}
-
-/* ROWS PER PAGE CONTROL */
 .rpp-wrap{display:flex;align-items:center;gap:8px;background:var(--bg2);border:1px solid var(--border-md);border-radius:var(--r);padding:6px 10px}
 .rpp-wrap label{font-size:11px;color:var(--text2);flex-shrink:0}
 .rpp-inp{border:1px solid var(--border-md);border-radius:4px;padding:3px 6px;font-family:inherit;font-size:12px;background:var(--bg);color:var(--text);width:60px;text-align:center}
 .rpp-note{font-size:10px;color:var(--text3);flex:1}
 
-/* MOBILE TWEAKS */
 @media(max-width:480px){
   .sg{grid-template-columns:1fr}
   .lopts{grid-template-columns:1fr}
@@ -420,6 +454,26 @@ table.xg td.fcur{background:rgba(217,119,6,0.4)!important;outline:2px solid var(
   </button>
 </div>
 
+<!-- ══ COLUMN SWAP BAR ══ -->
+<div class="col-swap-bar" id="colSwapBar">
+  <span class="col-swap-label" data-k="swapCols" data-e="Swap columns:">جابەجاکردنی ستوون:</span>
+  <div class="swap-step">
+    <select class="swap-sel" id="swapColA"></select>
+    <span class="swap-arrow">⇄</span>
+    <select class="swap-sel" id="swapColB"></select>
+  </div>
+  <!-- Blue button: moves selected col LEFT (like top row in image: 5 4 3 2 1) -->
+  <button class="btn-swap btn-swap-blue" onclick="swapSelectedCols()" title="جابەجاکردن">
+    <i class="ti ti-switch-horizontal"></i>
+    <span data-k="swapBtn" data-e="Swap">جابەجا</span>
+  </button>
+  <!-- Orange button: move col one step right (like bottom row 1 2 3 4 5) -->
+  <button class="btn-swap btn-swap-orange" onclick="shiftColRight()" title="یەک بەرەوچەپ">
+    <i class="ti ti-arrow-left"></i>
+    <span data-k="shiftLeft" data-e="← Shift">← جووڵان</span>
+  </button>
+</div>
+
 <div class="findbar" id="findBar">
   <input class="fi" id="findInput" placeholder="گەڕان..." oninput="doFind()">
   <span class="fcount" id="findCount"></span>
@@ -504,6 +558,25 @@ table.xg td.fcur{background:rgba(217,119,6,0.4)!important;outline:2px solid var(
       <i class="ti ti-x"></i>
     </button>
   </div>
+
+  <!-- ══ SAVED LISTS SECTION ══ -->
+  <div class="saved-lists-section">
+    <div class="saved-lists-header">
+      <div class="saved-lists-title">
+        <i class="ti ti-bookmark"></i>
+        <span data-k="savedLists" data-e="Saved Lists">لیستە خەزنکراوەکان</span>
+      </div>
+      <span class="saved-lists-count" id="savedCount">0</span>
+    </div>
+    <div class="save-list-row">
+      <input class="save-name-inp" id="saveListName" placeholder="ناوی لیست..." maxlength="40">
+      <button class="btn-save-list" onclick="saveCurrentList()">
+        <i class="ti ti-device-floppy"></i>
+        <span data-k="saveList" data-e="Save">خەزنکردن</span>
+      </button>
+    </div>
+    <div class="saved-list-items" id="savedListItems"></div>
+  </div>
 </div>
 
 <!-- EXCEL TAB -->
@@ -545,7 +618,6 @@ table.xg td.fcur{background:rgba(217,119,6,0.4)!important;outline:2px solid var(
       <button class="pp-close" onclick="closePrintPreview()"><i class="ti ti-x"></i></button>
     </div>
     <div class="pp-body">
-
       <div class="pp-section">
         <div class="pp-section-t"><i class="ti ti-file"></i> <span data-k="pageSettings" data-e="Page Settings">ڕێکخستنی لاپەڕە</span></div>
         <div class="orient-toggle">
@@ -584,7 +656,6 @@ table.xg td.fcur{background:rgba(217,119,6,0.4)!important;outline:2px solid var(
           </div>
         </div>
       </div>
-
       <div class="pp-section">
         <div class="pp-section-t"><i class="ti ti-layout-rows"></i> <span data-k="rowsPerPage" data-e="Rows per page">ڕیز لە هەر لاپەڕەیەک</span></div>
         <div class="rpp-wrap">
@@ -593,39 +664,21 @@ table.xg td.fcur{background:rgba(217,119,6,0.4)!important;outline:2px solid var(
           <span class="rpp-note" data-k="rppNote" data-e="(0 = all rows on one page)">(0 = هەموو ڕیزەکان لە یەک لاپەڕە)</span>
         </div>
       </div>
-
       <div class="pp-section">
         <div class="pp-section-t"><i class="ti ti-adjustments"></i> <span data-k="options" data-e="Options">هەڵبژاردنەکان</span></div>
         <div class="pp-row">
-          <div class="pp-field">
-            <div class="pp-cbr"><input type="checkbox" id="ppShowHeader" checked onchange="updatePpPreview()"><span data-k="showHeader" data-e="Show header row">سەرنووس نیشان بدە</span></div>
-          </div>
-          <div class="pp-field">
-            <div class="pp-cbr"><input type="checkbox" id="ppZebra" checked onchange="updatePpPreview()"><span data-k="zebraRows" data-e="Zebra rows">ڕیزی جیاکار</span></div>
-          </div>
-          <div class="pp-field">
-            <div class="pp-cbr"><input type="checkbox" id="ppBorder" checked onchange="updatePpPreview()"><span data-k="showBorder" data-e="Cell borders">سنووری خانە</span></div>
-          </div>
-          <div class="pp-field">
-            <div class="pp-cbr"><input type="checkbox" id="ppTitle" checked onchange="updatePpPreview()"><span data-k="showTitle" data-e="Show title">ناونیشان نیشان بدە</span></div>
-          </div>
-          <div class="pp-field">
-            <div class="pp-cbr"><input type="checkbox" id="ppFitPage" checked onchange="updatePpPreview()"><span data-k="fitPage" data-e="Fit to page width">کڵاو لەسەر لاپەڕە</span></div>
-          </div>
-          <div class="pp-field">
-            <div class="pp-cbr"><input type="checkbox" id="ppRepeatHeader" checked onchange="updatePpPreview()"><span data-k="repeatHeader" data-e="Repeat header on each page">سەرنووس لە هەر لاپەڕەیەک</span></div>
-          </div>
+          <div class="pp-field"><div class="pp-cbr"><input type="checkbox" id="ppShowHeader" checked onchange="updatePpPreview()"><span data-k="showHeader" data-e="Show header row">سەرنووس نیشان بدە</span></div></div>
+          <div class="pp-field"><div class="pp-cbr"><input type="checkbox" id="ppZebra" checked onchange="updatePpPreview()"><span data-k="zebraRows" data-e="Zebra rows">ڕیزی جیاکار</span></div></div>
+          <div class="pp-field"><div class="pp-cbr"><input type="checkbox" id="ppBorder" checked onchange="updatePpPreview()"><span data-k="showBorder" data-e="Cell borders">سنووری خانە</span></div></div>
+          <div class="pp-field"><div class="pp-cbr"><input type="checkbox" id="ppTitle" checked onchange="updatePpPreview()"><span data-k="showTitle" data-e="Show title">ناونیشان نیشان بدە</span></div></div>
+          <div class="pp-field"><div class="pp-cbr"><input type="checkbox" id="ppFitPage" checked onchange="updatePpPreview()"><span data-k="fitPage" data-e="Fit to page width">کڵاو لەسەر لاپەڕە</span></div></div>
+          <div class="pp-field"><div class="pp-cbr"><input type="checkbox" id="ppRepeatHeader" checked onchange="updatePpPreview()"><span data-k="repeatHeader" data-e="Repeat header on each page">سەرنووس لە هەر لاپەڕەیەک</span></div></div>
         </div>
         <div class="pp-row" style="margin-top:4px">
-          <div class="pp-field"><label>زیادە — سەرەوە / خوارەوە (mm)</label>
-            <input type="number" id="ppMarginV" value="12" min="0" max="40" onchange="updatePpPreview()">
-          </div>
-          <div class="pp-field"><label>زیادە — ڕاست / چەپ (mm)</label>
-            <input type="number" id="ppMarginH" value="10" min="0" max="40" onchange="updatePpPreview()">
-          </div>
+          <div class="pp-field"><label>زیادە — سەرەوە / خوارەوە (mm)</label><input type="number" id="ppMarginV" value="12" min="0" max="40" onchange="updatePpPreview()"></div>
+          <div class="pp-field"><label>زیادە — ڕاست / چەپ (mm)</label><input type="number" id="ppMarginH" value="10" min="0" max="40" onchange="updatePpPreview()"></div>
         </div>
       </div>
-
       <div class="pp-section">
         <div class="pp-section-t" style="justify-content:space-between">
           <span><i class="ti ti-columns"></i> <span data-k="colOrder" data-e="Columns (drag to reorder)">ستوونەکان — ئیشکاڵ بکە بۆ گۆڕانی ڕیز</span></span>
@@ -633,7 +686,6 @@ table.xg td.fcur{background:rgba(217,119,6,0.4)!important;outline:2px solid var(
         </div>
         <div class="col-order-box" id="colOrderBox"></div>
       </div>
-
       <div class="pp-section">
         <div class="pp-section-t"><i class="ti ti-palette"></i> <span data-k="headerColor" data-e="Header style">ستایلی سەرنووس</span></div>
         <div class="pp-row">
@@ -659,12 +711,10 @@ table.xg td.fcur{background:rgba(217,119,6,0.4)!important;outline:2px solid var(
           </div>
         </div>
       </div>
-
       <div class="pp-section">
         <div class="pp-section-t"><i class="ti ti-eye"></i> <span data-k="preview" data-e="Preview (first 5 rows)">پێشبینی — ٥ ڕیزی یەکەم</span></div>
         <div class="pp-preview" id="ppPreviewTable"></div>
       </div>
-
     </div>
     <div class="pp-foot">
       <button class="pp-btn sec" onclick="closePrintPreview()"><i class="ti ti-x"></i> <span data-k="cancel" data-e="Cancel">پاشگەزبوونەوە</span></button>
@@ -673,10 +723,8 @@ table.xg td.fcur{background:rgba(217,119,6,0.4)!important;outline:2px solid var(
   </div>
 </div>
 
-<!-- Column resize overlay and line -->
 <div class="resize-overlay" id="resizeOverlay"></div>
 <div class="resize-line" id="resizeLine"></div>
-
 <div class="toast" id="toast"></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
@@ -719,7 +767,9 @@ const KU={
   showHeader:'سەرنووس نیشان بدە',zebraRows:'ڕیزی جیاکار',showBorder:'سنووری خانە',showTitle:'ناونیشان نیشان بدە',
   colOrder:'ستوونەکان — ئیشکاڵ بکە',headerColor:'ستایلی سەرنووس',headerBg:'ڕەنگی سەرنووس',altColor:'ڕەنگی ڕیزی جیاکار',
   preview:'پێشبینی — ٥ ڕیزی یەکەم',cancel:'پاشگەزبوونەوە',print:'پرێنت / PDF',
-  fitPage:'کڵاو لەسەر لاپەڕە',repeatHeader:'سەرنووس لە هەر لاپەڕەیەک'
+  fitPage:'کڵاو لەسەر لاپەڕە',repeatHeader:'سەرنووس لە هەر لاپەڕەیەک',
+  savedLists:'لیستە خەزنکراوەکان',saveList:'خەزنکردن',
+  swapCols:'جابەجاکردنی ستوون:',swapBtn:'جابەجا',shiftLeft:'← جووڵان'
 };
 
 // ══ STATE ══
@@ -731,24 +781,12 @@ let findMatches=[], findIdx=0;
 let sortCol=-1, sortDir='none';
 let originalData=null, originalFmts=null;
 let allSelected=false;
-
-// Print orientation state
 let ppOrient='portrait';
-
-// Zoom state
 let zoomLevel=100;
 const ZOOM_STEPS=[50,60,70,80,90,100,110,125,150,175,200];
-
-// Table style state
 let currentTableStyle='ts-default';
-
-// Column drag state
 let dragColIdx=-1;
-
-// Row drag state
 let dragRowIdx=-1;
-
-// ══ COLUMN RESIZE STATE ══
 let resizing=false;
 let resizeColIdx=-1;
 let resizeStartX=0;
@@ -825,8 +863,10 @@ function switchTab(t){
   document.getElementById('ribbon').classList.toggle('show',t==='excel');
   document.getElementById('fbar').classList.toggle('show',t==='excel');
   document.getElementById('sortBar').classList.toggle('show',t==='excel');
+  document.getElementById('colSwapBar').classList.toggle('show',t==='excel');
   if(t!=='excel') document.getElementById('findBar').classList.remove('show');
-  if(t==='excel'){renderGrid();updateStatus();updateFBar();populateSortSel()}
+  if(t==='excel'){renderGrid();updateStatus();updateFBar();populateSortSel();populateSwapSels()}
+  if(t==='list'){renderSavedLists()}
 }
 switchTab('upload');
 
@@ -842,6 +882,55 @@ function populateSortSel(){
     sel.appendChild(op);
   }
   if(prev) sel.value=prev;
+}
+
+// ══ COLUMN SWAP SELECTS ══
+function populateSwapSels(){
+  ['swapColA','swapColB'].forEach((id,si)=>{
+    const sel=document.getElementById(id);
+    const prev=sel.value;
+    sel.innerHTML='';
+    for(let c=0;c<COLS;c++){
+      const label=data[0][c]?`${cl(c)}: ${data[0][c]}`:cl(c);
+      const op=document.createElement('option');
+      op.value=c; op.textContent=label;
+      sel.appendChild(op);
+    }
+    sel.value=prev||(si===0?'0':'1');
+  });
+}
+
+// ══ SWAP TWO COLUMNS (Blue button) ══
+function swapSelectedCols(){
+  const a=parseInt(document.getElementById('swapColA').value);
+  const b=parseInt(document.getElementById('swapColB').value);
+  if(a===b){showToast(lang==='ku'?'دوو ستوونی جیاواز هەڵبژێرە':'Select two different columns');return}
+  for(let r=0;r<ROWS;r++){
+    [data[r][a],data[r][b]]=[data[r][b],data[r][a]];
+    [fmts[r][a],fmts[r][b]]=[fmts[r][b],fmts[r][a]];
+  }
+  [colW[a],colW[b]]=[colW[b],colW[a]];
+  originalData=null; originalFmts=null;
+  renderGrid(); updateStatus(); populateSortSel(); populateSwapSels();
+  showToast(lang==='ku'?`ستوونی ${cl(a)} و ${cl(b)} جابەجا کران`:`Columns ${cl(a)} & ${cl(b)} swapped`);
+}
+
+// ══ SHIFT COLUMN LEFT ONE STEP (Orange button) ══
+function shiftColRight(){
+  const a=parseInt(document.getElementById('swapColA').value);
+  const b=Math.min(a+1,COLS-1);
+  if(a===b){showToast(lang==='ku'?'ستوون دوایین ستوونەکەیە':'Column is already last');return}
+  for(let r=0;r<ROWS;r++){
+    [data[r][a],data[r][b]]=[data[r][b],data[r][a]];
+    [fmts[r][a],fmts[r][b]]=[fmts[r][b],fmts[r][a]];
+  }
+  [colW[a],colW[b]]=[colW[b],colW[a]];
+  originalData=null; originalFmts=null;
+  // Update swapColA to follow the moved column
+  document.getElementById('swapColA').value=b;
+  renderGrid(); updateStatus(); populateSortSel(); populateSwapSels();
+  document.getElementById('swapColA').value=b;
+  showToast(lang==='ku'?`ستوونی ${cl(a)} جووڵا بۆ ${cl(b)}`:`Column ${cl(a)} shifted to ${cl(b)}`);
 }
 
 // ══ SORT ══
@@ -901,7 +990,6 @@ function clearSort(){
 }
 
 function colClick(c,e){
-  // Don't sort if we just finished resizing
   if(resizing) return;
   document.getElementById('sortColSel').value=c;
   if(sortCol!==c) doQuickSort('asc');
@@ -930,46 +1018,37 @@ function startColResize(e, c){
   resizeColIdx=c;
   resizeStartX=e.clientX;
   resizeStartW=colW[c];
-
   const overlay=document.getElementById('resizeOverlay');
   const line=document.getElementById('resizeLine');
   overlay.style.display='block';
-
-  // Get column header position for the line
   const th=document.querySelector(`th.ch[data-c="${c}"]`);
   if(th){
     const rect=th.getBoundingClientRect();
     line.style.display='block';
     line.style.left=(rect.left)+'px';
   }
-
   function onMove(ev){
     const dx=ev.clientX - resizeStartX;
     const newW=Math.max(40, resizeStartW + dx);
     colW[resizeColIdx]=newW;
-    // Update line position
     const th2=document.querySelector(`th.ch[data-c="${resizeColIdx}"]`);
     if(th2){
       const r=th2.getBoundingClientRect();
       line.style.left=(r.left)+'px';
     }
-    // Live update column widths
     document.querySelectorAll(`th.ch[data-c="${resizeColIdx}"], td[data-c="${resizeColIdx}"]`).forEach(el=>{
       el.style.width=newW+'px';
       el.style.minWidth=newW+'px';
     });
   }
-
   function onUp(){
     resizing=false;
     overlay.style.display='none';
     line.style.display='none';
     document.removeEventListener('mousemove',onMove);
     document.removeEventListener('mouseup',onUp);
-    // Full re-render to sync state
     renderGrid();
   }
-
   document.addEventListener('mousemove',onMove);
   document.addEventListener('mouseup',onUp);
 }
@@ -1108,7 +1187,6 @@ function rcell(r,c){
 // ══ SELECTION ══
 function sc(r,c){
   if(editR>=0) commitEdit();
-  // Clear all-selected when clicking a cell
   if(allSelected){
     allSelected=false;
     const corner=document.querySelector('th.corner');
@@ -1182,7 +1260,6 @@ document.addEventListener('keydown',e=>{
     sc(Math.max(0,Math.min(ROWS-1,selR+dr)),Math.max(0,Math.min(COLS-1,selC+dc)));
     return;
   }
-  // Ctrl+A — select all
   if((e.ctrlKey||e.metaKey)&&e.key==='a'){
     e.preventDefault();
     allSelected=true;
@@ -1505,12 +1582,9 @@ function executePrint(){
   const marginH=document.getElementById('ppMarginH').value||10;
   const rowsPerPage=parseInt(document.getElementById('ppRowsPerPage').value)||0;
   const{rows,headers,dirs}=getPpRows();
-
   if(!rows.length&&!headers){showToast(lang==='ku'?'داتایەک نییە':'No data');return}
-
   const pageDir=lang==='en'?'ltr':'rtl';
   const pageCSS=`@page{size:${pageSize} ${ppOrient};margin:${marginV}mm ${marginH}mm}`;
-
   let bodyHTML='';
   if(rowsPerPage>0){
     for(let start=0;start<rows.length;start+=rowsPerPage){
@@ -1521,10 +1595,8 @@ function executePrint(){
   } else {
     bodyHTML=buildTable(rows,headers,dirs,headerColor,altColor,zebra,border,0,fontSize,fitPage,repeatHeader);
   }
-
   const borderStyle=border?`td,th{border:1px solid rgba(0,0,0,0.15)!important}`:`td,th{border:none!important}`;
-  const fitStyle=fitPage?`table{width:100%!important}`:`` ;
-
+  const fitStyle=fitPage?`table{width:100%!important}`:``;
   const win=window.open('','_blank');
   win.document.write(`<!DOCTYPE html><html dir="${pageDir}"><head><meta charset="UTF-8">
 <title>${lang==='ku'?'خشتەی داتاکان':'Data Table'}</title>
@@ -1585,6 +1657,82 @@ function showToast(msg){
   const t=document.getElementById('toast');
   t.textContent=msg; t.classList.add('show');
   clearTimeout(toastTm); toastTm=setTimeout(()=>t.classList.remove('show'),2400);
+}
+
+// ══════════════════════════════════════════
+// ══ SAVED LISTS — localStorage ══
+// ══════════════════════════════════════════
+const LS_KEY='pdf2excel_saved_lists';
+
+function getSavedLists(){
+  try{return JSON.parse(localStorage.getItem(LS_KEY)||'[]')}catch{return[]}
+}
+function putSavedLists(arr){
+  try{localStorage.setItem(LS_KEY,JSON.stringify(arr))}catch(e){showToast(lang==='ku'?'هەڵەی خەزنکردن':'Storage error')}
+}
+
+function saveCurrentList(){
+  const raw=document.getElementById('listInput').value.trim();
+  if(!raw){showToast(lang==='ku'?'لیستێک بنووسە پێش خەزنکردن':'Write a list first');return}
+  let name=document.getElementById('saveListName').value.trim();
+  if(!name) name=new Date().toLocaleString('ku');
+  const lists=getSavedLists();
+  const sep=document.getElementById('listSep').value;
+  const startCol=document.getElementById('listStartCol').value||'A';
+  lists.unshift({
+    id:Date.now(),
+    name,
+    text:raw,
+    sep,
+    startCol,
+    date:new Date().toLocaleDateString()
+  });
+  putSavedLists(lists);
+  document.getElementById('saveListName').value='';
+  renderSavedLists();
+  showToast(lang==='ku'?`"${name}" خەزنکرا ✓`:`"${name}" saved ✓`);
+}
+
+function loadSavedList(id){
+  const lists=getSavedLists();
+  const item=lists.find(x=>x.id===id);
+  if(!item) return;
+  document.getElementById('listInput').value=item.text;
+  if(item.sep) document.getElementById('listSep').value=item.sep;
+  if(item.startCol) document.getElementById('listStartCol').value=item.startCol;
+  showToast(lang==='ku'?`"${item.name}" بارکرا`:`"${item.name}" loaded`);
+}
+
+function deleteSavedList(id){
+  const lists=getSavedLists().filter(x=>x.id!==id);
+  putSavedLists(lists);
+  renderSavedLists();
+  showToast(lang==='ku'?'سڕایەوە':'Deleted');
+}
+
+function renderSavedLists(){
+  const lists=getSavedLists();
+  const el=document.getElementById('savedListItems');
+  const cnt=document.getElementById('savedCount');
+  cnt.textContent=lists.length;
+  if(!lists.length){
+    el.innerHTML=`<div class="no-saved"><i class="ti ti-bookmark-off"></i><span>${lang==='ku'?'هیچ لیستێک خەزن نەکراوە':'No saved lists yet'}</span></div>`;
+    return;
+  }
+  el.innerHTML=lists.map(item=>`
+    <div class="saved-list-item" onclick="loadSavedList(${item.id})">
+      <i class="ti ti-file-text sli-icon"></i>
+      <div class="sli-info">
+        <div class="sli-name">${esc(item.name)}</div>
+        <div class="sli-meta">${item.date} · ${item.text.split('\n').filter(Boolean).length} ${lang==='ku'?'ڕیز':'rows'}</div>
+      </div>
+      <button class="sli-load" onclick="event.stopPropagation();loadSavedList(${item.id})">
+        <i class="ti ti-download"></i> ${lang==='ku'?'بارکردن':'Load'}
+      </button>
+      <button class="sli-del" onclick="event.stopPropagation();deleteSavedList(${item.id})" title="${lang==='ku'?'سڕینەوە':'Delete'}">
+        <i class="ti ti-trash"></i>
+      </button>
+    </div>`).join('');
 }
 
 // ══ LIST → EXCEL ══
@@ -1685,6 +1833,9 @@ async function convertAll(){
   autoSortAfterLoad();
   switchTab('excel');
 }
+
+// Init saved lists on load
+renderSavedLists();
 </script>
 </body>
 </html>
