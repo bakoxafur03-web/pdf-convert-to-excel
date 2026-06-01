@@ -36,7 +36,7 @@
 }}
 html,body{height:100%;overflow:hidden}
 body{font-family:'Outfit',sans-serif;background:var(--bg2);color:var(--text);direction:rtl;display:flex;flex-direction:column;font-size:14px;-webkit-tap-highlight-color:transparent}
-
+ 
 /* APP BAR */
 .app-bar{height:48px;background:var(--xbg);color:#fff;display:flex;align-items:center;padding:0 12px;gap:8px;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,0.25);z-index:60}
 .app-bar-title{font-size:15px;font-weight:600;flex:1;display:flex;align-items:center;gap:7px}
@@ -44,14 +44,16 @@ body{font-family:'Outfit',sans-serif;background:var(--bg2);color:var(--text);dir
 .lang-toggle{display:flex;background:rgba(255,255,255,0.12);border-radius:99px;padding:2px;gap:1px}
 .lang-btn{padding:3px 10px;border-radius:99px;font-size:11px;font-weight:500;cursor:pointer;transition:all .15s;border:none;background:transparent;color:rgba(255,255,255,0.7);font-family:inherit}
 .lang-btn.active{background:#fff;color:var(--xbg);font-weight:600}
-
+.about-btn{background:rgba(255,255,255,0.12);border:none;border-radius:99px;color:rgba(255,255,255,0.85);padding:3px 11px;font-size:11px;font-weight:500;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:5px;transition:all .15s;flex-shrink:0}
+.about-btn:hover{background:rgba(255,255,255,0.22);color:#fff}
+ 
 /* TABS */
 .tabs-row{background:var(--bg);border-bottom:2px solid var(--xbg);display:flex;overflow-x:auto;scrollbar-width:none;flex-shrink:0;padding:0 6px}
 .tabs-row::-webkit-scrollbar{display:none}
 .stab{padding:9px 14px;font-size:12px;font-weight:500;cursor:pointer;border:1px solid transparent;border-bottom:none;border-radius:5px 5px 0 0;background:var(--tab-off);color:var(--tab-off-t);margin-left:3px;position:relative;bottom:-2px;transition:all .15s;flex-shrink:0;display:flex;align-items:center;gap:5px;white-space:nowrap}
 .stab.active{background:var(--bg);color:var(--xbg);border-color:var(--xborder);border-bottom:2px solid var(--bg);font-weight:600}
 .stab .ti{font-size:13px}
-
+ 
 /* RIBBON */
 .ribbon{background:var(--bg);border-bottom:1px solid var(--border);padding:3px 6px;display:none;align-items:center;gap:2px;overflow-x:auto;scrollbar-width:none;flex-shrink:0}
 .ribbon.show{display:flex}
@@ -64,13 +66,13 @@ body{font-family:'Outfit',sans-serif;background:var(--bg2);color:var(--text);dir
 .rb .ti{font-size:14px}
 .rb span{font-size:11px;font-weight:500}
 .rb-sel{border:1px solid var(--border-md);border-radius:var(--r);padding:3px 5px;background:var(--bg2);color:var(--text);font-family:inherit;font-size:11px;cursor:pointer;height:28px}
-
+ 
 /* ZOOM CONTROLS */
 .zoom-bar{display:flex;align-items:center;gap:3px;padding:0 5px;border-right:1px solid var(--border);margin-left:2px}
 .zoom-btn{background:none;border:1px solid var(--border-md);border-radius:var(--r);cursor:pointer;color:var(--text);font-size:13px;width:26px;height:26px;display:flex;align-items:center;justify-content:center;transition:all .12s;font-family:inherit}
 .zoom-btn:hover{background:var(--bg2)}
 .zoom-pct{font-size:11px;font-weight:600;color:var(--text2);min-width:34px;text-align:center}
-
+ 
 /* FORMULA BAR */
 .fbar{background:var(--bg);border-bottom:1px solid var(--border);display:none;align-items:center;padding:2px 8px;gap:5px;flex-shrink:0;height:30px}
 .fbar.show{display:flex}
@@ -78,7 +80,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg2);color:var(--text);dir
 .fbar-sep{width:1px;height:16px;background:var(--border-md);flex-shrink:0}
 .fbar-fx{font-size:12px;color:var(--xbg);font-style:italic;font-weight:700;flex-shrink:0}
 .fbar-inp{flex:1;border:none;outline:none;font-size:12px;background:transparent;color:var(--text);font-family:inherit;min-width:0}
-
+ 
 /* SORT BAR */
 .sort-bar{background:var(--bg);border-bottom:1px solid var(--border);display:none;align-items:center;padding:3px 8px;gap:6px;flex-shrink:0;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
 .sort-bar.show{display:flex}
@@ -91,7 +93,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg2);color:var(--text);dir
 .sb-btn.desc-on{background:var(--blue-light);color:var(--blue-text);border-color:var(--blue)}
 .sb-clear{background:none;border:none;cursor:pointer;color:var(--text2);font-size:11px;font-family:inherit;padding:3px 5px;flex-shrink:0;display:flex;align-items:center;gap:3px}
 .sb-clear:hover{color:var(--red)}
-
+ 
 /* FIND BAR */
 .findbar{background:var(--bg);border-bottom:1px solid var(--border);display:none;align-items:center;padding:4px 8px;gap:5px;flex-shrink:0}
 .findbar.show{display:flex}
@@ -100,14 +102,14 @@ body{font-family:'Outfit',sans-serif;background:var(--bg2);color:var(--text);dir
 .fbtn{background:none;border:1px solid var(--border-md);border-radius:var(--r);padding:4px 7px;cursor:pointer;font-size:13px;color:var(--text);font-family:inherit;display:flex;align-items:center;height:28px}
 .fbtn:hover{background:var(--bg2)}
 .fcount{font-size:10px;color:var(--text2);flex-shrink:0;white-space:nowrap}
-
+ 
 /* GRID */
 .grid-wrap{overflow:auto;flex:1;background:var(--bg);position:relative;-webkit-overflow-scrolling:touch}
 .grid-wrap::-webkit-scrollbar{width:8px;height:8px}
 .grid-wrap::-webkit-scrollbar-track{background:var(--bg2)}
 .grid-wrap::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:4px;border:2px solid var(--bg2)}
 .grid-wrap::-webkit-scrollbar-corner{background:var(--bg2)}
-
+ 
 table.xg{border-collapse:collapse;table-layout:fixed;min-width:max-content;user-select:none}
 table.xg th.corner{width:38px;min-width:38px;background:var(--bg3);border-right:1px solid var(--xborder);border-bottom:1px solid var(--xborder);position:sticky;top:0;right:0;z-index:7;cursor:pointer;transition:background .12s}
 table.xg th.corner:hover{background:var(--xsel)}
@@ -125,11 +127,10 @@ table.xg th.ch .sa,.xg th.ch .sd{display:none;font-size:9px;margin-right:2px}
 table.xg th.ch.col-sel{background:var(--xbg3);outline:2px solid #fff;outline-offset:-2px}
 table.xg th.ch.col-drag-over{background:var(--amber)!important;outline:2px solid var(--amber-text);outline-offset:-2px}
 table.xg th.ch.col-dragging{opacity:0.45}
-
-/* Column resize handle */
+ 
 .col-resize-handle{position:absolute;top:0;left:0;width:5px;height:100%;cursor:col-resize;z-index:10;background:transparent}
 .col-resize-handle:hover{background:rgba(255,255,255,0.3)}
-
+ 
 table.xg td{border:1px solid var(--xborder);padding:0;min-width:80px;width:100px;height:24px;vertical-align:middle;font-size:var(--cell-fs);color:var(--text);background:var(--bg);cursor:cell;position:relative;transition:background .05s}
 table.xg tr:nth-child(even) td{background:var(--xalt)}
 table.xg td.sel{background:var(--xsel)!important;outline:2px solid var(--xsel-bd);outline-offset:-2px;z-index:2}
@@ -146,11 +147,10 @@ table.xg td.al .cv{text-align:left}
 table.xg td.num .cv{text-align:right;font-variant-numeric:tabular-nums}
 table.xg td.fhl{background:rgba(217,119,6,0.18)!important}
 table.xg td.fcur{background:rgba(217,119,6,0.4)!important;outline:2px solid var(--amber)!important}
-
-/* Resize cursor overlay */
+ 
 .resize-overlay{position:fixed;inset:0;cursor:col-resize;z-index:9999;display:none}
 .resize-line{position:fixed;top:0;bottom:0;width:2px;background:var(--xbg);z-index:9998;display:none;pointer-events:none}
-
+ 
 /* TABLE STYLE THEMES */
 .ts-default th.ch{background:var(--xhead);color:#fff}
 .ts-default tr:nth-child(even) td{background:var(--xalt)}
@@ -172,7 +172,7 @@ table.xg td.fcur{background:rgba(217,119,6,0.4)!important;outline:2px solid var(
 .ts-plain th.ch{background:#374151;color:#fff}
 .ts-plain tr:nth-child(even) td{background:#f9fafb}
 .ts-plain td{border-color:#e5e7eb}
-
+ 
 /* UPLOAD PANEL */
 .panel{padding:14px;display:flex;flex-direction:column;gap:10px;overflow-y:auto;flex:1}
 .dz{border:2px dashed var(--border-md);border-radius:var(--rxl);padding:28px 14px;text-align:center;cursor:pointer;transition:all .2s;background:var(--bg)}
@@ -211,7 +211,7 @@ table.xg td.fcur{background:rgba(217,119,6,0.4)!important;outline:2px solid var(
 .btn-go{width:100%;padding:12px;border:none;border-radius:var(--r);background:var(--xbg);color:#fff;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .15s;display:flex;align-items:center;justify-content:center;gap:7px}
 .btn-go:hover:not(:disabled),.btn-go:active:not(:disabled){background:var(--xbg2)}
 .btn-go:disabled{background:var(--bg3);color:var(--text2);cursor:not-allowed;border:1px solid var(--border)}
-
+ 
 /* LIST TAB */
 .lta{width:100%;min-height:130px;border:1px solid var(--border-md);border-radius:var(--r);padding:8px;font-family:inherit;font-size:12px;background:var(--bg);color:var(--text);resize:vertical;line-height:1.7}
 .lta:focus{outline:2px solid var(--xbg);outline-offset:-1px}
@@ -220,8 +220,8 @@ table.xg td.fcur{background:rgba(217,119,6,0.4)!important;outline:2px solid var(
 .lo select,.lo input{width:100%;padding:5px 6px;border:1px solid var(--border-md);border-radius:var(--r);background:var(--bg2);color:var(--text);font-family:inherit;font-size:12px}
 .btn-l2x{padding:11px;border:none;border-radius:var(--r);background:var(--xbg);color:#fff;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:6px;transition:all .15s;flex:1}
 .btn-l2x:hover,.btn-l2x:active{background:var(--xbg2)}
-
-/* ══ SAVED LISTS PANEL ══ */
+ 
+/* SAVED LISTS PANEL */
 .saved-lists-section{background:var(--bg);border:1px solid var(--border);border-radius:var(--rl);padding:10px 12px}
 .saved-lists-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
 .saved-lists-title{font-size:11px;font-weight:600;color:var(--text2);display:flex;align-items:center;gap:4px;text-transform:uppercase;letter-spacing:.5px}
@@ -244,8 +244,8 @@ table.xg td.fcur{background:rgba(217,119,6,0.4)!important;outline:2px solid var(
 .sli-del:hover{color:var(--red)}
 .no-saved{font-size:11px;color:var(--text3);text-align:center;padding:12px 0;display:flex;flex-direction:column;align-items:center;gap:4px}
 .no-saved i{font-size:22px}
-
-/* ══ COLUMN SWAP BUTTONS ══ */
+ 
+/* COLUMN SWAP BUTTONS */
 .col-swap-bar{background:var(--bg);border-bottom:1px solid var(--border);display:none;align-items:center;padding:4px 8px;gap:6px;flex-shrink:0;overflow-x:auto;scrollbar-width:none}
 .col-swap-bar.show{display:flex}
 .col-swap-bar::-webkit-scrollbar{display:none}
@@ -253,21 +253,19 @@ table.xg td.fcur{background:rgba(217,119,6,0.4)!important;outline:2px solid var(
 .swap-step{display:flex;align-items:center;gap:4px}
 .swap-sel{border:1px solid var(--border-md);border-radius:var(--r);padding:3px 6px;background:var(--bg2);color:var(--text);font-family:inherit;font-size:11px;cursor:pointer;height:28px;min-width:65px}
 .btn-swap{display:flex;align-items:center;gap:4px;padding:4px 10px;border:none;border-radius:var(--r);font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .15s;height:28px;white-space:nowrap;flex-shrink:0}
-/* Blue top button (right-to-left numbered, like image top row 5 4 3 2 1) */
 .btn-swap-blue{background:#3b6fd4;color:#fff;}
 .btn-swap-blue:hover{background:#2857b8}
-/* Orange bottom button (left-to-right numbered, like image bottom row 1 2 3 4 5) */
 .btn-swap-orange{background:#e07832;color:#fff;}
 .btn-swap-orange:hover{background:#c5621a}
 .swap-arrow{font-size:13px;color:var(--text3)}
-
+ 
 /* STATUS BAR */
 .sbar{height:26px;background:var(--xbg);color:rgba(255,255,255,0.9);display:flex;align-items:center;padding:0 10px;gap:12px;font-size:10px;flex-shrink:0}
 .sbar-item{display:flex;align-items:center;gap:3px;opacity:.85}
 .sbar-item b{font-weight:600;opacity:1}
 .sbar-right{margin-right:auto;font-weight:600}
 #stSort{display:none;background:rgba(255,255,255,0.15);padding:1px 7px;border-radius:99px;font-size:9px}
-
+ 
 /* CONTEXT MENU */
 .ctx{display:none;position:fixed;background:var(--bg);border:1px solid var(--border-md);border-radius:var(--rl);box-shadow:0 8px 24px rgba(0,0,0,0.18);z-index:400;min-width:150px;padding:3px 0}
 .ctx.open{display:block}
@@ -277,11 +275,11 @@ table.xg td.fcur{background:rgba(217,119,6,0.4)!important;outline:2px solid var(
 .ctx-sep{height:1px;background:var(--border);margin:2px 0}
 .ci-r.danger{color:var(--red-text)}
 .ci-r.danger .ti{color:var(--red-text)}
-
+ 
 /* TOAST */
 .toast{position:fixed;bottom:36px;left:50%;transform:translateX(-50%) translateY(6px);background:rgba(15,30,20,0.92);color:#fff;padding:7px 16px;border-radius:99px;font-size:12px;font-weight:500;pointer-events:none;opacity:0;transition:opacity .25s,transform .25s;z-index:600;white-space:nowrap;max-width:90vw;text-align:center}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-
+ 
 /* PRINT PREVIEW MODAL */
 .pp-bd{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:500;align-items:center;justify-content:center;backdrop-filter:blur(3px);padding:12px}
 .pp-bd.open{display:flex}
@@ -330,7 +328,21 @@ table.xg td.fcur{background:rgba(217,119,6,0.4)!important;outline:2px solid var(
 .rpp-wrap label{font-size:11px;color:var(--text2);flex-shrink:0}
 .rpp-inp{border:1px solid var(--border-md);border-radius:4px;padding:3px 6px;font-family:inherit;font-size:12px;background:var(--bg);color:var(--text);width:60px;text-align:center}
 .rpp-note{font-size:10px;color:var(--text3);flex:1}
-
+ 
+/* ABOUT MODAL */
+.about-modal-header{background:var(--xbg);padding:22px 20px 18px;text-align:center;border-radius:var(--rxl) var(--rxl) 0 0}
+.about-avatar{width:58px;height:58px;background:rgba(255,255,255,0.18);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;border:2px solid rgba(255,255,255,0.3)}
+.about-avatar i{font-size:26px;color:#fff}
+.about-app-name{font-size:17px;font-weight:700;color:#fff;margin:0 0 3px}
+.about-app-sub{font-size:11px;color:rgba(255,255,255,0.7);margin:0}
+.about-dev-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--rl);padding:14px 16px;display:flex;align-items:center;gap:13px}
+.about-dev-initials{width:46px;height:46px;background:var(--xbg);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px;font-weight:700;color:#fff;letter-spacing:.5px}
+.about-dev-name{font-size:14px;font-weight:600;color:var(--text);margin:0 0 4px}
+.about-dev-role{font-size:11px;color:var(--text2);margin:0;line-height:1.6}
+.about-tags{display:flex;flex-wrap:wrap;gap:6px}
+.about-tag{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;background:var(--bg2);border:1px solid var(--border-md);border-radius:99px;font-size:11px;color:var(--text2)}
+.about-tag i{font-size:12px;color:var(--xbg)}
+ 
 @media(max-width:480px){
   .sg{grid-template-columns:1fr}
   .lopts{grid-template-columns:1fr}
@@ -345,18 +357,21 @@ table.xg td.fcur{background:rgba(217,119,6,0.4)!important;outline:2px solid var(
 </style>
 </head>
 <body>
-
+ 
 <div class="app-bar">
   <div class="app-bar-title">
     <i class="ti ti-file-spreadsheet logo"></i>
     <span id="appTitle">PDF → Excel</span>
   </div>
+  <button class="about-btn" onclick="document.getElementById('aboutModal').classList.add('open')">
+    <i class="ti ti-info-circle"></i> <span id="aboutBtnTxt">دەربارە</span>
+  </button>
   <div class="lang-toggle">
     <button class="lang-btn active" onclick="setLang('ku')">کوردی</button>
     <button class="lang-btn" onclick="setLang('en')">EN</button>
   </div>
 </div>
-
+ 
 <div class="tabs-row" id="tabsRow">
   <div class="stab active" data-tab="upload" onclick="switchTab('upload')">
     <i class="ti ti-upload"></i> <span data-k="tabUpload" data-e="Upload PDF">ئەپلۆد PDF</span>
@@ -368,7 +383,7 @@ table.xg td.fcur{background:rgba(217,119,6,0.4)!important;outline:2px solid var(
     <i class="ti ti-table"></i> <span data-k="tabExcel" data-e="Spreadsheet">خشتەی حیساب</span>
   </div>
 </div>
-
+ 
 <div class="ribbon" id="ribbon">
   <div class="rg">
     <button class="rb" onclick="doSave('xlsx')" title="Excel"><i class="ti ti-download" style="color:var(--xbg)"></i><span>Excel</span></button>
@@ -439,7 +454,7 @@ table.xg td.fcur{background:rgba(217,119,6,0.4)!important;outline:2px solid var(
     <button class="rb" onclick="clearSheet()"><i class="ti ti-trash" style="color:var(--red)"></i></button>
   </div>
 </div>
-
+ 
 <div class="sort-bar" id="sortBar">
   <label data-k="sortBy" data-e="Sort:">ڕیزبکە:</label>
   <select class="sb-sel" id="sortColSel"></select>
@@ -453,8 +468,7 @@ table.xg td.fcur{background:rgba(217,119,6,0.4)!important;outline:2px solid var(
     <i class="ti ti-x"></i><span data-k="clearSort" data-e="Clear">پاک</span>
   </button>
 </div>
-
-<!-- ══ COLUMN SWAP BAR ══ -->
+ 
 <div class="col-swap-bar" id="colSwapBar">
   <span class="col-swap-label" data-k="swapCols" data-e="Swap columns:">جابەجاکردنی ستوون:</span>
   <div class="swap-step">
@@ -462,18 +476,16 @@ table.xg td.fcur{background:rgba(217,119,6,0.4)!important;outline:2px solid var(
     <span class="swap-arrow">⇄</span>
     <select class="swap-sel" id="swapColB"></select>
   </div>
-  <!-- Blue button: moves selected col LEFT (like top row in image: 5 4 3 2 1) -->
   <button class="btn-swap btn-swap-blue" onclick="swapSelectedCols()" title="جابەجاکردن">
     <i class="ti ti-switch-horizontal"></i>
     <span data-k="swapBtn" data-e="Swap">جابەجا</span>
   </button>
-  <!-- Orange button: move col one step right (like bottom row 1 2 3 4 5) -->
   <button class="btn-swap btn-swap-orange" onclick="shiftColRight()" title="یەک بەرەوچەپ">
     <i class="ti ti-arrow-left"></i>
     <span data-k="shiftLeft" data-e="← Shift">← جووڵان</span>
   </button>
 </div>
-
+ 
 <div class="findbar" id="findBar">
   <input class="fi" id="findInput" placeholder="گەڕان..." oninput="doFind()">
   <span class="fcount" id="findCount"></span>
@@ -481,14 +493,14 @@ table.xg td.fcur{background:rgba(217,119,6,0.4)!important;outline:2px solid var(
   <button class="fbtn" onclick="findStep(1)"><i class="ti ti-chevron-down"></i></button>
   <button class="fbtn" onclick="closeFind()"><i class="ti ti-x"></i></button>
 </div>
-
+ 
 <div class="fbar" id="fbar">
   <div class="fbar-ref" id="fbarRef">A1</div>
   <div class="fbar-sep"></div>
   <span class="fbar-fx">fx</span>
   <input class="fbar-inp" id="fbarInp" onchange="fbarCommit()" onkeydown="fbarKey(event)">
 </div>
-
+ 
 <!-- UPLOAD TAB -->
 <div id="tabUpload" class="panel">
   <div class="dz" id="dropZone">
@@ -530,7 +542,7 @@ table.xg td.fcur{background:rgba(217,119,6,0.4)!important;outline:2px solid var(
     <i class="ti ti-transform"></i> <span data-k="convertBtn" data-e="Convert to Excel">گواستنەوە بۆ Excel</span>
   </button>
 </div>
-
+ 
 <!-- LIST TAB -->
 <div id="tabList" class="panel" style="display:none">
   <div style="font-size:11px;color:var(--text2);display:flex;align-items:center;gap:5px">
@@ -558,8 +570,7 @@ table.xg td.fcur{background:rgba(217,119,6,0.4)!important;outline:2px solid var(
       <i class="ti ti-x"></i>
     </button>
   </div>
-
-  <!-- ══ SAVED LISTS SECTION ══ -->
+ 
   <div class="saved-lists-section">
     <div class="saved-lists-header">
       <div class="saved-lists-title">
@@ -578,7 +589,7 @@ table.xg td.fcur{background:rgba(217,119,6,0.4)!important;outline:2px solid var(
     <div class="saved-list-items" id="savedListItems"></div>
   </div>
 </div>
-
+ 
 <!-- EXCEL TAB -->
 <div id="tabExcel" style="display:none;flex:1;flex-direction:column;overflow:hidden">
   <div class="grid-wrap" id="gridWrap">
@@ -587,7 +598,7 @@ table.xg td.fcur{background:rgba(217,119,6,0.4)!important;outline:2px solid var(
     </div>
   </div>
 </div>
-
+ 
 <!-- STATUS BAR -->
 <div class="sbar">
   <span class="sbar-item"><b id="stRows">0</b> <span data-k="rows" data-e="rows">ڕیز</span></span>
@@ -596,7 +607,7 @@ table.xg td.fcur{background:rgba(217,119,6,0.4)!important;outline:2px solid var(
   <span class="sbar-item" id="stSort"></span>
   <span class="sbar-item"><b id="stVal"></b></span>
 </div>
-
+ 
 <!-- CONTEXT MENU -->
 <div class="ctx" id="ctx">
   <div class="ci-r" onclick="ctxCopy()"><i class="ti ti-copy"></i> <span data-k="copy" data-e="Copy">کۆپی</span></div>
@@ -609,7 +620,7 @@ table.xg td.fcur{background:rgba(217,119,6,0.4)!important;outline:2px solid var(
   <div class="ci-r danger" onclick="deleteRow()"><i class="ti ti-row-remove"></i> <span data-k="delRow" data-e="Delete row">ڕیز بسڕەوە</span></div>
   <div class="ci-r danger" onclick="deleteCol()"><i class="ti ti-column-remove"></i> <span data-k="delCol" data-e="Delete column">ستوون بسڕەوە</span></div>
 </div>
-
+ 
 <!-- PRINT PREVIEW MODAL -->
 <div class="pp-bd" id="ppModal">
   <div class="pp-box">
@@ -722,16 +733,49 @@ table.xg td.fcur{background:rgba(217,119,6,0.4)!important;outline:2px solid var(
     </div>
   </div>
 </div>
-
+ 
+<!-- ABOUT MODAL -->
+<div class="pp-bd" id="aboutModal">
+  <div class="pp-box" style="max-width:400px">
+    <div class="about-modal-header">
+      <div class="about-avatar">
+        <i class="ti ti-file-spreadsheet"></i>
+      </div>
+      <p class="about-app-name">PDF → Excel</p>
+      <p class="about-app-sub" id="aboutAppSub">ئەپلیکەیشنی گواستنەوەی داتا</p>
+    </div>
+    <div class="pp-body" style="gap:14px;padding:18px 20px">
+      <div class="about-dev-card">
+        <div class="about-dev-initials">BG</div>
+        <div>
+          <p class="about-dev-name">باکۆ غەفوور</p>
+          <p class="about-dev-role" id="aboutDevRole">گەشەپێدەری وێب ئەپلیکەیشن و موبایل ئەپلیکەیشن<br>دەرچووی بەشی زانستی کۆمپیوتەر</p>
+        </div>
+      </div>
+      <div class="about-tags">
+        <span class="about-tag"><i class="ti ti-world"></i> <span id="tagWeb">وێب ئەپلیکەیشن</span></span>
+        <span class="about-tag"><i class="ti ti-device-mobile"></i> <span id="tagMobile">موبایل ئەپلیکەیشن</span></span>
+        <span class="about-tag"><i class="ti ti-school"></i> <span id="tagCS">زانستی کۆمپیوتەر</span></span>
+        <span class="about-tag"><i class="ti ti-code"></i> <span id="tagDev">گەشەپێدەر</span></span>
+      </div>
+    </div>
+    <div class="pp-foot">
+      <button class="pp-btn pri" onclick="document.getElementById('aboutModal').classList.remove('open')">
+        <i class="ti ti-x"></i> <span id="aboutCloseBtn">داخستن</span>
+      </button>
+    </div>
+  </div>
+</div>
+ 
 <div class="resize-overlay" id="resizeOverlay"></div>
 <div class="resize-line" id="resizeLine"></div>
 <div class="toast" id="toast"></div>
-
+ 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <script>
 pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-
+ 
 // ══ LANGUAGE ══
 let lang='ku';
 function setLang(l){
@@ -745,6 +789,15 @@ function setLang(l){
   document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent.trim()===(l==='ku'?'کوردی':'EN')));
   document.getElementById('findInput').placeholder=l==='en'?'Search...':'گەڕان...';
   document.getElementById('listInput').placeholder=l==='en'?'Name, Age, City\nAhmed, 25, Sulaymaniyah':'ناو, تەمەن, شار\nئەحمەد, 25, سلێمانی';
+  // about modal lang
+  document.getElementById('aboutBtnTxt').textContent=l==='en'?'About':'دەربارە';
+  document.getElementById('aboutAppSub').textContent=l==='en'?'Data conversion application':'ئەپلیکەیشنی گواستنەوەی داتا';
+  document.getElementById('aboutDevRole').innerHTML=l==='en'?'Web & Mobile Application Developer<br>Graduate, Department of Computer Science':'گەشەپێدەری وێب ئەپلیکەیشن و موبایل ئەپلیکەیشن<br>دەرچووی بەشی زانستی کۆمپیوتەر';
+  document.getElementById('tagWeb').textContent=l==='en'?'Web App':'وێب ئەپلیکەیشن';
+  document.getElementById('tagMobile').textContent=l==='en'?'Mobile App':'موبایل ئەپلیکەیشن';
+  document.getElementById('tagCS').textContent=l==='en'?'Computer Science':'زانستی کۆمپیوتەر';
+  document.getElementById('tagDev').textContent=l==='en'?'Developer':'گەشەپێدەر';
+  document.getElementById('aboutCloseBtn').textContent=l==='en'?'Close':'داخستن';
 }
 const KU={
   tabUpload:'ئەپلۆد PDF',tabList:'لیست',tabExcel:'خشتەی حیساب',
@@ -771,7 +824,7 @@ const KU={
   savedLists:'لیستە خەزنکراوەکان',saveList:'خەزنکردن',
   swapCols:'جابەجاکردنی ستوون:',swapBtn:'جابەجا',shiftLeft:'← جووڵان'
 };
-
+ 
 // ══ STATE ══
 const ROWS=500, COLS=26;
 let data=[], fmts=[], colW=[];
@@ -791,7 +844,7 @@ let resizing=false;
 let resizeColIdx=-1;
 let resizeStartX=0;
 let resizeStartW=0;
-
+ 
 function initData(){
   data=Array.from({length:ROWS},()=>Array(COLS).fill(''));
   fmts=Array.from({length:ROWS},()=>Array.from({length:COLS},()=>({cls:'',numFmt:''})));
@@ -799,11 +852,11 @@ function initData(){
   sortCol=-1; sortDir='none'; originalData=null; originalFmts=null; allSelected=false;
 }
 initData();
-
+ 
 const cl=c=>c<26?String.fromCharCode(65+c):String.fromCharCode(64+Math.floor(c/26))+String.fromCharCode(65+(c%26));
 function lc(s){s=(s||'A').toUpperCase().trim();return s.length===1?s.charCodeAt(0)-65:(s.charCodeAt(0)-64)*26+(s.charCodeAt(1)-65)}
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
-
+ 
 // ══ CENTER ALL CELLS ══
 function centerAllCells(){
   for(let r=0;r<ROWS;r++) for(let c=0;c<COLS;c++){
@@ -814,7 +867,7 @@ function centerAllCells(){
   renderGrid();
   showToast(lang==='ku'?'هەموو خانەکان سەنتەردرا':'All cells centered');
 }
-
+ 
 // ══ ZOOM ══
 function applyZoom(){
   const scale=zoomLevel/100;
@@ -827,11 +880,11 @@ function applyZoom(){
 function zoomIn(){const cur=ZOOM_STEPS.indexOf(zoomLevel);if(cur<ZOOM_STEPS.length-1){zoomLevel=ZOOM_STEPS[cur+1];applyZoom()}}
 function zoomOut(){const cur=ZOOM_STEPS.indexOf(zoomLevel);if(cur>0){zoomLevel=ZOOM_STEPS[cur-1];applyZoom()}}
 function zoomReset(){zoomLevel=100;applyZoom()}
-
+ 
 document.getElementById('gridWrap')?.addEventListener('wheel',e=>{
   if(e.ctrlKey){e.preventDefault();if(e.deltaY<0)zoomIn();else zoomOut()}
 },{passive:false});
-
+ 
 // ══ TABLE STYLE ══
 function applyTableStyle(style){
   const tbl=document.getElementById('xg');
@@ -839,7 +892,7 @@ function applyTableStyle(style){
   tbl.classList.add(style||'ts-default');
   currentTableStyle=style||'ts-default';
 }
-
+ 
 // ══ FONT SIZE ══
 function setTableFontSize(sz){
   document.documentElement.style.setProperty('--cell-fs',sz);
@@ -850,7 +903,7 @@ function setTableFontSize(sz){
     else{el.style.height=h+'px';el.style.lineHeight=h+'px'}
   });
 }
-
+ 
 // ══ TABS ══
 let curTab='upload';
 function switchTab(t){
@@ -869,7 +922,7 @@ function switchTab(t){
   if(t==='list'){renderSavedLists()}
 }
 switchTab('upload');
-
+ 
 // ══ SORT SELECT ══
 function populateSortSel(){
   const sel=document.getElementById('sortColSel');
@@ -883,7 +936,7 @@ function populateSortSel(){
   }
   if(prev) sel.value=prev;
 }
-
+ 
 // ══ COLUMN SWAP SELECTS ══
 function populateSwapSels(){
   ['swapColA','swapColB'].forEach((id,si)=>{
@@ -899,8 +952,8 @@ function populateSwapSels(){
     sel.value=prev||(si===0?'0':'1');
   });
 }
-
-// ══ SWAP TWO COLUMNS (Blue button) ══
+ 
+// ══ SWAP TWO COLUMNS ══
 function swapSelectedCols(){
   const a=parseInt(document.getElementById('swapColA').value);
   const b=parseInt(document.getElementById('swapColB').value);
@@ -914,8 +967,8 @@ function swapSelectedCols(){
   renderGrid(); updateStatus(); populateSortSel(); populateSwapSels();
   showToast(lang==='ku'?`ستوونی ${cl(a)} و ${cl(b)} جابەجا کران`:`Columns ${cl(a)} & ${cl(b)} swapped`);
 }
-
-// ══ SHIFT COLUMN LEFT ONE STEP (Orange button) ══
+ 
+// ══ SHIFT COLUMN LEFT ONE STEP ══
 function shiftColRight(){
   const a=parseInt(document.getElementById('swapColA').value);
   const b=Math.min(a+1,COLS-1);
@@ -926,20 +979,19 @@ function shiftColRight(){
   }
   [colW[a],colW[b]]=[colW[b],colW[a]];
   originalData=null; originalFmts=null;
-  // Update swapColA to follow the moved column
   document.getElementById('swapColA').value=b;
   renderGrid(); updateStatus(); populateSortSel(); populateSwapSels();
   document.getElementById('swapColA').value=b;
   showToast(lang==='ku'?`ستوونی ${cl(a)} جووڵا بۆ ${cl(b)}`:`Column ${cl(a)} shifted to ${cl(b)}`);
 }
-
+ 
 // ══ SORT ══
 function getDataRange(){
   let lastRow=0;
   for(let r=0;r<ROWS;r++) if(data[r].some(c=>c!=='')) lastRow=r;
   return lastRow;
 }
-
+ 
 function doQuickSort(dir){
   const c=parseInt(document.getElementById('sortColSel').value)||0;
   if(originalData===null){
@@ -974,7 +1026,7 @@ function doQuickSort(dir){
   renderGrid();
   showToast(lang==='ku'?`ستوونی ${cl(c)} ڕیزکرا ${dir==='asc'?'A→Z':'Z→A'}`:`Column ${cl(c)} sorted ${dir==='asc'?'A→Z':'Z→A'}`);
 }
-
+ 
 function clearSort(){
   if(originalData){
     data=originalData.map(r=>[...r]);
@@ -988,7 +1040,7 @@ function clearSort(){
   renderGrid();
   showToast(lang==='ku'?'ڕیزکردن پاككرایەوە':'Sort cleared');
 }
-
+ 
 function colClick(c,e){
   if(resizing) return;
   document.getElementById('sortColSel').value=c;
@@ -996,8 +1048,8 @@ function colClick(c,e){
   else if(sortDir==='asc') doQuickSort('desc');
   else clearSort();
 }
-
-// ══ SELECT ALL CELLS ══
+ 
+// ══ SELECT ALL ══
 function selectAll(){
   allSelected=!allSelected;
   const corner=document.querySelector('th.corner');
@@ -1009,7 +1061,7 @@ function selectAll(){
     document.querySelectorAll('table.xg td').forEach(td=>td.classList.remove('all-selected'));
   }
 }
-
+ 
 // ══ COLUMN RESIZE ══
 function startColResize(e, c){
   e.stopPropagation();
@@ -1052,7 +1104,7 @@ function startColResize(e, c){
   document.addEventListener('mousemove',onMove);
   document.addEventListener('mouseup',onUp);
 }
-
+ 
 // ══ COLUMN REORDER ══
 function colDragStart(e,c){
   if(resizing) return;
@@ -1090,7 +1142,7 @@ function colDrop(e,toC){
   renderGrid(); updateStatus(); populateSortSel();
   showToast(lang==='ku'?'ستوون جێگۆڕکێ کرا':'Column moved');
 }
-
+ 
 // ══ ROW REORDER ══
 function rowDragStart(e,r){
   dragRowIdx=r;
@@ -1122,7 +1174,7 @@ function rowDrop(e,toR){
   renderGrid(); updateStatus();
   showToast(lang==='ku'?'ڕیز جێگۆڕکێ کرا':'Row moved');
 }
-
+ 
 // ══ RENDER ══
 function renderGrid(){
   const g=document.getElementById('xg');
@@ -1165,7 +1217,7 @@ function renderGrid(){
   h+='</tbody>';
   g.innerHTML=h;
 }
-
+ 
 function dv(r,c){
   const v=data[r][c], f=fmts[r][c];
   if(!v) return '';
@@ -1174,7 +1226,7 @@ function dv(r,c){
   if(f.numFmt==='num') return parseFloat(v||0).toLocaleString();
   return v;
 }
-
+ 
 function rcell(r,c){
   const td=document.querySelector(`td[data-r="${r}"][data-c="${c}"]`);
   if(!td) return;
@@ -1183,7 +1235,7 @@ function rcell(r,c){
   td.className=cls;
   td.querySelector('.cv').innerHTML=esc(dv(r,c));
 }
-
+ 
 // ══ SELECTION ══
 function sc(r,c){
   if(editR>=0) commitEdit();
@@ -1200,7 +1252,7 @@ function sc(r,c){
   if(td){td.classList.add('sel');td.scrollIntoView({block:'nearest',inline:'nearest'})}
   updateFBar(); updateStatus(); updateRib();
 }
-
+ 
 function updateFBar(){
   document.getElementById('fbarRef').textContent=cl(selC)+(selR+1);
   document.getElementById('fbarInp').value=data[selR][selC];
@@ -1211,7 +1263,7 @@ function updateRib(){
   document.getElementById('bItalic').classList.toggle('on',cls.includes('fi'));
   document.getElementById('bUnder').classList.toggle('on',cls.includes('fu'));
 }
-
+ 
 // ══ EDIT ══
 function startEdit(r,c){
   if(editR>=0) commitEdit();
@@ -1247,7 +1299,7 @@ function fbarCommit(){
   rcell(selR,selC); updateStatus(); populateSortSel();
 }
 function fbarKey(e){if(e.key==='Enter') fbarCommit()}
-
+ 
 document.addEventListener('keydown',e=>{
   if(curTab!=='excel') return;
   if(editR>=0) return;
@@ -1286,7 +1338,7 @@ document.addEventListener('keydown',e=>{
     setTimeout(()=>{const i=document.getElementById('aInp');if(i){i.value=e.key;i.setSelectionRange(1,1)}},0);
   }
 });
-
+ 
 // ══ FORMAT ══
 function toggleFmt(cls){
   const f=fmts[selR][selC], cur=f.cls||'';
@@ -1310,7 +1362,7 @@ function setAlign(a){
   rcell(selR,selC);
 }
 function setNumFmt(v){fmts[selR][selC].numFmt=v; rcell(selR,selC)}
-
+ 
 // ══ SEQ(n) FUNCTION ══
 function applySeq(r,c,val){
   const m=val.match(/^SEQ\((\d+)(?:,(\d+))?\)$/i);
@@ -1328,7 +1380,7 @@ function applySeq(r,c,val){
   showToast(lang==='ku'?`SEQ: ${count} ژمارە داچووک`:`SEQ: ${count} numbers filled`);
   return true;
 }
-
+ 
 // ══ STATUS ══
 function updateStatus(){
   let rows=0, cols=0;
@@ -1340,7 +1392,7 @@ function updateStatus(){
   const v=parseFloat((data[selR][selC]||'').replace(/[,$%]/g,''));
   document.getElementById('stVal').textContent=isNaN(v)?'':('Σ '+v.toLocaleString());
 }
-
+ 
 // ══ INSERT / DELETE ══
 function emptyRow(){return Array(COLS).fill('')}
 function emptyFmt(){return Array.from({length:COLS},()=>({cls:'',numFmt:''}))}
@@ -1366,7 +1418,7 @@ function deleteCol(){
   originalData=null; originalFmts=null;
   renderGrid(); updateStatus();
 }
-
+ 
 // ══ AUTO FIT ══
 function autoFit(){
   const canvas=document.createElement('canvas');
@@ -1379,7 +1431,7 @@ function autoFit(){
   }
   renderGrid();
 }
-
+ 
 // ══ CLEAR ══
 function clearSheet(){
   if(!confirm(lang==='ku'?'دڵنیایت دەتەوێت هەموو داتاکان بسڕدرێتەوە؟':'Clear all data?')) return;
@@ -1388,7 +1440,7 @@ function clearSheet(){
   document.getElementById('btnAZ').classList.remove('asc-on');
   document.getElementById('btnZA').classList.remove('desc-on');
 }
-
+ 
 // ══ COPY / PASTE / CUT ══
 function ctxCopy(){clipboard={val:data[selR][selC],fmt:{...fmts[selR][selC]}};cutMode=false;try{navigator.clipboard.writeText(data[selR][selC])}catch(_){}closeCtx()}
 function ctxCut(){clipboard={val:data[selR][selC],fmt:{...fmts[selR][selC]}};cutMode=true;data[selR][selC]='';originalData=null;rcell(selR,selC);closeCtx()}
@@ -1399,7 +1451,7 @@ function ctxPaste(){
   if(cutMode){clipboard=null;cutMode=false}
   rcell(selR,selC); updateFBar(); closeCtx();
 }
-
+ 
 // ══ CONTEXT MENU ══
 function openCtx(e,r,c){
   e.preventDefault(); sc(r,c);
@@ -1411,7 +1463,7 @@ function openCtx(e,r,c){
 }
 function closeCtx(){document.getElementById('ctx').classList.remove('open')}
 document.addEventListener('click',e=>{if(!e.target.closest('.ctx')) closeCtx()});
-
+ 
 // ══ FIND ══
 function openFind(){document.getElementById('findBar').classList.add('show');document.getElementById('findInput').focus()}
 function closeFind(){document.getElementById('findBar').classList.remove('show');findMatches=[];document.getElementById('findCount').textContent='';renderGrid()}
@@ -1434,7 +1486,7 @@ function findStep(d){
   sc(r,c);
   document.querySelector(`td[data-r="${r}"][data-c="${c}"]`)?.classList.add('fcur');
 }
-
+ 
 // ══ AUTO-SORT AFTER CONVERT ══
 function autoSortAfterLoad(){
   if(!document.getElementById('chkAutoSort').checked) return;
@@ -1444,7 +1496,7 @@ function autoSortAfterLoad(){
   document.getElementById('sortColSel').value=c;
   doQuickSort('asc');
 }
-
+ 
 // ══ SAVE EXCEL / CSV ══
 function doSave(fmt){
   const wb=XLSX.utils.book_new();
@@ -1462,7 +1514,7 @@ function doSave(fmt){
     XLSX.writeFile(wb,'data.xlsx');
   }
 }
-
+ 
 // ══ PRINT ORIENTATION ══
 function setOrient(o){
   ppOrient=o;
@@ -1470,10 +1522,10 @@ function setOrient(o){
   document.getElementById('btnLandscape').classList.toggle('active',o==='landscape');
   updatePpPreview();
 }
-
+ 
 // ══ PRINT PREVIEW ══
 let ppColOrder=[];
-
+ 
 function openPrintPreview(){
   let maxC=0;
   for(let r=0;r<ROWS;r++) for(let c=0;c<COLS;c++) if(data[r][c]) maxC=Math.max(maxC,c);
@@ -1486,15 +1538,15 @@ function openPrintPreview(){
   updatePpPreview();
   document.getElementById('ppModal').classList.add('open');
 }
-
+ 
 function closePrintPreview(){document.getElementById('ppModal').classList.remove('open')}
-
+ 
 function ppResetCols(){
   ppColOrder.forEach(col=>{col.visible=true;col.dir=lang==='ku'?'rtl':'ltr'});
   renderColOrderBox();
   updatePpPreview();
 }
-
+ 
 function renderColOrderBox(){
   const box=document.getElementById('colOrderBox');
   box.innerHTML='';
@@ -1526,10 +1578,10 @@ function renderColOrderBox(){
     box.appendChild(div);
   });
 }
-
+ 
 function ppToggleCol(idx,v){ppColOrder[idx].visible=v;updatePpPreview()}
 function ppSetDir(idx,v){ppColOrder[idx].dir=v;updatePpPreview()}
-
+ 
 function getPpRows(){
   let maxR=0;
   for(let r=0;r<ROWS;r++) if(data[r].some(Boolean)) maxR=r;
@@ -1543,7 +1595,7 @@ function getPpRows(){
   }
   return{rows,headers:showHeader?visibleCols.map(col=>col.label||cl(col.c)):null,dirs:visibleCols.map(col=>col.dir)};
 }
-
+ 
 function updatePpPreview(){
   const headerColor=document.getElementById('ppHeaderColor').value;
   const altColor=document.getElementById('ppAltColor').value;
@@ -1567,7 +1619,7 @@ function updatePpPreview(){
   html+='</tbody></table>';
   document.getElementById('ppPreviewTable').innerHTML=html;
 }
-
+ 
 function executePrint(){
   const headerColor=document.getElementById('ppHeaderColor').value;
   const altColor=document.getElementById('ppAltColor').value;
@@ -1626,7 +1678,7 @@ ${bodyHTML}
   win.document.close();
   closePrintPreview();
 }
-
+ 
 function buildTable(rows,headers,dirs,headerColor,altColor,zebra,border,startIdx,fontSize,fitPage,repeatHeader){
   let html=`<div class="page-block">`;
   if(startIdx===0){
@@ -1650,7 +1702,7 @@ function buildTable(rows,headers,dirs,headerColor,altColor,zebra,border,startIdx
   html+='</tbody></table></div>';
   return html;
 }
-
+ 
 // ══ TOAST ══
 let toastTm;
 function showToast(msg){
@@ -1658,19 +1710,17 @@ function showToast(msg){
   t.textContent=msg; t.classList.add('show');
   clearTimeout(toastTm); toastTm=setTimeout(()=>t.classList.remove('show'),2400);
 }
-
-// ══════════════════════════════════════════
-// ══ SAVED LISTS — localStorage ══
-// ══════════════════════════════════════════
+ 
+// ══ SAVED LISTS ══
 const LS_KEY='pdf2excel_saved_lists';
-
+ 
 function getSavedLists(){
   try{return JSON.parse(localStorage.getItem(LS_KEY)||'[]')}catch{return[]}
 }
 function putSavedLists(arr){
   try{localStorage.setItem(LS_KEY,JSON.stringify(arr))}catch(e){showToast(lang==='ku'?'هەڵەی خەزنکردن':'Storage error')}
 }
-
+ 
 function saveCurrentList(){
   const raw=document.getElementById('listInput').value.trim();
   if(!raw){showToast(lang==='ku'?'لیستێک بنووسە پێش خەزنکردن':'Write a list first');return}
@@ -1692,7 +1742,7 @@ function saveCurrentList(){
   renderSavedLists();
   showToast(lang==='ku'?`"${name}" خەزنکرا ✓`:`"${name}" saved ✓`);
 }
-
+ 
 function loadSavedList(id){
   const lists=getSavedLists();
   const item=lists.find(x=>x.id===id);
@@ -1702,14 +1752,14 @@ function loadSavedList(id){
   if(item.startCol) document.getElementById('listStartCol').value=item.startCol;
   showToast(lang==='ku'?`"${item.name}" بارکرا`:`"${item.name}" loaded`);
 }
-
+ 
 function deleteSavedList(id){
   const lists=getSavedLists().filter(x=>x.id!==id);
   putSavedLists(lists);
   renderSavedLists();
   showToast(lang==='ku'?'سڕایەوە':'Deleted');
 }
-
+ 
 function renderSavedLists(){
   const lists=getSavedLists();
   const el=document.getElementById('savedListItems');
@@ -1734,7 +1784,7 @@ function renderSavedLists(){
       </button>
     </div>`).join('');
 }
-
+ 
 // ══ LIST → EXCEL ══
 function listToExcel(){
   const raw=document.getElementById('listInput').value.trim();
@@ -1752,19 +1802,19 @@ function listToExcel(){
   switchTab('excel');
   showToast(lang==='ku'?`${lines.length} ڕیز ئامادەکرا`:`${lines.length} rows loaded`);
 }
-
+ 
 // ══ PDF UPLOAD ══
 const files=[];
 const dz=document.getElementById('dropZone');
 const finp=document.getElementById('fileInput');
 const flEl=document.getElementById('fileList');
-
+ 
 dz.addEventListener('dragover',e=>{e.preventDefault();dz.classList.add('ov')});
 dz.addEventListener('dragleave',()=>dz.classList.remove('ov'));
 dz.addEventListener('drop',e=>{e.preventDefault();dz.classList.remove('ov');handleFiles(e.dataTransfer.files)});
 dz.addEventListener('click',e=>{if(!e.target.closest('label')) finp.click()});
 finp.addEventListener('change',()=>handleFiles(finp.files));
-
+ 
 function handleFiles(raw){
   for(const f of raw) if(f.type==='application/pdf'&&!files.find(x=>x.name===f.name&&x.size===f.size)) files.push(f);
   renderFL();
@@ -1783,7 +1833,7 @@ function renderFL(){
 }
 function setFP(i,cls,t){const el=document.getElementById('fp-'+i);if(el){el.className='fpill '+cls;el.textContent=t}}
 function setPg(pct,t){document.getElementById('pgFill').style.width=pct+'%';document.getElementById('pgPct').textContent=Math.round(pct)+'%';if(t)document.getElementById('pgText').textContent=t}
-
+ 
 async function extractPDF(file,onPage){
   const buf=await file.arrayBuffer();
   const pdf=await pdfjsLib.getDocument({data:buf}).promise;
@@ -1804,7 +1854,7 @@ async function extractPDF(file,onPage){
   }
   return{rows:allRows,pages:pdf.numPages};
 }
-
+ 
 async function convertAll(){
   if(!files.length) return;
   document.getElementById('convertBtn').disabled=true;
@@ -1813,7 +1863,7 @@ async function convertAll(){
   let totalRow=0;
   const merge=document.getElementById('chkMerge').checked;
   let allRows=[];
-
+ 
   for(let i=0;i<files.length;i++){
     setFP(i,'fpill fp-p',lang==='ku'?'پرۆسەکردن...':'Processing...');
     try{
@@ -1833,8 +1883,8 @@ async function convertAll(){
   autoSortAfterLoad();
   switchTab('excel');
 }
-
-// Init saved lists on load
+ 
+// Init
 renderSavedLists();
 </script>
 </body>
