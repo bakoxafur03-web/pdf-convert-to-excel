@@ -1583,38 +1583,128 @@ function updatePpPreview(){
   previewRows.forEach((row,ri)=>{const bg=zebra&&ri%2===1&&altColor!=='none'?`background:${altColor}`:'';html+=`<tr style="${bg}">`;row.forEach((cell,i)=>{html+=`<td style="text-align:${dirs[i]};${border?'':'border:none'}">${esc(cell)}</td>`});html+='</tr>'});
   html+='</tbody></table>';document.getElementById('ppPreviewTable').innerHTML=html;
 }
-function executePrint(){
-  const headerColor=document.getElementById('ppHeaderColor').value;const altColor=document.getElementById('ppAltColor').value;
-  const zebra=document.getElementById('ppZebra').checked;const border=document.getElementById('ppBorder').checked;
-  const showTitle=document.getElementById('ppTitle').checked;const fontSize=document.getElementById('ppFont').value;
-  const pageSize=document.getElementById('ppSize').value;const fitPage=document.getElementById('ppFitPage').checked;
-  const repeatHeader=document.getElementById('ppRepeatHeader').checked;
-  const marginV=document.getElementById('ppMarginV').value||12;const marginH=document.getElementById('ppMarginH').value||10;
-  const rowsPerPage=parseInt(document.getElementById('ppRowsPerPage').value)||0;
-  const{rows,headers,dirs}=getPpRows();if(!rows.length&&!headers){showToast(lang==='ku'?'داتایەک نییە':'No data');return}
-  const phTxt=document.getElementById('phText').value.trim();const phColor=document.getElementById('phColor').value;
-  const phBg=document.getElementById('phBgColor').value;const phFs=document.getElementById('phFontSize').value;
-  const phDir=document.getElementById('phDir').value;const pageDir=lang==='en'?'ltr':'rtl';
-  const pageCSS=`@page{size:${pageSize} ${ppOrient};margin:${marginV}mm ${marginH}mm}`;
-  let bodyHTML='';
-  const phAlign=phDir==='center'?'center':phDir==='rtl'?'right':'left';
-  const phHTML=phTxt?`<div style="background:${phBg};color:${phColor};font-size:${phFs};font-weight:700;text-align:${phAlign};padding:8px 14px;margin-bottom:10px;direction:${phDir==='center'?'ltr':phDir};border-radius:4px;">${esc(phTxt)}</div>`:'';
-  if(rowsPerPage>0){for(let start=0;start<rows.length;start+=rowsPerPage){if(start>0)bodyHTML+=`<div class="pg-break"></div>`;const chunk=rows.slice(start,start+rowsPerPage);bodyHTML+=buildTable(chunk,headers,dirs,headerColor,altColor,zebra,border,start,fontSize,fitPage,repeatHeader,start===0?phHTML:'')}}
-  else{bodyHTML=buildTable(rows,headers,dirs,headerColor,altColor,zebra,border,0,fontSize,fitPage,repeatHeader,phHTML)}
-  const borderStyle=border?`td,th{border:1px solid rgba(0,0,0,0.15)!important}`:`td,th{border:none!important}`;
-  const fitStyle=fitPage?`table{width:100%!important}`:'';
-  const win=window.open('','_blank');
-  win.document.write(`<!DOCTYPE html><html dir="${pageDir}"><head><meta charset="UTF-8"><link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;600;700&family=Noto+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet"><title>${lang==='ku'?'خشتەی داتاکان':'Data Table'}</title><style>*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Noto Kufi Arabic','Noto Sans Arabic','Segoe UI',Tahoma,Arial,sans-serif;font-size:${fontSize}px;direction:${pageDir};padding:0;-webkit-font-feature-settings:"liga" 1,"calt" 1;font-feature-settings:"liga" 1,"calt" 1}h2{font-size:${+fontSize+2}px;font-weight:700;margin-bottom:4px;color:${headerColor};display:${showTitle?'block':'none'}}.meta{font-size:${+fontSize-1}px;color:#666;margin-bottom:8px;display:${showTitle?'block':'none'}}.page-block{padding:${marginV}mm ${marginH}mm}.pg-break{page-break-after:always;break-after:page}table{border-collapse:collapse;font-size:${fontSize}px;${fitPage?'width:100%':''}}thead tr{background:${headerColor}!important}th{background:${headerColor};color:#fff;padding:4px 8px;font-weight:700;white-space:nowrap;font-size:${fontSize}px}td{padding:3px 8px;color:#111;white-space:nowrap;font-size:${fontSize}px}${borderStyle}${fitStyle}@media print{${pageCSS}.pg-break{page-break-after:always;break-after:page}tr{page-break-inside:avoid}${repeatHeader?'thead{display:table-header-group}':''}}</style></head><body>${bodyHTML}<script>window.onload=()=>{window.print()}<\/script></body></html>`);
-  win.document.close();closePrintPreview();
-}
-function buildTable(rows,headers,dirs,headerColor,altColor,zebra,border,startIdx,fontSize,fitPage,repeatHeader,extraHeader=''){
-  let html=`<div class="page-block">`;html+=extraHeader;
-  if(startIdx===0){html+=`<h2></h2>`;html+=`<div class="meta">${new Date().toLocaleDateString()} — ${rows.length} ${lang==='ku'?'ڕیز':'rows'}</div>`}
+function buildTable(rows,headers,dirs,headerColor,altColor,zebra,border,startIdx,fontSize,fitPage,repeatHeader,extraHeader){
+  // تەنها هێدەر + سەرنووسی ستوون + ڕیزەکان — هیچی تر نا
+  let html='<div class="page-block">';
+  if(extraHeader) html+=extraHeader;
   html+='<table>';
-  if(headers){html+=`<thead><tr>`;headers.forEach((h,i)=>{html+=`<th style="text-align:${dirs[i]}">${esc(h)}</th>`});html+='</tr></thead>'}
+  if(headers){html+='<thead><tr>';headers.forEach((h,i)=>{html+=`<th style="text-align:${dirs[i]}">${esc(h)}</th>`});html+='</tr></thead>'}
   html+='<tbody>';
-  rows.forEach((row,ri)=>{const globalRi=startIdx+ri;const bg=zebra&&globalRi%2===1&&altColor!=='none'?`background:${altColor}`:'';html+=`<tr style="${bg}">`;row.forEach((cell,i)=>{html+=`<td style="text-align:${dirs[i]}">${esc(cell)}</td>`});html+='</tr>'});
-  html+='</tbody></table></div>';return html;
+  rows.forEach((row,ri)=>{
+    const g=startIdx+ri;
+    const bg=zebra&&g%2===1&&altColor!=='none'?'background:'+altColor:'';
+    html+=`<tr style="${bg}">`;
+    row.forEach((cell,i)=>{html+=`<td style="text-align:${dirs[i]}">${esc(cell)}</td>`});
+    html+='</tr>';
+  });
+  html+='</tbody></table></div>';
+  return html;
+}
+
+function executePrint(){
+  const headerColor=document.getElementById('ppHeaderColor').value;
+  const altColor=document.getElementById('ppAltColor').value;
+  const zebra=document.getElementById('ppZebra').checked;
+  const border=document.getElementById('ppBorder').checked;
+  const fontSize=document.getElementById('ppFont').value;
+  const pageSize=document.getElementById('ppSize').value;
+  const fitPage=document.getElementById('ppFitPage').checked;
+  const repeatHeader=document.getElementById('ppRepeatHeader').checked;
+  const marginV=document.getElementById('ppMarginV').value||12;
+  const marginH=document.getElementById('ppMarginH').value||10;
+  const rowsPerPage=parseInt(document.getElementById('ppRowsPerPage').value)||0;
+  const{rows,headers,dirs}=getPpRows();
+  if(!rows.length&&!headers){showToast(lang==='ku'?'داتایەک نییە':'No data');return}
+  const phTxt=document.getElementById('phText').value.trim();
+  const phColor=document.getElementById('phColor').value;
+  const phBg=document.getElementById('phBgColor').value;
+  const phFs=document.getElementById('phFontSize').value;
+  const phDir=document.getElementById('phDir').value;
+  const pageDir=lang==='en'?'ltr':'rtl';
+  const pageCSS='@page{size:'+pageSize+' '+ppOrient+';margin:'+marginV+'mm '+marginH+'mm}';
+  const borderStyle=border?'td,th{border:1px solid rgba(0,0,0,0.15)!important}':'td,th{border:none!important}';
+  const fitStyle=fitPage?'table{width:100%!important}':'';
+  const phAlign=phDir==='center'?'center':phDir==='rtl'?'right':'left';
+  const phHTML=phTxt?'<div class="ph-header" style="background:'+phBg+';color:'+phColor+';font-size:'+phFs+';font-weight:700;text-align:'+phAlign+';padding:8px 14px;direction:'+(phDir==='center'?'ltr':phDir)+'">'+esc(phTxt)+'</div>':'';
+  let bodyHTML='';
+  if(rowsPerPage>0){
+    for(let s=0;s<rows.length;s+=rowsPerPage){
+      if(s>0)bodyHTML+='<div class="pg-break"></div>';
+      bodyHTML+=buildTable(rows.slice(s,s+rowsPerPage),headers,dirs,headerColor,altColor,zebra,border,s,fontSize,fitPage,repeatHeader,s===0?phHTML:'');
+    }
+  }else{
+    bodyHTML=buildTable(rows,headers,dirs,headerColor,altColor,zebra,border,0,fontSize,fitPage,repeatHeader,phHTML);
+  }
+
+  // ═══ HTML بۆ پرێنت — تەنها خشتە + هێدەر + سەرنووس ═══
+  const printHTML='<!DOCTYPE html>\n<html dir="'+pageDir+'">\n<head>\n'
+    +'<meta charset="UTF-8">\n'
+    +'<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">\n'
+    +'<link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;600;700&family=Noto+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet">\n'
+    +'<title>'+(lang==='ku'?'خشتەی داتاکان':'Data Table')+'</title>\n'
+    +'<style>\n'
+    +'*{box-sizing:border-box;margin:0;padding:0}\n'
+    +'html,body{font-family:\'Noto Kufi Arabic\',\'Noto Sans Arabic\',\'Segoe UI\',Tahoma,Arial,sans-serif;'
+    +'font-size:'+fontSize+'px;direction:'+pageDir+';background:#fff;color:#111;'
+    +'-webkit-font-feature-settings:"liga" 1,"calt" 1;font-feature-settings:"liga" 1,"calt" 1}\n'
+    +'.page-block{padding:'+marginV+'mm '+marginH+'mm}\n'
+    +'.pg-break{page-break-after:always;break-after:page}\n'
+    +'table{border-collapse:collapse;font-size:'+fontSize+'px;'+(fitPage?'width:100%':'')+'}\n'
+    +'thead tr{background:'+headerColor+'!important}\n'
+    +'th{background:'+headerColor+';color:#fff;padding:5px 8px;font-weight:700;white-space:nowrap;font-size:'+fontSize+'px}\n'
+    +'td{padding:4px 8px;color:#111;white-space:nowrap;font-size:'+fontSize+'px}\n'
+    +borderStyle+'\n'
+    +fitStyle+'\n'
+    +'@media print{\n'
+    +pageCSS+'\n'
+    +'html,body{background:#fff!important;margin:0!important;padding:0!important}\n'
+    +'.pg-break{page-break-after:always;break-after:page}\n'
+    +'tr{page-break-inside:avoid}\n'
+    +(repeatHeader?'thead{display:table-header-group}\n':'')
+    +'}\n'
+    +'</style>\n'
+    +'</head>\n<body>\n'
+    +bodyHTML+'\n'
+    +'<script>\n'
+    +'(function(){\n'
+    +'  function doPrint(){window.print()}\n'
+    // بۆ Android/iOS — گوێ لە فۆنت بار بوون، پاشان پرێنت
+    +'  if(document.fonts&&document.fonts.ready){\n'
+    +'    document.fonts.ready.then(function(){setTimeout(doPrint,350)})\n'
+    +'  }else{setTimeout(doPrint,800)}\n'
+    // لە دوای پرێنت لاپەڕەکە داخدرێت
+    +'  window.addEventListener("afterprint",function(){try{window.close()}catch(e){}})\n'
+    +'})();\n'
+    +'<\/script>\n'
+    +'</body>\n</html>';
+
+  closePrintPreview();
+
+  // ═══ Android/iOS: Blob URL بەجێی window.open ═══
+  const isMobile=/Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+  const blob=new Blob([printHTML],{type:'text/html;charset=utf-8'});
+  const blobURL=URL.createObjectURL(blob);
+
+  if(isMobile){
+    // موبایل: anchor.click باشترین ڕێگا
+    const a=document.createElement('a');
+    a.href=blobURL;a.target='_blank';a.rel='noopener noreferrer';
+    document.body.appendChild(a);a.click();
+    setTimeout(()=>{document.body.removeChild(a);URL.revokeObjectURL(blobURL)},5000);
+    showToast(lang==='ku'?'لاپەڕەی پرێنت کرایەوە':'Print page opened');
+  }else{
+    // Desktop
+    const win=window.open(blobURL,'_blank','width=900,height=700');
+    if(!win){
+      // پۆپئەپ بلۆک کرا — Blob fallback
+      const a=document.createElement('a');
+      a.href=blobURL;a.target='_blank';a.rel='noopener noreferrer';
+      document.body.appendChild(a);a.click();
+      setTimeout(()=>{document.body.removeChild(a);URL.revokeObjectURL(blobURL)},5000);
+    }else{
+      setTimeout(()=>URL.revokeObjectURL(blobURL),10000);
+    }
+  }
 }
 
 // ══ TOAST ══
