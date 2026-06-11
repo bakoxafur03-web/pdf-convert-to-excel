@@ -117,78 +117,68 @@ body{
 .fbtn{background:none;border:1px solid var(--border-md);border-radius:var(--r);padding:4px 7px;cursor:pointer;font-size:13px;color:var(--text);font-family:inherit;display:flex;align-items:center;height:28px}
 .fbtn:hover{background:var(--bg2)}
 .fcount{font-size:10px;color:var(--text2);flex-shrink:0;white-space:nowrap;font-family:var(--font-arabic)}
-
-/* ══ VIRTUAL SCROLL GRID ══ */
-.grid-outer{overflow:auto;flex:1;background:var(--bg);position:relative;-webkit-overflow-scrolling:touch}
-.grid-outer::-webkit-scrollbar{width:8px;height:8px}
-.grid-outer::-webkit-scrollbar-track{background:var(--bg2)}
-.grid-outer::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:4px;border:2px solid var(--bg2)}
-.grid-outer::-webkit-scrollbar-corner{background:var(--bg2)}
-.grid-wrap{position:relative}
-.grid-header-wrap{position:sticky;top:0;z-index:10;background:var(--bg)}
-table.xg-header{border-collapse:collapse;table-layout:fixed;min-width:max-content}
-table.xg-header th.corner{width:44px;min-width:44px;background:var(--bg3);border-right:1px solid var(--xborder);border-bottom:2px solid var(--xbg3);cursor:pointer;transition:background .12s;height:28px;text-align:center}
-table.xg-header th.corner:hover{background:var(--xsel)}
-table.xg-header th.corner.all-sel{background:var(--xsel);color:var(--green-text)}
-table.xg-header th.ch{background:var(--xhead);color:#fff;border-left:1px solid rgba(255,255,255,0.1);border-bottom:2px solid var(--xbg3);font-size:11px;font-weight:600;text-align:center;padding:4px 3px;min-width:90px;width:110px;cursor:pointer;white-space:nowrap;transition:background .12s;line-height:1.3;overflow:visible;position:relative;font-family:var(--font-latin);height:28px}
-table.xg-header th.ch:hover{background:var(--xbg2)}
-table.xg-header th.ch.sort-asc .sa{display:inline-block}
-table.xg-header th.ch.sort-desc .sd{display:inline-block}
-table.xg-header th.ch .sa,.xg-header th.ch .sd{display:none;font-size:9px;margin-right:2px}
-table.xg-header th.ch.col-sel{background:var(--xbg3);outline:2px solid #fff;outline-offset:-2px}
-table.xg-header th.ch.col-drag-over{background:var(--amber)!important;outline:2px solid var(--amber-text);outline-offset:-2px}
-table.xg-header th.ch.col-dragging{opacity:0.45}
+.grid-wrap{overflow:auto;flex:1;background:var(--bg);position:relative;-webkit-overflow-scrolling:touch}
+.grid-wrap::-webkit-scrollbar{width:8px;height:8px}
+.grid-wrap::-webkit-scrollbar-track{background:var(--bg2)}
+.grid-wrap::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:4px;border:2px solid var(--bg2)}
+.grid-wrap::-webkit-scrollbar-corner{background:var(--bg2)}
+table.xg{border-collapse:collapse;table-layout:fixed;min-width:max-content;user-select:none}
+table.xg th.corner{width:38px;min-width:38px;background:var(--bg3);border-right:1px solid var(--xborder);border-bottom:1px solid var(--xborder);position:sticky;top:0;right:0;z-index:7;cursor:pointer;transition:background .12s}
+table.xg th.corner:hover{background:var(--xsel)}
+table.xg th.corner.all-sel{background:var(--xsel);color:var(--green-text)}
+table.xg th.rn{width:38px;min-width:38px;background:var(--bg3);border-right:1px solid var(--xborder);border-bottom:1px solid var(--xborder);font-size:10px;color:var(--text2);text-align:center;font-weight:500;position:sticky;right:0;z-index:3;cursor:grab;padding:0 3px;transition:background .12s;font-family:var(--font-latin)}
+table.xg th.rn:hover,table.xg th.rn:active{background:var(--xsel);color:var(--green-text)}
+table.xg th.rn.row-sel{background:var(--xsel);color:var(--green-text);font-weight:600}
+table.xg th.rn.row-drag-over{background:var(--amber-light)!important;border-top:2px solid var(--amber)!important}
+table.xg th.rn.row-dragging{opacity:0.4}
+table.xg th.ch{background:var(--xhead);color:#fff;border-left:1px solid rgba(255,255,255,0.1);border-bottom:2px solid var(--xbg3);font-size:11px;font-weight:600;text-align:center;padding:4px 3px;min-width:90px;width:110px;position:sticky;top:0;z-index:5;cursor:pointer;white-space:nowrap;transition:background .12s;line-height:1.3;overflow:visible;position:relative;font-family:var(--font-latin)}
+table.xg th.ch:hover,table.xg th.ch:active{background:var(--xbg2)}
+table.xg th.ch.sort-asc .sa{display:inline-block}
+table.xg th.ch.sort-desc .sd{display:inline-block}
+table.xg th.ch .sa,.xg th.ch .sd{display:none;font-size:9px;margin-right:2px}
+table.xg th.ch.col-sel{background:var(--xbg3);outline:2px solid #fff;outline-offset:-2px}
+table.xg th.ch.col-drag-over{background:var(--amber)!important;outline:2px solid var(--amber-text);outline-offset:-2px}
+table.xg th.ch.col-dragging{opacity:0.45}
 .col-resize-handle{position:absolute;top:0;left:0;width:5px;height:100%;cursor:col-resize;z-index:10;background:transparent}
 .col-resize-handle:hover{background:rgba(255,255,255,0.3)}
-.virt-rows-container{position:absolute;top:0;left:0;width:100%}
-.virt-spacer-top{background:transparent}
-.virt-spacer-bot{background:transparent}
-table.xg-body{border-collapse:collapse;table-layout:fixed;min-width:max-content}
-table.xg-body th.rn{width:44px;min-width:44px;background:var(--bg3);border-right:1px solid var(--xborder);border-bottom:1px solid var(--xborder);font-size:10px;color:var(--text2);text-align:center;font-weight:500;cursor:grab;padding:0 3px;transition:background .12s;font-family:var(--font-latin);height:28px}
-table.xg-body th.rn:hover{background:var(--xsel);color:var(--green-text)}
-table.xg-body th.rn.row-sel{background:var(--xsel);color:var(--green-text);font-weight:600}
-table.xg-body th.rn.row-drag-over{background:var(--amber-light)!important;border-top:2px solid var(--amber)!important}
-table.xg-body th.rn.row-dragging{opacity:0.4}
-table.xg-body td{border:1px solid var(--xborder);padding:0;min-width:90px;width:110px;height:28px;vertical-align:middle;font-size:var(--cell-fs);color:var(--text);background:var(--bg);cursor:cell;position:relative;transition:background .05s}
-table.xg-body tr:nth-child(even) td{background:var(--xalt)}
-table.xg-body td.sel{background:var(--xsel)!important;outline:2px solid var(--xsel-bd);outline-offset:-2px;z-index:2}
-table.xg-body td.in-range{background:rgba(22,163,74,0.08)!important}
-table.xg-body td.all-selected{background:rgba(22,163,74,0.12)!important;outline:1px solid rgba(22,163,74,0.3);outline-offset:-1px}
-table.xg-body td input.ci{position:absolute;inset:0;border:none;outline:2px solid var(--xbg);outline-offset:-1px;background:var(--bg);font-family:var(--font-arabic);font-size:var(--cell-fs);color:var(--text);padding:0 6px;z-index:10;width:100%;height:100%;direction:rtl;unicode-bidi:plaintext;text-align:right}
-table.xg-body td .cv{padding:0 6px;display:block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;height:28px;line-height:28px;font-size:var(--cell-fs);font-family:var(--font-arabic);direction:rtl;unicode-bidi:plaintext;-webkit-font-feature-settings:"liga" 1,"calt" 1,"kern" 1,"curs" 1;font-feature-settings:"liga" 1,"calt" 1,"kern" 1,"curs" 1;text-rendering:optimizeLegibility}
-table.xg-body td.fb .cv{font-weight:700}
-table.xg-body td.fi .cv{font-style:italic}
-table.xg-body td.fu .cv{text-decoration:underline}
-table.xg-body td.ac .cv{text-align:center}
-table.xg-body td.ar .cv{text-align:right}
-table.xg-body td.al .cv{text-align:left}
-table.xg-body td.num .cv{text-align:right;font-variant-numeric:tabular-nums;font-family:var(--font-latin)}
-table.xg-body td.fhl{background:rgba(217,119,6,0.18)!important}
-table.xg-body td.fcur{background:rgba(217,119,6,0.4)!important;outline:2px solid var(--amber)!important}
-
-/* table styles */
-.ts-default table.xg-header th.ch,.ts-default table.xg-body tr:nth-child(even) td{background-color:var(--xhead);background-color:initial}
-.ts-blue table.xg-header th.ch{background:#1e3a8a!important}
-.ts-blue table.xg-body tr:nth-child(even) td{background:#eff6ff!important}
-.ts-blue table.xg-body td,.ts-blue table.xg-header th.ch{border-color:#93c5fd}
-.ts-purple table.xg-header th.ch{background:#6d28d9!important}
-.ts-purple table.xg-body tr:nth-child(even) td{background:#f5f3ff!important}
-.ts-purple table.xg-body td,.ts-purple table.xg-header th.ch{border-color:#c4b5fd}
-.ts-dark table.xg-header th.ch{background:#111827!important;color:#f9fafb}
-.ts-dark table.xg-body td{background:#1f2937!important;color:#f9fafb;border-color:#374151}
-.ts-dark table.xg-body tr:nth-child(even) td{background:#111827!important}
-.ts-orange table.xg-header th.ch{background:#c2410c!important}
-.ts-orange table.xg-body tr:nth-child(even) td{background:#fff7ed!important}
-.ts-orange table.xg-body td,.ts-orange table.xg-header th.ch{border-color:#fdba74}
-.ts-teal table.xg-header th.ch{background:#0f766e!important}
-.ts-teal table.xg-body tr:nth-child(even) td{background:#f0fdfa!important}
-.ts-teal table.xg-body td,.ts-teal table.xg-header th.ch{border-color:#99f6e4}
-.ts-plain table.xg-header th.ch{background:#374151!important}
-.ts-plain table.xg-body tr:nth-child(even) td{background:#f9fafb!important}
-.ts-plain table.xg-body td{border-color:#e5e7eb}
-
+table.xg td{border:1px solid var(--xborder);padding:0;min-width:90px;width:110px;height:28px;vertical-align:middle;font-size:var(--cell-fs);color:var(--text);background:var(--bg);cursor:cell;position:relative;transition:background .05s}
+table.xg tr:nth-child(even) td{background:var(--xalt)}
+table.xg td.sel{background:var(--xsel)!important;outline:2px solid var(--xsel-bd);outline-offset:-2px;z-index:2}
+table.xg td.in-range{background:rgba(22,163,74,0.08)!important}
+table.xg td.all-selected{background:rgba(22,163,74,0.12)!important;outline:1px solid rgba(22,163,74,0.3);outline-offset:-1px}
+table.xg td input.ci{position:absolute;inset:0;border:none;outline:2px solid var(--xbg);outline-offset:-1px;background:var(--bg);font-family:var(--font-arabic);font-size:var(--cell-fs);color:var(--text);padding:0 6px;z-index:10;width:100%;height:100%;direction:rtl;unicode-bidi:plaintext;text-align:right}
+table.xg td .cv{padding:0 6px;display:block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;height:28px;line-height:28px;font-size:var(--cell-fs);font-family:var(--font-arabic);direction:rtl;unicode-bidi:plaintext;-webkit-font-feature-settings:"liga" 1,"calt" 1,"kern" 1,"curs" 1;font-feature-settings:"liga" 1,"calt" 1,"kern" 1,"curs" 1;text-rendering:optimizeLegibility}
+table.xg td.fb .cv{font-weight:700}
+table.xg td.fi .cv{font-style:italic}
+table.xg td.fu .cv{text-decoration:underline}
+table.xg td.ac .cv{text-align:center}
+table.xg td.ar .cv{text-align:right}
+table.xg td.al .cv{text-align:left}
+table.xg td.num .cv{text-align:right;font-variant-numeric:tabular-nums;font-family:var(--font-latin)}
+table.xg td.fhl{background:rgba(217,119,6,0.18)!important}
+table.xg td.fcur{background:rgba(217,119,6,0.4)!important;outline:2px solid var(--amber)!important}
 .resize-overlay{position:fixed;inset:0;cursor:col-resize;z-index:9999;display:none}
 .resize-line{position:fixed;top:0;bottom:0;width:2px;background:var(--xbg);z-index:9998;display:none;pointer-events:none}
+.ts-default th.ch{background:var(--xhead);color:#fff}
+.ts-default tr:nth-child(even) td{background:var(--xalt)}
+.ts-blue th.ch{background:#1e3a8a;color:#fff}
+.ts-blue tr:nth-child(even) td{background:#eff6ff}
+.ts-blue td,.ts-blue th.ch{border-color:#93c5fd}
+.ts-purple th.ch{background:#6d28d9;color:#fff}
+.ts-purple tr:nth-child(even) td{background:#f5f3ff}
+.ts-purple td,.ts-purple th.ch{border-color:#c4b5fd}
+.ts-dark th.ch{background:#111827;color:#f9fafb}
+.ts-dark td{background:#1f2937;color:#f9fafb;border-color:#374151}
+.ts-dark tr:nth-child(even) td{background:#111827}
+.ts-orange th.ch{background:#c2410c;color:#fff}
+.ts-orange tr:nth-child(even) td{background:#fff7ed}
+.ts-orange td,.ts-orange th.ch{border-color:#fdba74}
+.ts-teal th.ch{background:#0f766e;color:#fff}
+.ts-teal tr:nth-child(even) td{background:#f0fdfa}
+.ts-teal td,.ts-teal th.ch{border-color:#99f6e4}
+.ts-plain th.ch{background:#374151;color:#fff}
+.ts-plain tr:nth-child(even) td{background:#f9fafb}
+.ts-plain td{border-color:#e5e7eb}
 .panel{padding:14px;display:flex;flex-direction:column;gap:10px;overflow-y:auto;flex:1}
 .dz{border:2px dashed var(--border-md);border-radius:var(--rxl);padding:28px 14px;text-align:center;cursor:pointer;transition:all .2s;background:var(--bg)}
 .dz:hover,.dz.ov{border-color:var(--xbg);background:var(--green-light)}
@@ -348,6 +338,8 @@ table.xg-body td.fcur{background:rgba(217,119,6,0.4)!important;outline:2px solid
 .about-tags{display:flex;flex-wrap:wrap;gap:6px}
 .about-tag{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;background:var(--bg2);border:1px solid var(--border-md);border-radius:99px;font-size:11px;color:var(--text2);font-family:var(--font-arabic)}
 .about-tag i{font-size:12px;color:var(--xbg)}
+
+/* ══ WORD FREQUENCY TAB ══ */
 .wf-panel{padding:14px;display:flex;flex-direction:column;gap:10px;overflow-y:auto;flex:1}
 .wf-header{background:var(--bg);border:1px solid var(--border);border-radius:var(--rl);padding:10px 12px;display:flex;align-items:center;justify-content:space-between;gap:8px}
 .wf-title{font-size:11px;font-weight:600;color:var(--text2);display:flex;align-items:center;gap:5px;text-transform:uppercase;letter-spacing:.5px;font-family:var(--font-arabic)}
@@ -375,14 +367,21 @@ table.xg-body td.fcur{background:rgba(217,119,6,0.4)!important;outline:2px solid
 .wf-btn-ok:hover{background:var(--xbg2)}
 .wf-btn-cancel{border:1px solid var(--border-md);background:none;color:var(--text2);border-radius:var(--r);padding:5px 14px;font-size:12px;cursor:pointer;font-family:var(--font-arabic)}
 .wf-btn-cancel:hover{background:var(--bg3)}
+
 @media(max-width:480px){
-  .sg{grid-template-columns:1fr}.lopts{grid-template-columns:1fr}.rb span{display:none}
-  table.xg-body td,.xg-body td .cv{height:30px;line-height:30px}
-  table.xg-header th.ch{min-width:80px;width:95px;font-size:10px;padding:5px 2px}
-  table.xg-body td{min-width:80px;width:95px}
-  .app-footer{padding:4px 10px;gap:6px}.footer-sep{display:none}.wf-stats{flex-wrap:wrap}
+  .sg{grid-template-columns:1fr}
+  .lopts{grid-template-columns:1fr}
+  .rb span{display:none}
+  table.xg td,table.xg td .cv{height:30px;line-height:30px}
+  table.xg th.ch{min-width:80px;width:95px;font-size:10px;padding:5px 2px}
+  table.xg td{min-width:80px;width:95px}
+  .app-footer{padding:4px 10px;gap:6px}
+  .footer-sep{display:none}
+  .wf-stats{flex-wrap:wrap}
 }
-@media(max-width:360px){.stab{padding:7px 10px;font-size:11px}}
+@media(max-width:360px){
+  .stab{padding:7px 10px;font-size:11px}
+}
 </style>
 </head>
 <body>
@@ -466,17 +465,23 @@ table.xg-body td.fcur{background:rgba(217,119,6,0.4)!important;outline:2px solid
   </div>
   <div class="rg">
     <select class="rb-sel" id="fontSizeSel" onchange="setTableFontSize(this.value)" title="Font Size">
-      <option value="9px">9</option><option value="10px">10</option><option value="11px">11</option>
-      <option value="12px">12</option><option value="13px" selected>13</option>
-      <option value="14px">14</option><option value="15px">15</option>
-      <option value="16px">16</option><option value="18px">18</option><option value="20px">20</option>
+      <option value="9px">9</option>
+      <option value="10px">10</option>
+      <option value="11px">11</option>
+      <option value="12px">12</option>
+      <option value="13px" selected>13</option>
+      <option value="14px">14</option>
+      <option value="15px">15</option>
+      <option value="16px">16</option>
+      <option value="18px">18</option>
+      <option value="20px">20</option>
     </select>
   </div>
   <div class="zoom-bar">
-    <button class="zoom-btn" onclick="zoomOut()"><i class="ti ti-minus"></i></button>
+    <button class="zoom-btn" onclick="zoomOut()" title="Zoom Out"><i class="ti ti-minus"></i></button>
     <span class="zoom-pct" id="zoomPct">100%</span>
-    <button class="zoom-btn" onclick="zoomIn()"><i class="ti ti-plus"></i></button>
-    <button class="zoom-btn" onclick="zoomReset()" style="font-size:10px;width:auto;padding:0 5px">100%</button>
+    <button class="zoom-btn" onclick="zoomIn()" title="Zoom In"><i class="ti ti-plus"></i></button>
+    <button class="zoom-btn" onclick="zoomReset()" title="Reset Zoom" style="font-size:10px;width:auto;padding:0 5px">100%</button>
   </div>
   <div class="rg">
     <button class="rb" onclick="autoFit()"><i class="ti ti-resize"></i><span>Auto</span></button>
@@ -485,31 +490,38 @@ table.xg-body td.fcur{background:rgba(217,119,6,0.4)!important;outline:2px solid
 </div>
 
 <div class="page-header-bar" id="pageHeaderBar">
-  <span class="ph-label">هێدەری لاپەڕە:</span>
+  <span class="ph-label" data-k="pageHeaderLabel" data-e="Page Header:">هێدەری لاپەڕە:</span>
   <input class="ph-inp" id="phText" type="text" placeholder="ناوی خشتە / سەردێر بنووسە..." oninput="updatePageHeaderDisplay()">
   <div class="ph-sep"></div>
-  <span class="ph-label">قەبارە:</span>
+  <span class="ph-label" data-k="phFontSize" data-e="Size:">قەبارە:</span>
   <select class="ph-font-sel" id="phFontSize" onchange="updatePageHeaderDisplay()">
-    <option value="14px">14</option><option value="16px">16</option><option value="18px" selected>18</option>
-    <option value="20px">20</option><option value="24px">24</option><option value="28px">28</option><option value="32px">32</option>
+    <option value="14px">14</option>
+    <option value="16px">16</option>
+    <option value="18px" selected>18</option>
+    <option value="20px">20</option>
+    <option value="24px">24</option>
+    <option value="28px">28</option>
+    <option value="32px">32</option>
   </select>
   <div class="ph-sep"></div>
-  <span class="ph-label">ئاراستە:</span>
+  <span class="ph-label" data-k="phDir" data-e="Dir:">ئاراستە:</span>
   <select class="ph-dir-sel" id="phDir" onchange="updatePageHeaderDisplay()">
-    <option value="rtl">← ڕاست</option><option value="ltr">→ چەپ</option><option value="center">◈ ناوەند</option>
+    <option value="rtl">← ڕاست</option>
+    <option value="ltr">→ چەپ</option>
+    <option value="center">◈ ناوەند</option>
   </select>
   <div class="ph-sep"></div>
   <div class="ph-color-wrap">
-    <label>ڕەنگ:</label>
-    <input class="ph-color" type="color" id="phColor" value="#217346" oninput="updatePageHeaderDisplay()">
+    <label data-k="phColor" data-e="Color:">ڕەنگ:</label>
+    <input class="ph-color" type="color" id="phColor" value="#217346" oninput="updatePageHeaderDisplay()" title="ڕەنگی نووسین">
   </div>
   <div class="ph-color-wrap">
-    <label>بەکگراوند:</label>
-    <input class="ph-color" type="color" id="phBgColor" value="#f0faf4" oninput="updatePageHeaderDisplay()">
+    <label data-k="phBgColor" data-e="Bg:">بەکگراوند:</label>
+    <input class="ph-color" type="color" id="phBgColor" value="#f0faf4" oninput="updatePageHeaderDisplay()" title="ڕەنگی پاشخان">
   </div>
   <div class="ph-sep"></div>
   <button class="ph-toggle-btn" id="phVisBtn" onclick="togglePageHeaderDisplay()">
-    <i class="ti ti-eye"></i> <span>نیشانده</span>
+    <i class="ti ti-eye"></i> <span data-k="phShow" data-e="Show">نیشانده</span>
   </button>
 </div>
 
@@ -518,22 +530,34 @@ table.xg-body td.fcur{background:rgba(217,119,6,0.4)!important;outline:2px solid
 </div>
 
 <div class="sort-bar" id="sortBar">
-  <label>ڕیزبکە:</label>
+  <label data-k="sortBy" data-e="Sort:">ڕیزبکە:</label>
   <select class="sb-sel" id="sortColSel"></select>
-  <button class="sb-btn" id="btnAZ" onclick="doQuickSort('asc')"><i class="ti ti-sort-ascending"></i> A→Z</button>
-  <button class="sb-btn" id="btnZA" onclick="doQuickSort('desc')"><i class="ti ti-sort-descending"></i> Z→A</button>
-  <button class="sb-clear" onclick="clearSort()"><i class="ti ti-x"></i><span>پاک</span></button>
+  <button class="sb-btn" id="btnAZ" onclick="doQuickSort('asc')">
+    <i class="ti ti-sort-ascending"></i> A→Z
+  </button>
+  <button class="sb-btn" id="btnZA" onclick="doQuickSort('desc')">
+    <i class="ti ti-sort-descending"></i> Z→A
+  </button>
+  <button class="sb-clear" onclick="clearSort()">
+    <i class="ti ti-x"></i><span data-k="clearSort" data-e="Clear">پاک</span>
+  </button>
 </div>
 
 <div class="col-swap-bar" id="colSwapBar">
-  <span class="col-swap-label">جابەجاکردنی ستوون:</span>
+  <span class="col-swap-label" data-k="swapCols" data-e="Swap columns:">جابەجاکردنی ستوون:</span>
   <div class="swap-step">
     <select class="swap-sel" id="swapColA"></select>
     <span class="swap-arrow">⇄</span>
     <select class="swap-sel" id="swapColB"></select>
   </div>
-  <button class="btn-swap btn-swap-blue" onclick="swapSelectedCols()"><i class="ti ti-switch-horizontal"></i><span>جابەجا</span></button>
-  <button class="btn-swap btn-swap-orange" onclick="shiftColRight()"><i class="ti ti-arrow-left"></i><span>← جووڵان</span></button>
+  <button class="btn-swap btn-swap-blue" onclick="swapSelectedCols()" title="جابەجاکردن">
+    <i class="ti ti-switch-horizontal"></i>
+    <span data-k="swapBtn" data-e="Swap">جابەجا</span>
+  </button>
+  <button class="btn-swap btn-swap-orange" onclick="shiftColRight()" title="یەک بەرەوچەپ">
+    <i class="ti ti-arrow-left"></i>
+    <span data-k="shiftLeft" data-e="← Shift">← جووڵان</span>
+  </button>
 </div>
 
 <div class="findbar" id="findBar">
@@ -555,28 +579,30 @@ table.xg-body td.fcur{background:rgba(217,119,6,0.4)!important;outline:2px solid
 <div id="tabUpload" class="panel">
   <div class="dz" id="dropZone">
     <i class="ti ti-cloud-upload dz-icon"></i>
-    <div class="dz-t">فایلی PDF ئێرە بخە</div>
-    <div class="dz-s">یان کلیک بکە بۆ هەڵبژاردن</div>
-    <label class="br-btn" for="fileInput"><i class="ti ti-folder-open"></i> هەڵبژێرە</label>
+    <div class="dz-t" data-k="dzTitle" data-e="Drop PDF files here">فایلی PDF ئێرە بخە</div>
+    <div class="dz-s" data-k="dzSub" data-e="or click to browse">یان کلیک بکە بۆ هەڵبژاردن</div>
+    <label class="br-btn" for="fileInput"><i class="ti ti-folder-open"></i> <span data-k="browse" data-e="Browse">هەڵبژێرە</span></label>
     <input type="file" id="fileInput" accept=".pdf" multiple>
   </div>
   <div id="fileList" style="display:flex;flex-direction:column;gap:6px"></div>
   <div class="sc" id="settingsCard" style="display:none">
-    <div class="sc-t"><i class="ti ti-settings"></i> ڕێکخستنەکان</div>
+    <div class="sc-t"><i class="ti ti-settings"></i> <span data-k="settings" data-e="Settings">ڕێکخستنەکان</span></div>
     <div class="sg">
-      <div class="si"><label>فۆرمات</label>
+      <div class="si"><label data-k="format" data-e="Output Format">فۆرمات</label>
         <select id="outFormat"><option value="xlsx">Excel (.xlsx)</option><option value="csv">CSV</option></select>
       </div>
-      <div class="si"><label>شێواز</label>
-        <select id="tableMode"><option value="auto">خودکار</option><option value="all">هەموو داتا</option></select>
+      <div class="si"><label data-k="mode" data-e="Data Mode">شێواز</label>
+        <select id="tableMode"><option value="auto" data-k="auto" data-e="Auto">خودکار</option><option value="all" data-k="allData" data-e="All Data">هەموو داتا</option></select>
       </div>
-      <div class="si"><div class="cbr"><input type="checkbox" id="chkHeader" checked><span>سەرنووس زیاد بکە</span></div></div>
-      <div class="si"><div class="cbr"><input type="checkbox" id="chkMerge"><span>یەک بکەرەوە</span></div></div>
-      <div class="si"><div class="cbr"><input type="checkbox" id="chkAutoSort" checked><span>ئۆتۆماتیک A→Z ڕیزبکە</span></div></div>
-      <div class="si"><label>ستوونی ڕیزکردن</label>
+      <div class="si"><div class="cbr"><input type="checkbox" id="chkHeader" checked><span data-k="addHeader" data-e="Add headers">سەرنووس زیاد بکە</span></div></div>
+      <div class="si"><div class="cbr"><input type="checkbox" id="chkMerge"><span data-k="mergePages" data-e="Merge pages">یەک بکەرەوە</span></div></div>
+      <div class="si"><div class="cbr"><input type="checkbox" id="chkAutoSort" checked><span data-k="autoSort" data-e="Auto A→Z sort">ئۆتۆماتیک A→Z ڕیزبکە</span></div></div>
+      <div class="si"><label data-k="autoSortCol" data-e="Sort by column">ستوونی ڕیزکردن</label>
         <select id="autoSortCol">
-          <option value="0">A — ستوونی ١</option><option value="1">B — ستوونی ٢</option>
-          <option value="2">C — ستوونی ٣</option><option value="3">D — ستوونی ٤</option>
+          <option value="0">A — ستوونی ١</option>
+          <option value="1">B — ستوونی ٢</option>
+          <option value="2">C — ستوونی ٣</option>
+          <option value="3">D — ستوونی ٤</option>
           <option value="4">E — ستوونی ٥</option>
         </select>
       </div>
@@ -587,7 +613,7 @@ table.xg-body td.fcur{background:rgba(217,119,6,0.4)!important;outline:2px solid
     <div class="pgb"><div class="pgf" id="pgFill"></div></div>
   </div>
   <button class="btn-go" id="convertBtn" style="display:none" onclick="convertAll()">
-    <i class="ti ti-transform"></i> گواستنەوە بۆ Excel
+    <i class="ti ti-transform"></i> <span data-k="convertBtn" data-e="Convert to Excel">گواستنەوە بۆ Excel</span>
   </button>
 </div>
 
@@ -595,22 +621,24 @@ table.xg-body td.fcur{background:rgba(217,119,6,0.4)!important;outline:2px solid
 <div id="tabList" class="panel" style="display:none">
   <div style="font-size:11px;color:var(--text2);display:flex;align-items:center;gap:5px">
     <i class="ti ti-info-circle"></i>
-    <span>هەر ڕیزێک دەبێتە ڕیزێکی خشتە. جیاکارێک نێوان ستوونەکان بخە.</span>
+    <span data-k="listHint" data-e="Each line = one row. Use separators between columns.">هەر ڕیزێک دەبێتە ڕیزێکی خشتە. جیاکارێک نێوان ستوونەکان بخە.</span>
   </div>
   <textarea class="lta" id="listInput" placeholder="ناو, تەمەن, شار&#10;ئەحمەد, 25, سلێمانی&#10;سارا, 30, هەولێر&#10;کارزان, 22, دهۆک"></textarea>
   <div class="lopts">
-    <div class="lo"><label>جیاکاری</label>
+    <div class="lo"><label data-k="separator" data-e="Separator">جیاکاری</label>
       <select id="listSep">
-        <option value="comma">کۆما (,)</option><option value="tab">Tab</option>
-        <option value="pipe">Pipe (|)</option><option value="newline">تەنها ڕیز</option>
+        <option value="comma">کۆما (,)</option>
+        <option value="tab">Tab</option>
+        <option value="pipe">Pipe (|)</option>
+        <option value="newline" data-k="lineOnly" data-e="Line only">تەنها ڕیز</option>
       </select>
     </div>
-    <div class="lo"><label>دەستپێکردن لە</label>
+    <div class="lo"><label data-k="startCol" data-e="Start Column">دەستپێکردن لە</label>
       <input type="text" id="listStartCol" value="A" maxlength="2" style="text-transform:uppercase">
     </div>
   </div>
   <div style="display:flex;gap:7px">
-    <button class="btn-l2x" onclick="listToExcel()"><i class="ti ti-table-import"></i> بکە بە Excel</button>
+    <button class="btn-l2x" onclick="listToExcel()"><i class="ti ti-table-import"></i> <span data-k="toExcel" data-e="Send to Excel">بکە بە Excel</span></button>
     <button class="btn-l2x" onclick="document.getElementById('listInput').value=''"
       style="flex:0 0 auto;background:var(--bg3);color:var(--text);border:1px solid var(--border-md);padding:11px 13px">
       <i class="ti ti-x"></i>
@@ -618,13 +646,17 @@ table.xg-body td.fcur{background:rgba(217,119,6,0.4)!important;outline:2px solid
   </div>
   <div class="saved-lists-section">
     <div class="saved-lists-header">
-      <div class="saved-lists-title"><i class="ti ti-bookmark"></i> لیستە خەزنکراوەکان</div>
+      <div class="saved-lists-title">
+        <i class="ti ti-bookmark"></i>
+        <span data-k="savedLists" data-e="Saved Lists">لیستە خەزنکراوەکان</span>
+      </div>
       <span class="saved-lists-count" id="savedCount">0</span>
     </div>
     <div class="save-list-row">
       <input class="save-name-inp" id="saveListName" placeholder="ناوی لیست..." maxlength="40">
       <button class="btn-save-list" onclick="saveCurrentList()">
-        <i class="ti ti-device-floppy"></i> خەزنکردن
+        <i class="ti ti-device-floppy"></i>
+        <span data-k="saveList" data-e="Save">خەزنکردن</span>
       </button>
     </div>
     <div class="saved-list-items" id="savedListItems"></div>
@@ -633,18 +665,9 @@ table.xg-body td.fcur{background:rgba(217,119,6,0.4)!important;outline:2px solid
 
 <!-- EXCEL TAB -->
 <div id="tabExcel" style="display:none;flex:1;flex-direction:column;overflow:hidden">
-  <div class="grid-outer" id="gridOuter">
-    <div id="gridZoomWrap" style="transform-origin:top right;transition:transform .15s;position:relative">
-      <!-- header row (sticky) -->
-      <div class="grid-header-wrap" id="gridHeaderWrap">
-        <table class="xg-header" id="xgHeader"></table>
-      </div>
-      <!-- virtual scroll body -->
-      <div class="grid-wrap" id="gridWrap">
-        <div class="virt-spacer-top" id="virtTop"></div>
-        <table class="xg-body" id="xgBody"></table>
-        <div class="virt-spacer-bot" id="virtBot"></div>
-      </div>
+  <div class="grid-wrap" id="gridWrap">
+    <div id="gridZoomWrap" style="transform-origin:top right;transition:transform .15s">
+      <table class="xg ts-default" id="xg"></table>
     </div>
   </div>
 </div>
@@ -652,10 +675,10 @@ table.xg-body td.fcur{background:rgba(217,119,6,0.4)!important;outline:2px solid
 <!-- WORD FREQUENCY TAB -->
 <div id="tabWords" class="wf-panel" style="display:none">
   <div class="wf-header">
-    <div class="wf-title"><i class="ti ti-text-size"></i> لیستی وشەکان</div>
+    <div class="wf-title"><i class="ti ti-text-size"></i> <span data-k="tabWords" data-e="Word List">لیستی وشەکان</span></div>
     <div class="wf-stats">
-      <div class="wf-stat">کۆی هەمان: <b id="wfTotal">0</b></div>
-      <div class="wf-stat">جۆری جیاواز: <b id="wfUnique">0</b></div>
+      <div class="wf-stat"><span data-k="wfTotal" data-e="Total">کۆی هەمان:</span> <b id="wfTotal">0</b></div>
+      <div class="wf-stat"><span data-k="wfUnique" data-e="Unique">جۆری جیاواز:</span> <b id="wfUnique">0</b></div>
     </div>
   </div>
   <div id="wfList"></div>
@@ -663,89 +686,107 @@ table.xg-body td.fcur{background:rgba(217,119,6,0.4)!important;outline:2px solid
 
 <!-- STATUS BAR -->
 <div class="sbar">
-  <span class="sbar-item"><b id="stRows">0</b> <span>ڕیز</span></span>
-  <span class="sbar-item"><b id="stCols">0</b> <span>ستوون</span></span>
+  <span class="sbar-item"><b id="stRows">0</b> <span data-k="rows" data-e="rows">ڕیز</span></span>
+  <span class="sbar-item"><b id="stCols">0</b> <span data-k="cols" data-e="cols">ستوون</span></span>
   <span class="sbar-item sbar-right"><b id="stSel">A1</b></span>
   <span class="sbar-item" id="stSort"></span>
   <span class="sbar-item"><b id="stVal"></b></span>
 </div>
 
 <footer class="app-footer">
-  <div class="footer-brand"><i class="ti ti-file-spreadsheet"></i><span>PDF → Excel</span></div>
+  <div class="footer-brand">
+    <i class="ti ti-file-spreadsheet"></i>
+    <span>PDF → Excel</span>
+  </div>
   <div class="footer-sep"></div>
-  <div class="footer-dev" id="footerDev"><span>دروستکراوە لەلایەن</span> <strong>باکۆ غەفوور</strong></div>
+  <div class="footer-dev" id="footerDev">
+    <span>دروستکراوە لەلایەن</span>
+    <strong>باکۆ غەفوور</strong>
+  </div>
   <div class="footer-sep"></div>
-  <span class="footer-ver">v2.1</span>
+  <span class="footer-ver">v2.0</span>
   <div class="footer-sep"></div>
-  <div class="footer-dev" style="font-size:9px;opacity:.6" id="footerCopy">© 2025 · هەموو مافەکان پارێزراون</div>
+  <div class="footer-dev" style="font-size:9px;opacity:.6" id="footerCopy">
+    © 2025 · هەموو مافەکان پارێزراون
+  </div>
 </footer>
 
 <!-- CONTEXT MENU -->
 <div class="ctx" id="ctx">
-  <div class="ci-r" onclick="ctxCopy()"><i class="ti ti-copy"></i> کۆپی</div>
-  <div class="ci-r" onclick="ctxPaste()"><i class="ti ti-clipboard"></i> چەسپاندن</div>
-  <div class="ci-r" onclick="ctxCut()"><i class="ti ti-cut"></i> بڕین</div>
+  <div class="ci-r" onclick="ctxCopy()"><i class="ti ti-copy"></i> <span data-k="copy" data-e="Copy">کۆپی</span></div>
+  <div class="ci-r" onclick="ctxPaste()"><i class="ti ti-clipboard"></i> <span data-k="paste" data-e="Paste">چەسپاندن</span></div>
+  <div class="ci-r" onclick="ctxCut()"><i class="ti ti-cut"></i> <span data-k="cut" data-e="Cut">بڕین</span></div>
   <div class="ctx-sep"></div>
-  <div class="ci-r" onclick="insertRow()"><i class="ti ti-row-insert-bottom"></i> ڕیز زیادبکە</div>
-  <div class="ci-r" onclick="insertCol()"><i class="ti ti-column-insert-right"></i> ستوون زیادبکە</div>
+  <div class="ci-r" onclick="insertRow()"><i class="ti ti-row-insert-bottom"></i> <span data-k="insRow" data-e="Insert row">ڕیز زیادبکە</span></div>
+  <div class="ci-r" onclick="insertCol()"><i class="ti ti-column-insert-right"></i> <span data-k="insCol" data-e="Insert column">ستوون زیادبکە</span></div>
   <div class="ctx-sep"></div>
-  <div class="ci-r danger" onclick="deleteRow()"><i class="ti ti-row-remove"></i> ڕیز بسڕەوە</div>
-  <div class="ci-r danger" onclick="deleteCol()"><i class="ti ti-column-remove"></i> ستوون بسڕەوە</div>
+  <div class="ci-r danger" onclick="deleteRow()"><i class="ti ti-row-remove"></i> <span data-k="delRow" data-e="Delete row">ڕیز بسڕەوە</span></div>
+  <div class="ci-r danger" onclick="deleteCol()"><i class="ti ti-column-remove"></i> <span data-k="delCol" data-e="Delete column">ستوون بسڕەوە</span></div>
 </div>
 
 <!-- PRINT PREVIEW MODAL -->
 <div class="pp-bd" id="ppModal">
   <div class="pp-box">
     <div class="pp-head">
-      <h3><i class="ti ti-printer" style="color:var(--xbg)"></i> پرێنت پریڤیو</h3>
+      <h3><i class="ti ti-printer" style="color:var(--xbg)"></i> <span data-k="printPreview" data-e="Print Preview">پرێنت پریڤیو</span></h3>
       <button class="pp-close" onclick="closePrintPreview()"><i class="ti ti-x"></i></button>
     </div>
     <div class="pp-body">
       <div class="pp-section">
-        <div class="pp-section-t"><i class="ti ti-file"></i> ڕێکخستنی لاپەڕە</div>
+        <div class="pp-section-t"><i class="ti ti-file"></i> <span data-k="pageSettings" data-e="Page Settings">ڕێکخستنی لاپەڕە</span></div>
         <div class="orient-toggle">
           <button class="orient-btn active" id="btnPortrait" onclick="setOrient('portrait')">
-            <div class="orient-icon"><svg width="28" height="36" viewBox="0 0 28 36"><rect x="1" y="1" width="26" height="34" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><line x1="5" y1="9" x2="23" y2="9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="5" y1="14" x2="23" y2="14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="5" y1="19" x2="18" y2="19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-            <span>ئەستوونی</span>
+            <div class="orient-icon">
+              <svg width="28" height="36" viewBox="0 0 28 36"><rect x="1" y="1" width="26" height="34" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><line x1="5" y1="9" x2="23" y2="9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="5" y1="14" x2="23" y2="14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="5" y1="19" x2="18" y2="19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <span data-k="portrait" data-e="Portrait">ئەستوونی</span>
           </button>
           <button class="orient-btn" id="btnLandscape" onclick="setOrient('landscape')">
-            <div class="orient-icon"><svg width="36" height="28" viewBox="0 0 36 28"><rect x="1" y="1" width="34" height="26" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><line x1="5" y1="8" x2="31" y2="8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="5" y1="13" x2="31" y2="13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="5" y1="18" x2="22" y2="18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-            <span>ڕووناکی</span>
+            <div class="orient-icon">
+              <svg width="36" height="28" viewBox="0 0 36 28"><rect x="1" y="1" width="34" height="26" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><line x1="5" y1="8" x2="31" y2="8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="5" y1="13" x2="31" y2="13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="5" y1="18" x2="22" y2="18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <span data-k="landscape" data-e="Landscape">ڕووناکی</span>
           </button>
         </div>
         <div class="pp-row">
-          <div class="pp-field"><label>قەبارەی کاغەز</label>
+          <div class="pp-field"><label data-k="pageSize" data-e="Paper Size">قەبارەی کاغەز</label>
             <select id="ppSize" onchange="updatePpPreview()">
-              <option value="A4">A4</option><option value="A3">A3</option>
-              <option value="Letter">Letter</option><option value="Legal">Legal</option>
+              <option value="A4">A4 (210×297mm)</option>
+              <option value="A3">A3 (297×420mm)</option>
+              <option value="Letter">Letter</option>
+              <option value="Legal">Legal</option>
             </select>
           </div>
-          <div class="pp-field"><label>قەبارەی فۆنت</label>
+          <div class="pp-field"><label data-k="fontSize" data-e="Font size">قەبارەی فۆنت</label>
             <select id="ppFont" onchange="updatePpPreview()">
-              <option value="8">8px</option><option value="9">9px</option><option value="10">10px</option>
-              <option value="11" selected>11px</option><option value="12">12px</option>
-              <option value="13">13px</option><option value="14">14px</option>
+              <option value="8">8px — زۆر بچووک</option>
+              <option value="9">9px — بچووک</option>
+              <option value="10">10px</option>
+              <option value="11" selected>11px — ناوەند</option>
+              <option value="12">12px</option>
+              <option value="13">13px — گەورە</option>
+              <option value="14">14px — زۆر گەورە</option>
             </select>
           </div>
         </div>
       </div>
       <div class="pp-section">
-        <div class="pp-section-t"><i class="ti ti-layout-rows"></i> ڕیز لە هەر لاپەڕەیەک</div>
+        <div class="pp-section-t"><i class="ti ti-layout-rows"></i> <span data-k="rowsPerPage" data-e="Rows per page">ڕیز لە هەر لاپەڕەیەک</span></div>
         <div class="rpp-wrap">
-          <label>ژمارەی ڕیز لە هەر لاپەڕەیەک:</label>
+          <label data-k="rowsPerPageLabel" data-e="Rows per page:">ژمارەی ڕیز لە هەر لاپەڕەیەک:</label>
           <input class="rpp-inp" type="number" id="ppRowsPerPage" value="30" min="5" max="200" step="5" onchange="updatePpPreview()">
-          <span class="rpp-note">(0 = هەموو ڕیزەکان لە یەک لاپەڕە)</span>
+          <span class="rpp-note" data-k="rppNote" data-e="(0 = all rows on one page)">(0 = هەموو ڕیزەکان لە یەک لاپەڕە)</span>
         </div>
       </div>
       <div class="pp-section">
-        <div class="pp-section-t"><i class="ti ti-adjustments"></i> هەڵبژاردنەکان</div>
+        <div class="pp-section-t"><i class="ti ti-adjustments"></i> <span data-k="options" data-e="Options">هەڵبژاردنەکان</span></div>
         <div class="pp-row">
-          <div class="pp-field"><div class="pp-cbr"><input type="checkbox" id="ppShowHeader" checked onchange="updatePpPreview()"><span>سەرنووس نیشان بدە</span></div></div>
-          <div class="pp-field"><div class="pp-cbr"><input type="checkbox" id="ppZebra" checked onchange="updatePpPreview()"><span>ڕیزی جیاکار</span></div></div>
-          <div class="pp-field"><div class="pp-cbr"><input type="checkbox" id="ppBorder" checked onchange="updatePpPreview()"><span>سنووری خانە</span></div></div>
-          <div class="pp-field"><div class="pp-cbr"><input type="checkbox" id="ppTitle" checked onchange="updatePpPreview()"><span>ناونیشان نیشان بدە</span></div></div>
-          <div class="pp-field"><div class="pp-cbr"><input type="checkbox" id="ppFitPage" checked onchange="updatePpPreview()"><span>کڵاو لەسەر لاپەڕە</span></div></div>
-          <div class="pp-field"><div class="pp-cbr"><input type="checkbox" id="ppRepeatHeader" checked onchange="updatePpPreview()"><span>سەرنووس لە هەر لاپەڕەیەک</span></div></div>
+          <div class="pp-field"><div class="pp-cbr"><input type="checkbox" id="ppShowHeader" checked onchange="updatePpPreview()"><span data-k="showHeader" data-e="Show header row">سەرنووس نیشان بدە</span></div></div>
+          <div class="pp-field"><div class="pp-cbr"><input type="checkbox" id="ppZebra" checked onchange="updatePpPreview()"><span data-k="zebraRows" data-e="Zebra rows">ڕیزی جیاکار</span></div></div>
+          <div class="pp-field"><div class="pp-cbr"><input type="checkbox" id="ppBorder" checked onchange="updatePpPreview()"><span data-k="showBorder" data-e="Cell borders">سنووری خانە</span></div></div>
+          <div class="pp-field"><div class="pp-cbr"><input type="checkbox" id="ppTitle" checked onchange="updatePpPreview()"><span data-k="showTitle" data-e="Show title">ناونیشان نیشان بدە</span></div></div>
+          <div class="pp-field"><div class="pp-cbr"><input type="checkbox" id="ppFitPage" checked onchange="updatePpPreview()"><span data-k="fitPage" data-e="Fit to page width">کڵاو لەسەر لاپەڕە</span></div></div>
+          <div class="pp-field"><div class="pp-cbr"><input type="checkbox" id="ppRepeatHeader" checked onchange="updatePpPreview()"><span data-k="repeatHeader" data-e="Repeat header on each page">سەرنووس لە هەر لاپەڕەیەک</span></div></div>
         </div>
         <div class="pp-row" style="margin-top:4px">
           <div class="pp-field"><label>زیادە — سەرەوە / خوارەوە (mm)</label><input type="number" id="ppMarginV" value="12" min="0" max="40" onchange="updatePpPreview()"></div>
@@ -754,38 +795,44 @@ table.xg-body td.fcur{background:rgba(217,119,6,0.4)!important;outline:2px solid
       </div>
       <div class="pp-section">
         <div class="pp-section-t" style="justify-content:space-between">
-          <span><i class="ti ti-columns"></i> ستوونەکان</span>
+          <span><i class="ti ti-columns"></i> <span data-k="colOrder" data-e="Columns (drag to reorder)">ستوونەکان — ئیشکاڵ بکە بۆ گۆڕانی ڕیز</span></span>
           <button onclick="ppResetCols()" style="background:none;border:1px solid var(--border-md);border-radius:var(--r);padding:2px 7px;font-size:10px;cursor:pointer;color:var(--text2);font-family:var(--font-arabic)">Reset</button>
         </div>
         <div class="col-order-box" id="colOrderBox"></div>
       </div>
       <div class="pp-section">
-        <div class="pp-section-t"><i class="ti ti-palette"></i> ستایلی سەرنووس</div>
+        <div class="pp-section-t"><i class="ti ti-palette"></i> <span data-k="headerColor" data-e="Header style">ستایلی سەرنووس</span></div>
         <div class="pp-row">
-          <div class="pp-field"><label>ڕەنگی سەرنووس</label>
+          <div class="pp-field"><label data-k="headerBg" data-e="Header background">ڕەنگی سەرنووس</label>
             <select id="ppHeaderColor" onchange="updatePpPreview()">
-              <option value="#217346"> کووردی سەوز</option><option value="#1e3a5f"> شین تاریک</option>
-              <option value="#7c3aed"> مۆر</option><option value="#b91c1c"> سووری تاریک</option>
-              <option value="#374151"> بەرق تاریک</option><option value="#0f766e"> فیرووزەیی</option>
+              <option value="#217346"> کووردی سەوز</option>
+              <option value="#1e3a5f"> شین تاریک</option>
+              <option value="#7c3aed"> مۆر</option>
+              <option value="#b91c1c"> سووری تاریک</option>
+              <option value="#374151"> بەرق تاریک</option>
+              <option value="#0f766e"> فیرووزەیی</option>
             </select>
           </div>
-          <div class="pp-field"><label>ڕەنگی ڕیزی جیاکار</label>
+          <div class="pp-field"><label data-k="altColor" data-e="Alternate row color">ڕەنگی ڕیزی جیاکار</label>
             <select id="ppAltColor" onchange="updatePpPreview()">
-              <option value="#f0faf4"> سەوز سووک</option><option value="#eff6ff"> شین سووک</option>
-              <option value="#faf5ff"> مۆر سووک</option><option value="#fef2f2"> سوور سووک</option>
-              <option value="#f9fafb"> بەرق سووک</option><option value="none"> بێ ڕەنگ</option>
+              <option value="#f0faf4"> سەوز سووک</option>
+              <option value="#eff6ff"> شین سووک</option>
+              <option value="#faf5ff"> مۆر سووک</option>
+              <option value="#fef2f2"> سوور سووک</option>
+              <option value="#f9fafb"> بەرق سووک</option>
+              <option value="none"> بێ ڕەنگ</option>
             </select>
           </div>
         </div>
       </div>
       <div class="pp-section">
-        <div class="pp-section-t"><i class="ti ti-eye"></i> پێشبینی — ٥ ڕیزی یەکەم</div>
+        <div class="pp-section-t"><i class="ti ti-eye"></i> <span data-k="preview" data-e="Preview (first 5 rows)">پێشبینی — ٥ ڕیزی یەکەم</span></div>
         <div class="pp-preview" id="ppPreviewTable"></div>
       </div>
     </div>
     <div class="pp-foot">
-      <button class="pp-btn sec" onclick="closePrintPreview()"><i class="ti ti-x"></i> پاشگەزبوونەوە</button>
-      <button class="pp-btn pri" onclick="executePrint()"><i class="ti ti-printer"></i> پرێنت / PDF</button>
+      <button class="pp-btn sec" onclick="closePrintPreview()"><i class="ti ti-x"></i> <span data-k="cancel" data-e="Cancel">پاشگەزبوونەوە</span></button>
+      <button class="pp-btn pri" onclick="executePrint()"><i class="ti ti-printer"></i> <span data-k="print" data-e="Print / Save PDF">پرێنت / PDF</span></button>
     </div>
   </div>
 </div>
@@ -830,374 +877,271 @@ table.xg-body td.fcur{background:rgba(217,119,6,0.4)!important;outline:2px solid
 <script>
 pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
-// ══ CONFIG: UNLIMITED ROWS & 100 COLS ══
-// Rows grow dynamically; we start with a buffer and add more as needed
-const COLS = 100;           // 100 columns (A..CV)
-const ROW_CHUNK = 200;      // grow by 200 rows at a time
-const ROW_H = 28;           // row height in px
-const VISIBLE_BUFFER = 20;  // extra rows to render above/below viewport
-
-let ROWS = ROW_CHUNK;       // current allocated row count (grows automatically)
-
 // ══ LANGUAGE ══
-let lang = 'ku';
-function setLang(l) {
-  lang = l;
-  document.documentElement.lang = l === 'en' ? 'en' : 'ku';
-  document.documentElement.dir = l === 'en' ? 'ltr' : 'rtl';
-  document.querySelectorAll('[data-k]').forEach(el => {
-    if (l === 'en' && el.dataset.e) el.textContent = el.dataset.e;
-    else if (el.dataset.k) { const t = KU[el.dataset.k]; if (t) el.textContent = t; }
+let lang='ku';
+function setLang(l){
+  lang=l;
+  document.documentElement.lang=l==='en'?'en':'ku';
+  document.documentElement.dir=l==='en'?'ltr':'rtl';
+  document.querySelectorAll('[data-k]').forEach(el=>{
+    if(l==='en'&&el.dataset.e)el.textContent=el.dataset.e;
+    else if(el.dataset.k){const t=KU[el.dataset.k];if(t)el.textContent=t}
   });
-  document.querySelectorAll('.lang-btn').forEach(b =>
-    b.classList.toggle('active', b.textContent.trim() === (l === 'ku' ? 'کوردی' : 'EN')));
-  document.getElementById('findInput').placeholder = l === 'en' ? 'Search...' : 'گەڕان...';
-  document.getElementById('listInput').placeholder = l === 'en'
-    ? 'Name, Age, City\nAhmed, 25, Sulaymaniyah'
-    : 'ناو, تەمەن, شار\nئەحمەد, 25, سلێمانی';
-  document.getElementById('phText').placeholder = l === 'en' ? 'Enter page title / header...' : 'ناوی خشتە / سەردێر بنووسە...';
-  document.getElementById('aboutBtnTxt').textContent = l === 'en' ? 'About' : 'دەربارە';
-  document.getElementById('aboutAppSub').textContent = l === 'en' ? 'Data conversion application' : 'ئەپلیکەیشنی گواستنەوەی داتا';
-  document.getElementById('aboutDevRole').innerHTML = l === 'en'
-    ? 'Web & Mobile Application Developer<br>Graduate, Department of Computer Science'
-    : 'گەشەپێدەری وێب ئەپلیکەیشن و موبایل ئەپلیکەیشن<br>دەرچووی بەشی زانستی کۆمپیوتەر';
-  document.getElementById('tagWeb').textContent = l === 'en' ? 'Web App' : 'وێب ئەپلیکەیشن';
-  document.getElementById('tagMobile').textContent = l === 'en' ? 'Mobile App' : 'موبایل ئەپلیکەیشن';
-  document.getElementById('tagCS').textContent = l === 'en' ? 'Computer Science' : 'زانستی کۆمپیوتەر';
-  document.getElementById('tagDev').textContent = l === 'en' ? 'Developer' : 'گەشەپێدەر';
-  document.getElementById('aboutCloseBtn').textContent = l === 'en' ? 'Close' : 'داخستن';
-  const fd = document.getElementById('footerDev');
-  const fc = document.getElementById('footerCopy');
-  if (fd) fd.innerHTML = l === 'en' ? '<span>Made by</span> <strong>Bako Ghafoor</strong>' : '<span>دروستکراوە لەلایەن</span> <strong>باکۆ غەفوور</strong>';
-  if (fc) fc.textContent = l === 'en' ? '© 2025 · All rights reserved' : '© 2025 · هەموو مافەکان پارێزراون';
-  if (curTab === 'words') renderWordFrequency();
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent.trim()===(l==='ku'?'کوردی':'EN')));
+  document.getElementById('findInput').placeholder=l==='en'?'Search...':'گەڕان...';
+  document.getElementById('listInput').placeholder=l==='en'?'Name, Age, City\nAhmed, 25, Sulaymaniyah':'ناو, تەمەن, شار\nئەحمەد, 25, سلێمانی';
+  document.getElementById('phText').placeholder=l==='en'?'Enter page title / header...':'ناوی خشتە / سەردێر بنووسە...';
+  document.getElementById('aboutBtnTxt').textContent=l==='en'?'About':'دەربارە';
+  document.getElementById('aboutAppSub').textContent=l==='en'?'Data conversion application':'ئەپلیکەیشنی گواستنەوەی داتا';
+  document.getElementById('aboutDevRole').innerHTML=l==='en'?'Web & Mobile Application Developer<br>Graduate, Department of Computer Science':'گەشەپێدەری وێب ئەپلیکەیشن و موبایل ئەپلیکەیشن<br>دەرچووی بەشی زانستی کۆمپیوتەر';
+  document.getElementById('tagWeb').textContent=l==='en'?'Web App':'وێب ئەپلیکەیشن';
+  document.getElementById('tagMobile').textContent=l==='en'?'Mobile App':'موبایل ئەپلیکەیشن';
+  document.getElementById('tagCS').textContent=l==='en'?'Computer Science':'زانستی کۆمپیوتەر';
+  document.getElementById('tagDev').textContent=l==='en'?'Developer':'گەشەپێدەر';
+  document.getElementById('aboutCloseBtn').textContent=l==='en'?'Close':'داخستن';
+  const fd=document.getElementById('footerDev');
+  const fc=document.getElementById('footerCopy');
+  if(fd)fd.innerHTML=l==='en'?'<span>Made by</span> <strong>Bako Ghafoor</strong>':'<span>دروستکراوە لەلایەن</span> <strong>باکۆ غەفوور</strong>';
+  if(fc)fc.textContent=l==='en'?'© 2025 · All rights reserved':'© 2025 · هەموو مافەکان پارێزراون';
+  if(curTab==='words') renderWordFrequency();
 }
-const KU = {
+const KU={
   tabUpload:'ئەپلۆد PDF',tabList:'لیست',tabExcel:'خشتەی حیساب',tabWords:'لیستی وشەکان',
-  find:'گەڕان',addRow:'ڕیز+',addCol:'ستوون+',rows:'ڕیز',cols:'ستوون'
+  xlsx:'Excel',find:'گەڕان',addRow:'ڕیز+',addCol:'ستوون+',
+  settings:'ڕێکخستنەکان',format:'فۆرمات',mode:'شێواز',auto:'خودکار',allData:'هەموو داتا',
+  addHeader:'سەرنووس زیاد بکە',mergePages:'یەک بکەرەوە',
+  convertBtn:'گواستنەوە بۆ Excel',dzTitle:'فایلی PDF ئێرە بخە',dzSub:'یان کلیک بکە بۆ هەڵبژاردن',
+  browse:'هەڵبژێرە',listHint:'هەر ڕیزێک دەبێتە ڕیزێک. جیاکار نێوان ستوون.',
+  separator:'جیاکاری',startCol:'دەستپێکردن لە',lineOnly:'تەنها ڕیز',toExcel:'بکە بە Excel',
+  sortBy:'ڕیزبکە:',clearSort:'پاک',
+  copy:'کۆپی',paste:'چەسپاندن',cut:'بڕین',
+  insRow:'ڕیز زیادبکە',insCol:'ستوون زیادبکە',
+  delRow:'ڕیز بسڕەوە',delCol:'ستوون بسڕەوە',
+  rows:'ڕیز',cols:'ستوون',
+  autoSort:'ئۆتۆماتیک A→Z ڕیزبکە',autoSortCol:'ستوونی ڕیزکردن',
+  printPreview:'پرێنت پریڤیو',pageSettings:'ڕێکخستنی لاپەڕە',pageSize:'قەبارەی کاغەز',fontSize:'قەبارەی فۆنت',
+  portrait:'ئەستوونی',landscape:'ڕووناکی',
+  rowsPerPage:'ڕیز لە هەر لاپەڕەیەک',rowsPerPageLabel:'ژمارەی ڕیز لە هەر لاپەڕەیەک:',rppNote:'(0 = هەموو ڕیزەکان لە یەک لاپەڕە)',
+  options:'هەڵبژاردنەکان',
+  showHeader:'سەرنووس نیشان بدە',zebraRows:'ڕیزی جیاکار',showBorder:'سنووری خانە',showTitle:'ناونیشان نیشان بدە',
+  colOrder:'ستوونەکان — ئیشکاڵ بکە',headerColor:'ستایلی سەرنووس',headerBg:'ڕەنگی سەرنووس',altColor:'ڕەنگی ڕیزی جیاکار',
+  preview:'پێشبینی — ٥ ڕیزی یەکەم',cancel:'پاشگەزبوونەوە',print:'پرێنت / PDF',
+  fitPage:'کڵاو لەسەر لاپەڕە',repeatHeader:'سەرنووس لە هەر لاپەڕەیەک',
+  savedLists:'لیستە خەزنکراوەکان',saveList:'خەزنکردن',
+  swapCols:'جابەجاکردنی ستوون:',swapBtn:'جابەجا',shiftLeft:'← جووڵان',
+  pageHeader:'هێدەر',pageHeaderLabel:'هێدەری لاپەڕە:',phFontSize:'قەبارە:',phDir:'ئاراستە:',phColor:'ڕەنگ:',phBgColor:'بەکگراوند:',phShow:'نیشانده',
+  wfTotal:'کۆی هەمان:',wfUnique:'جۆری جیاواز:'
 };
 
 // ══ STATE ══
-let data = [], fmts = [], colW = [];
-let selR = 0, selC = 0, editR = -1, editC = -1;
-let clipboard = null, cutMode = false;
-let findMatches = [], findIdx = 0;
-let sortCol = -1, sortDir = 'none';
-let originalData = null, originalFmts = null;
-let allSelected = false;
-let ppOrient = 'portrait';
-let zoomLevel = 100;
-const ZOOM_STEPS = [50,60,70,80,90,100,110,125,150,175,200];
-let currentTableStyle = 'ts-default';
-let dragColIdx = -1, dragRowIdx = -1;
-let resizing = false, resizeColIdx = -1, resizeStartX = 0, resizeStartW = 0;
-let pageHeaderVisible = false;
-let wfEditingIdx = -1;
+const ROWS=500, COLS=26;
+let data=[], fmts=[], colW=[];
+let selR=0, selC=0, editR=-1, editC=-1;
+let clipboard=null, cutMode=false;
+let findMatches=[], findIdx=0;
+let sortCol=-1, sortDir='none';
+let originalData=null, originalFmts=null;
+let allSelected=false;
+let ppOrient='portrait';
+let zoomLevel=100;
+const ZOOM_STEPS=[50,60,70,80,90,100,110,125,150,175,200];
+let currentTableStyle='ts-default';
+let dragColIdx=-1;
+let dragRowIdx=-1;
+let resizing=false;
+let resizeColIdx=-1;
+let resizeStartX=0;
+let resizeStartW=0;
+let pageHeaderVisible=false;
+let wfEditingIdx=-1;
 
-// virtual scroll state
-let virtFirstRow = 0;   // first rendered row index
-let virtLastRow = 0;    // last rendered row index
-
-function initData() {
-  data = Array.from({length: ROWS}, () => Array(COLS).fill(''));
-  fmts = Array.from({length: ROWS}, () => Array.from({length: COLS}, () => ({cls:'',numFmt:''})));
-  colW = Array(COLS).fill(110);
-  sortCol = -1; sortDir = 'none'; originalData = null; originalFmts = null; allSelected = false;
+function initData(){
+  data=Array.from({length:ROWS},()=>Array(COLS).fill(''));
+  fmts=Array.from({length:ROWS},()=>Array.from({length:COLS},()=>({cls:'',numFmt:''})));
+  colW=Array(COLS).fill(110);
+  sortCol=-1;sortDir='none';originalData=null;originalFmts=null;allSelected=false;
 }
 initData();
 
-// Grow rows if we're running out
-function ensureRows(neededRow) {
-  if (neededRow < ROWS) return;
-  const newRows = Math.ceil((neededRow + 1) / ROW_CHUNK) * ROW_CHUNK;
-  while (data.length < newRows) {
-    data.push(Array(COLS).fill(''));
-    fmts.push(Array.from({length: COLS}, () => ({cls:'',numFmt:''})));
-  }
-  ROWS = data.length;
-}
-
-const cl = c => {
-  if (c < 26) return String.fromCharCode(65 + c);
-  const hi = Math.floor(c / 26) - 1;
-  const lo = c % 26;
-  return String.fromCharCode(65 + hi) + String.fromCharCode(65 + lo);
-};
-function lc(s) {
-  s = (s || 'A').toUpperCase().trim();
-  if (s.length === 1) return s.charCodeAt(0) - 65;
-  return (s.charCodeAt(0) - 64) * 26 + (s.charCodeAt(1) - 65);
-}
-function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-
-// ══ VIRTUAL SCROLL ══
-function getLastDataRow() {
-  for (let r = ROWS - 1; r >= 0; r--) if (data[r].some(c => c !== '')) return r;
-  return 0;
-}
-function getTotalVirtHeight() {
-  // total height = max(lastDataRow+extra, viewport) rows
-  return Math.max(getLastDataRow() + ROW_CHUNK, 50) * ROW_H;
-}
-
-function getVisibleRange(scrollTop, viewportH) {
-  const first = Math.max(0, Math.floor(scrollTop / ROW_H) - VISIBLE_BUFFER);
-  const last = Math.min(ROWS - 1, Math.ceil((scrollTop + viewportH) / ROW_H) + VISIBLE_BUFFER);
-  return [first, last];
-}
-
-function renderVirtRows(scrollTop, viewportH) {
-  const [first, last] = getVisibleRange(scrollTop, viewportH);
-  virtFirstRow = first;
-  virtLastRow = last;
-
-  const topSpacer = document.getElementById('virtTop');
-  const botSpacer = document.getElementById('virtBot');
-  const totalH = getTotalVirtHeight();
-
-  // Ensure data arrays are big enough
-  ensureRows(last + VISIBLE_BUFFER);
-
-  topSpacer.style.height = (first * ROW_H) + 'px';
-  botSpacer.style.height = Math.max(0, totalH - (last + 1) * ROW_H) + 'px';
-
-  let h = '';
-  for (let r = first; r <= last; r++) {
-    h += `<tr><th class="rn${selR===r?' row-sel':''}" data-r="${r}" draggable="true" onclick="sc(${r},0)" ondragstart="rowDragStart(event,${r})" ondragover="rowDragOver(event,${r})" ondragend="rowDragEnd()" ondrop="rowDrop(event,${r})">${r+1}</th>`;
-    for (let c = 0; c < COLS; c++) {
-      const f = fmts[r][c]; let cls = f.cls || '';
-      if (r === selR && c === selC) cls += ' sel';
-      if (allSelected) cls += ' all-selected';
-      const v = dv(r, c);
-      h += `<td class="${cls}" data-r="${r}" data-c="${c}" style="width:${colW[c]}px" onclick="sc(${r},${c})" ondblclick="startEdit(${r},${c})" oncontextmenu="openCtx(event,${r},${c})"><span class="cv">${esc(v)}</span></td>`;
-    }
-    h += '</tr>';
-  }
-  document.getElementById('xgBody').innerHTML = h;
-}
-
-function renderHeader() {
-  const cornerAllSel = allSelected ? ' all-sel' : '';
-  let h = `<thead><tr>`;
-  h += `<th class="corner${cornerAllSel}" onclick="selectAll()" style="width:44px;min-width:44px"></th>`;
-  for (let c = 0; c < COLS; c++) {
-    let cls = 'ch';
-    if (sortCol === c) cls += sortDir === 'asc' ? ' sort-asc' : ' sort-desc';
-    h += `<th class="${cls}" data-c="${c}" style="width:${colW[c]}px;min-width:${colW[c]}px" draggable="true" onclick="colClick(${c},event)" ondragstart="colDragStart(event,${c})" ondragover="colDragOver(event,${c})" ondragend="colDragEnd()" ondrop="colDrop(event,${c})"><div class="col-resize-handle" onmousedown="startColResize(event,${c})"></div><span class="sa">↑</span><span class="sd">↓</span>${cl(c)}</th>`;
-  }
-  h += '</tr></thead>';
-  document.getElementById('xgHeader').innerHTML = h;
-  // apply style class
-  document.getElementById('xgHeader').className = 'xg-header';
-  document.getElementById('xgBody').className = 'xg-body';
-}
-
-function renderGrid() {
-  renderHeader();
-  const outer = document.getElementById('gridOuter');
-  renderVirtRows(outer ? outer.scrollTop - (document.getElementById('gridHeaderWrap').offsetHeight || 28) : 0, outer ? outer.clientHeight : 600);
-  // update total height
-  const totalH = getTotalVirtHeight();
-  document.getElementById('virtBot').style.height = Math.max(0, totalH - (virtLastRow + 1) * ROW_H) + 'px';
-}
-
-// scroll handler for virtual scrolling
-function setupVirtScroll() {
-  const outer = document.getElementById('gridOuter');
-  if (!outer) return;
-  let ticking = false;
-  outer.addEventListener('scroll', () => {
-    if (!ticking) {
-      requestAnimationFrame(() => {
-        const headerH = document.getElementById('gridHeaderWrap').offsetHeight || 28;
-        const scrollTop = Math.max(0, outer.scrollTop - headerH);
-        const viewH = outer.clientHeight - headerH;
-        renderVirtRows(scrollTop, viewH);
-        // auto-grow rows when near bottom
-        const lastData = getLastDataRow();
-        if (lastData + 50 >= ROWS) {
-          ensureRows(ROWS + ROW_CHUNK);
-          renderGrid();
-        }
-        ticking = false;
-      });
-      ticking = true;
-    }
-  }, {passive: true});
-}
-
-function dv(r, c) {
-  const v = data[r][c], f = fmts[r][c]; if (!v) return '';
-  if (f.numFmt === 'cur') return '$\u202f' + parseFloat(v||0).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});
-  if (f.numFmt === 'pct') return parseFloat(v||0).toFixed(1) + '%';
-  if (f.numFmt === 'num') return parseFloat(v||0).toLocaleString();
-  return v;
-}
-
-function rcell(r, c) {
-  const td = document.querySelector(`td[data-r="${r}"][data-c="${c}"]`); if (!td) return;
-  const f = fmts[r][c];
-  let cls = (f.cls || '') + (r === selR && c === selC ? ' sel' : '') + (allSelected ? ' all-selected' : '');
-  td.className = cls; td.querySelector('.cv').innerHTML = esc(dv(r, c));
-}
-
-// ══ ZOOM ══
-function applyZoom() {
-  const scale = zoomLevel / 100;
-  const wrap = document.getElementById('gridZoomWrap');
-  wrap.style.transform = `scale(${scale})`;
-  wrap.style.transformOrigin = 'top right';
-  wrap.style.width = (100/scale) + '%';
-  document.getElementById('zoomPct').textContent = zoomLevel + '%';
-}
-function zoomIn(){const cur=ZOOM_STEPS.indexOf(zoomLevel);if(cur<ZOOM_STEPS.length-1){zoomLevel=ZOOM_STEPS[cur+1];applyZoom()}}
-function zoomOut(){const cur=ZOOM_STEPS.indexOf(zoomLevel);if(cur>0){zoomLevel=ZOOM_STEPS[cur-1];applyZoom()}}
-function zoomReset(){zoomLevel=100;applyZoom()}
-document.getElementById('gridOuter')?.addEventListener('wheel', e => {
-  if (e.ctrlKey) { e.preventDefault(); if (e.deltaY < 0) zoomIn(); else zoomOut(); }
-}, {passive: false});
-
-// ══ TABLE STYLE ══
-function applyTableStyle(style) {
-  currentTableStyle = style || 'ts-default';
-  const wrap = document.getElementById('gridZoomWrap');
-  wrap.className = wrap.className.replace(/ts-\w+/g,'').trim() + ' ' + currentTableStyle;
-  // re-apply to both tables
-  document.getElementById('xgHeader').className = 'xg-header';
-  document.getElementById('xgBody').className = 'xg-body';
-}
-
-// ══ FONT SIZE ══
-function setTableFontSize(sz) {
-  document.documentElement.style.setProperty('--cell-fs', sz);
-  const px = parseInt(sz), h = Math.max(28, px + 15);
-  document.querySelectorAll('table.xg-body td').forEach(el => { el.style.height = h+'px'; });
-  document.querySelectorAll('table.xg-body td .cv').forEach(el => { el.style.height = h+'px'; el.style.lineHeight = h+'px'; });
-}
+const cl=c=>c<26?String.fromCharCode(65+c):String.fromCharCode(64+Math.floor(c/26))+String.fromCharCode(65+(c%26));
+function lc(s){s=(s||'A').toUpperCase().trim();return s.length===1?s.charCodeAt(0)-65:(s.charCodeAt(0)-64)*26+(s.charCodeAt(1)-65)}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
 
 // ══ CENTER ALL CELLS ══
-function centerAllCells() {
-  for (let r = 0; r < ROWS; r++) for (let c = 0; c < COLS; c++) {
-    const f = fmts[r][c];
-    f.cls = ((f.cls||'').replace(/\b(ac|ar|al)\b/g,'').trim() + ' ac').trim();
+function centerAllCells(){
+  for(let r=0;r<ROWS;r++)for(let c=0;c<COLS;c++){
+    const f=fmts[r][c];
+    f.cls=(f.cls||'').replace(/\b(ac|ar|al)\b/g,'').trim();
+    f.cls=((f.cls+' ac').trim());
   }
   renderGrid();
   showToast(lang==='ku'?'هەموو خانەکان سەنتەردرا':'All cells centered');
 }
 
 // ══ PAGE HEADER ══
-function togglePageHeader() {
-  const bar = document.getElementById('pageHeaderBar');
-  const btn = document.getElementById('btnPageHeader');
-  const isShown = bar.classList.contains('show');
-  bar.classList.toggle('show', !isShown);
-  btn.classList.toggle('on', !isShown);
-  if (!isShown) { document.getElementById('phText').focus(); updatePageHeaderDisplay(); }
+function togglePageHeader(){
+  const bar=document.getElementById('pageHeaderBar');
+  const btn=document.getElementById('btnPageHeader');
+  const isShown=bar.classList.contains('show');
+  bar.classList.toggle('show',!isShown);
+  btn.classList.toggle('on',!isShown);
+  if(!isShown){document.getElementById('phText').focus();updatePageHeaderDisplay()}
+  showToast(lang==='ku'?(isShown?'هێدەر داخرا':'هێدەری لاپەڕە کرایەوە'):(isShown?'Header hidden':'Page header opened'));
 }
-function updatePageHeaderDisplay() {
-  const txt = document.getElementById('phText').value.trim();
-  const fontSize = document.getElementById('phFontSize').value;
-  const dir = document.getElementById('phDir').value;
-  const color = document.getElementById('phColor').value;
-  const bg = document.getElementById('phBgColor').value;
-  const display = document.getElementById('pageHeaderDisplay');
-  const textEl = document.getElementById('pageHeaderText');
-  textEl.style.fontSize = fontSize; textEl.style.color = color; display.style.background = bg;
-  if (dir === 'center') { textEl.style.textAlign = 'center'; textEl.style.direction = 'ltr'; }
-  else { textEl.style.direction = dir; textEl.style.textAlign = dir === 'rtl' ? 'right' : 'left'; }
-  textEl.textContent = txt || (lang==='ku'?'هێدەری لاپەڕە':'Page Header');
-  if (pageHeaderVisible && txt) display.classList.add('show');
+function updatePageHeaderDisplay(){
+  const txt=document.getElementById('phText').value.trim();
+  const fontSize=document.getElementById('phFontSize').value;
+  const dir=document.getElementById('phDir').value;
+  const color=document.getElementById('phColor').value;
+  const bg=document.getElementById('phBgColor').value;
+  const display=document.getElementById('pageHeaderDisplay');
+  const textEl=document.getElementById('pageHeaderText');
+  textEl.style.fontSize=fontSize;textEl.style.color=color;display.style.background=bg;
+  if(dir==='center'){textEl.style.textAlign='center';textEl.style.direction='ltr'}
+  else{textEl.style.direction=dir;textEl.style.textAlign=dir==='rtl'?'right':'left'}
+  textEl.textContent=txt||(lang==='ku'?'هێدەری لاپەڕە':'Page Header');
+  if(pageHeaderVisible&&txt)display.classList.add('show');
 }
-function togglePageHeaderDisplay() {
-  const txt = document.getElementById('phText').value.trim();
-  pageHeaderVisible = !pageHeaderVisible;
-  const display = document.getElementById('pageHeaderDisplay');
-  const btn = document.getElementById('phVisBtn');
-  if (pageHeaderVisible && txt) {
-    display.classList.add('show'); btn.classList.add('active');
-    btn.innerHTML = `<i class="ti ti-eye-off"></i> <span>${lang==='ku'?'شاردنەوە':'Hide'}</span>`;
-  } else {
-    display.classList.remove('show'); btn.classList.remove('active');
-    btn.innerHTML = `<i class="ti ti-eye"></i> <span>${lang==='ku'?'نیشانده':'Show'}</span>`;
-    if (!txt && pageHeaderVisible) pageHeaderVisible = false;
+function togglePageHeaderDisplay(){
+  const txt=document.getElementById('phText').value.trim();
+  pageHeaderVisible=!pageHeaderVisible;
+  const display=document.getElementById('pageHeaderDisplay');
+  const btn=document.getElementById('phVisBtn');
+  if(pageHeaderVisible&&txt){
+    display.classList.add('show');btn.classList.add('active');
+    btn.innerHTML=`<i class="ti ti-eye-off"></i> <span>${lang==='ku'?'شاردنەوە':'Hide'}</span>`;
+  }else{
+    display.classList.remove('show');btn.classList.remove('active');
+    btn.innerHTML=`<i class="ti ti-eye"></i> <span>${lang==='ku'?'نیشانده':'Show'}</span>`;
+    if(!txt&&pageHeaderVisible)pageHeaderVisible=false;
   }
-  if (!txt && pageHeaderVisible) {
+  if(!txt&&pageHeaderVisible){
     showToast(lang==='ku'?'تکایە سەردێرێک بنووسە':'Please enter a header text first');
-    pageHeaderVisible = false; display.classList.remove('show');
-    btn.innerHTML = `<i class="ti ti-eye"></i> <span>${lang==='ku'?'نیشانده':'Show'}</span>`;
+    pageHeaderVisible=false;display.classList.remove('show');btn.classList.remove('active');
+    btn.innerHTML=`<i class="ti ti-eye"></i> <span>${lang==='ku'?'نیشانده':'Show'}</span>`;
   }
 }
 
+// ══ ZOOM ══
+function applyZoom(){
+  const scale=zoomLevel/100;
+  const wrap=document.getElementById('gridZoomWrap');
+  wrap.style.transform=`scale(${scale})`;
+  wrap.style.transformOrigin='top right';
+  wrap.style.width=(100/scale)+'%';
+  document.getElementById('zoomPct').textContent=zoomLevel+'%';
+}
+function zoomIn(){const cur=ZOOM_STEPS.indexOf(zoomLevel);if(cur<ZOOM_STEPS.length-1){zoomLevel=ZOOM_STEPS[cur+1];applyZoom()}}
+function zoomOut(){const cur=ZOOM_STEPS.indexOf(zoomLevel);if(cur>0){zoomLevel=ZOOM_STEPS[cur-1];applyZoom()}}
+function zoomReset(){zoomLevel=100;applyZoom()}
+document.getElementById('gridWrap')?.addEventListener('wheel',e=>{
+  if(e.ctrlKey){e.preventDefault();if(e.deltaY<0)zoomIn();else zoomOut()}
+},{passive:false});
+
+// ══ TABLE STYLE ══
+function applyTableStyle(style){
+  const tbl=document.getElementById('xg');
+  tbl.className=tbl.className.replace(/ts-\w+/g,'').trim();
+  tbl.classList.add(style||'ts-default');
+  currentTableStyle=style||'ts-default';
+}
+
+// ══ FONT SIZE ══
+function setTableFontSize(sz){
+  document.documentElement.style.setProperty('--cell-fs',sz);
+  const px=parseInt(sz);const h=Math.max(28,px+15);
+  document.querySelectorAll('table.xg td').forEach(el=>{el.style.height=h+'px'});
+  document.querySelectorAll('table.xg td .cv').forEach(el=>{el.style.height=h+'px';el.style.lineHeight=h+'px'});
+}
+
 // ══ TABS ══
-let curTab = 'upload';
-function switchTab(t) {
-  curTab = t;
-  document.querySelectorAll('.stab').forEach(el => el.classList.toggle('active', el.dataset.tab === t));
-  document.getElementById('tabUpload').style.display = t==='upload' ? 'flex' : 'none';
-  document.getElementById('tabList').style.display = t==='list' ? 'flex' : 'none';
-  const ex = document.getElementById('tabExcel');
-  ex.style.display = t==='excel' ? 'flex' : 'none';
-  document.getElementById('tabWords').style.display = t==='words' ? 'flex' : 'none';
-  document.getElementById('ribbon').classList.toggle('show', t==='excel');
-  document.getElementById('fbar').classList.toggle('show', t==='excel');
-  document.getElementById('sortBar').classList.toggle('show', t==='excel');
-  document.getElementById('colSwapBar').classList.toggle('show', t==='excel');
-  if (t !== 'excel') { document.getElementById('pageHeaderBar').classList.remove('show'); document.getElementById('btnPageHeader')?.classList.remove('on'); }
-  if (t !== 'excel') document.getElementById('findBar').classList.remove('show');
-  if (t === 'excel') { renderGrid(); updateStatus(); updateFBar(); populateSortSel(); populateSwapSels(); }
-  if (t === 'list') renderSavedLists();
-  if (t === 'words') renderWordFrequency();
+let curTab='upload';
+function switchTab(t){
+  curTab=t;
+  document.querySelectorAll('.stab').forEach(el=>el.classList.toggle('active',el.dataset.tab===t));
+  document.getElementById('tabUpload').style.display=t==='upload'?'flex':'none';
+  document.getElementById('tabList').style.display=t==='list'?'flex':'none';
+  const ex=document.getElementById('tabExcel');
+  ex.style.display=t==='excel'?'flex':'none';
+  document.getElementById('tabWords').style.display=t==='words'?'flex':'none';
+  document.getElementById('ribbon').classList.toggle('show',t==='excel');
+  document.getElementById('fbar').classList.toggle('show',t==='excel');
+  document.getElementById('sortBar').classList.toggle('show',t==='excel');
+  document.getElementById('colSwapBar').classList.toggle('show',t==='excel');
+  if(t!=='excel'){document.getElementById('pageHeaderBar').classList.remove('show');document.getElementById('btnPageHeader')?.classList.remove('on')}
+  if(t!=='excel')document.getElementById('findBar').classList.remove('show');
+  if(t==='excel'){renderGrid();updateStatus();updateFBar();populateSortSel();populateSwapSels()}
+  if(t==='list')renderSavedLists();
+  if(t==='words')renderWordFrequency();
 }
 switchTab('upload');
 
 // ══ WORD FREQUENCY ══
-function getAllWords() {
-  const words = [];
-  for (let r = 0; r < ROWS; r++) {
-    for (let c = 0; c < COLS; c++) {
-      const val = (data[r][c]||'').trim(); if (!val) continue;
-      val.split(/\s+/).forEach(w => {
-        const clean = w.replace(/[،,\.؟!؛:«»\-–—()[\]{}'"]/g,'').trim();
-        if (clean.length > 0) words.push(clean);
+function getAllWords(){
+  const words=[];
+  for(let r=0;r<ROWS;r++){
+    for(let c=0;c<COLS;c++){
+      const val=(data[r][c]||'').trim();
+      if(!val)continue;
+      val.split(/\s+/).forEach(w=>{
+        const clean=w.replace(/[،,\.؟!؛:«»\-–—()[\]{}'"]/g,'').trim();
+        if(clean.length>0)words.push(clean);
       });
     }
   }
   return words;
 }
-function countWords(words) {
-  const map = {}; words.forEach(w => { map[w] = (map[w]||0) + 1; });
-  return Object.entries(map).sort((a,b) => b[1]-a[1]);
+
+function countWords(words){
+  const map={};
+  words.forEach(w=>{map[w]=(map[w]||0)+1});
+  return Object.entries(map).sort((a,b)=>b[1]-a[1]);
 }
-function updateWordInData(oldWord, newWord) {
-  let changed = 0;
-  for (let r = 0; r < ROWS; r++) for (let c = 0; c < COLS; c++) {
-    const val = data[r][c]; if (!val) continue;
-    const parts = val.split(/(\s+)/);
-    let didChange = false;
-    const newParts = parts.map(part => {
-      const clean = part.replace(/[،,\.؟!؛:«»\-–—()[\]{}'"]/g,'').trim();
-      if (clean === oldWord) { didChange = true; return part.replace(clean, newWord); }
-      return part;
-    });
-    if (didChange) { data[r][c] = newParts.join(''); changed++; }
+
+function updateWordInData(oldWord,newWord){
+  let changed=0;
+  for(let r=0;r<ROWS;r++){
+    for(let c=0;c<COLS;c++){
+      const val=data[r][c];
+      if(!val)continue;
+      const parts=val.split(/(\s+)/);
+      let didChange=false;
+      const newParts=parts.map(part=>{
+        const clean=part.replace(/[،,\.؟!؛:«»\-–—()[\]{}'"]/g,'').trim();
+        if(clean===oldWord){
+          didChange=true;
+          return part.replace(clean,newWord);
+        }
+        return part;
+      });
+      if(didChange){
+        data[r][c]=newParts.join('');
+        changed++;
+      }
+    }
   }
   return changed;
 }
-function renderWordFrequency() {
-  wfEditingIdx = -1;
-  const words = getAllWords(); const counts = countWords(words);
-  document.getElementById('wfTotal').textContent = words.length;
-  document.getElementById('wfUnique').textContent = counts.length;
-  const listEl = document.getElementById('wfList');
-  if (!counts.length) {
-    listEl.innerHTML = `<div class="wf-empty"><i class="ti ti-inbox"></i><span>${lang==='ku'?'خانەی داتادار نییە':'No data in cells'}</span></div>`;
+
+function renderWordFrequency(){
+  wfEditingIdx=-1;
+  const words=getAllWords();
+  const counts=countWords(words);
+  const total=words.length;
+  const unique=counts.length;
+  document.getElementById('wfTotal').textContent=total;
+  document.getElementById('wfUnique').textContent=unique;
+  const listEl=document.getElementById('wfList');
+  if(!counts.length){
+    listEl.innerHTML=`<div class="wf-empty"><i class="ti ti-inbox"></i><span>${lang==='ku'?'خانەی داتادار نییە — سەر بە خشتەکەوە داتا داخڵ بکە':'No data in cells — add data to the spreadsheet'}</span></div>`;
     return;
   }
-  const maxCount = counts[0][1];
-  let html = '<div class="wf-list">';
-  counts.forEach(([word,count],idx) => {
-    const pct = Math.round((count/maxCount)*100);
-    html += `<div class="wf-item" id="wfi-${idx}">
+  const maxCount=counts[0][1];
+  let html='<div class="wf-list">';
+  counts.forEach(([word,count],idx)=>{
+    const pct=Math.round((count/maxCount)*100);
+    html+=`
+    <div class="wf-item" id="wfi-${idx}">
       <div class="wf-item-row">
         <span class="wf-word">${esc(word)}</span>
         <span class="wf-badge">${esc(word)} * ${count}</span>
@@ -1205,7 +1149,9 @@ function renderWordFrequency() {
           <i class="ti ti-pencil"></i> ${lang==='ku'?'ئیدیت':'Edit'}
         </button>
       </div>
-      <div class="wf-bar-wrap"><div class="wf-bar-fill" style="width:${pct}%"></div></div>
+      <div class="wf-bar-wrap">
+        <div class="wf-bar-fill" style="width:${pct}%"></div>
+      </div>
       <div class="wf-edit-area" id="wfea-${idx}">
         <input class="wf-edit-inp" id="wfei-${idx}" value="${esc(word)}" placeholder="${lang==='ku'?'ناوی نوێ بنووسە...':'Enter new name...'}">
         <div class="wf-edit-actions">
@@ -1217,152 +1163,160 @@ function renderWordFrequency() {
       </div>
     </div>`;
   });
-  html += '</div>';
-  listEl.innerHTML = html;
+  html+='</div>';
+  listEl.innerHTML=html;
 }
-function wfToggleEdit(idx,word) {
-  if (wfEditingIdx >= 0 && wfEditingIdx !== idx) wfCancelEdit(wfEditingIdx);
-  const area = document.getElementById('wfea-'+idx); if (!area) return;
-  const isOpen = area.classList.contains('open');
-  if (isOpen) { wfCancelEdit(idx); return; }
-  area.classList.add('open'); wfEditingIdx = idx;
-  const inp = document.getElementById('wfei-'+idx); if (inp) { inp.focus(); inp.select(); }
+
+function wfToggleEdit(idx,word){
+  if(wfEditingIdx>=0&&wfEditingIdx!==idx)wfCancelEdit(wfEditingIdx);
+  const area=document.getElementById('wfea-'+idx);
+  if(!area)return;
+  const isOpen=area.classList.contains('open');
+  if(isOpen){wfCancelEdit(idx);return}
+  area.classList.add('open');
+  wfEditingIdx=idx;
+  const inp=document.getElementById('wfei-'+idx);
+  if(inp){inp.focus();inp.select()}
 }
-function wfCancelEdit(idx) {
-  const area = document.getElementById('wfea-'+idx); if (area) area.classList.remove('open');
-  if (wfEditingIdx === idx) wfEditingIdx = -1;
+
+function wfCancelEdit(idx){
+  const area=document.getElementById('wfea-'+idx);
+  if(area)area.classList.remove('open');
+  if(wfEditingIdx===idx)wfEditingIdx=-1;
 }
-function wfApplyEdit(idx, oldWord) {
-  const inp = document.getElementById('wfei-'+idx); if (!inp) return;
-  const newWord = inp.value.trim();
-  if (!newWord || newWord === oldWord) { wfCancelEdit(idx); return; }
-  const changed = updateWordInData(oldWord, newWord);
-  originalData = null; originalFmts = null; wfEditingIdx = -1;
-  renderWordFrequency(); if (curTab === 'excel') renderGrid();
-  showToast(`"${oldWord}" → "${newWord}" · ${changed} ${lang==='ku'?'خانە گۆڕدرا':'cells updated'}`);
+
+function wfApplyEdit(idx,oldWord){
+  const inp=document.getElementById('wfei-'+idx);
+  if(!inp)return;
+  const newWord=inp.value.trim();
+  if(!newWord||newWord===oldWord){wfCancelEdit(idx);return}
+  const changed=updateWordInData(oldWord,newWord);
+  originalData=null;originalFmts=null;
+  wfEditingIdx=-1;
+  renderWordFrequency();
+  if(curTab==='excel')renderGrid();
+  showToast(lang==='ku'?`"${oldWord}" → "${newWord}" · ${changed} خانە گۆڕدرا`:`"${oldWord}" → "${newWord}" · ${changed} cells updated`);
 }
 
 // ══ SORT SELECT ══
-function populateSortSel() {
-  const sel = document.getElementById('sortColSel'); const prev = sel.value; sel.innerHTML = '';
-  for (let c = 0; c < COLS; c++) {
-    const label = data[0][c] ? `${cl(c)}: ${data[0][c]}` : cl(c);
-    const op = document.createElement('option'); op.value = c; op.textContent = label; sel.appendChild(op);
+function populateSortSel(){
+  const sel=document.getElementById('sortColSel');
+  const prev=sel.value;sel.innerHTML='';
+  for(let c=0;c<COLS;c++){
+    const label=data[0][c]?`${cl(c)}: ${data[0][c]}`:cl(c);
+    const op=document.createElement('option');op.value=c;op.textContent=label;sel.appendChild(op);
   }
-  if (prev) sel.value = prev;
+  if(prev)sel.value=prev;
 }
-function populateSwapSels() {
-  ['swapColA','swapColB'].forEach((id,si) => {
-    const sel = document.getElementById(id); const prev = sel.value; sel.innerHTML = '';
-    for (let c = 0; c < COLS; c++) {
-      const label = data[0][c] ? `${cl(c)}: ${data[0][c]}` : cl(c);
-      const op = document.createElement('option'); op.value = c; op.textContent = label; sel.appendChild(op);
+
+// ══ COLUMN SWAP SELECTS ══
+function populateSwapSels(){
+  ['swapColA','swapColB'].forEach((id,si)=>{
+    const sel=document.getElementById(id);const prev=sel.value;sel.innerHTML='';
+    for(let c=0;c<COLS;c++){
+      const label=data[0][c]?`${cl(c)}: ${data[0][c]}`:cl(c);
+      const op=document.createElement('option');op.value=c;op.textContent=label;sel.appendChild(op);
     }
-    sel.value = prev || (si===0?'0':'1');
+    sel.value=prev||(si===0?'0':'1');
   });
 }
 
-// ══ SWAP COLUMNS ══
-function swapSelectedCols() {
-  const a = parseInt(document.getElementById('swapColA').value);
-  const b = parseInt(document.getElementById('swapColB').value);
-  if (a === b) { showToast(lang==='ku'?'دوو ستوونی جیاواز هەڵبژێرە':'Select two different columns'); return; }
-  for (let r = 0; r < ROWS; r++) {
-    [data[r][a],data[r][b]] = [data[r][b],data[r][a]];
-    [fmts[r][a],fmts[r][b]] = [fmts[r][b],fmts[r][a]];
-  }
-  [colW[a],colW[b]] = [colW[b],colW[a]];
-  originalData = null; originalFmts = null;
-  renderGrid(); updateStatus(); populateSortSel(); populateSwapSels();
-  showToast(`${cl(a)} ⇄ ${cl(b)}`);
+// ══ SWAP TWO COLUMNS ══
+function swapSelectedCols(){
+  const a=parseInt(document.getElementById('swapColA').value);
+  const b=parseInt(document.getElementById('swapColB').value);
+  if(a===b){showToast(lang==='ku'?'دوو ستوونی جیاواز هەڵبژێرە':'Select two different columns');return}
+  for(let r=0;r<ROWS;r++){[data[r][a],data[r][b]]=[data[r][b],data[r][a]];[fmts[r][a],fmts[r][b]]=[fmts[r][b],fmts[r][a]]}
+  [colW[a],colW[b]]=[colW[b],colW[a]];
+  originalData=null;originalFmts=null;
+  renderGrid();updateStatus();populateSortSel();populateSwapSels();
+  showToast(lang==='ku'?`ستوونی ${cl(a)} و ${cl(b)} جابەجا کران`:`Columns ${cl(a)} & ${cl(b)} swapped`);
 }
-function shiftColRight() {
-  const a = parseInt(document.getElementById('swapColA').value);
-  const b = Math.min(a+1, COLS-1);
-  if (a === b) return;
-  for (let r = 0; r < ROWS; r++) {
-    [data[r][a],data[r][b]] = [data[r][b],data[r][a]];
-    [fmts[r][a],fmts[r][b]] = [fmts[r][b],fmts[r][a]];
-  }
-  [colW[a],colW[b]] = [colW[b],colW[a]];
-  originalData = null; originalFmts = null;
-  document.getElementById('swapColA').value = b;
-  renderGrid(); updateStatus(); populateSortSel(); populateSwapSels();
-  document.getElementById('swapColA').value = b;
+
+// ══ SHIFT COLUMN LEFT ONE STEP ══
+function shiftColRight(){
+  const a=parseInt(document.getElementById('swapColA').value);
+  const b=Math.min(a+1,COLS-1);
+  if(a===b){showToast(lang==='ku'?'ستوون دوایین ستوونەکەیە':'Column is already last');return}
+  for(let r=0;r<ROWS;r++){[data[r][a],data[r][b]]=[data[r][b],data[r][a]];[fmts[r][a],fmts[r][b]]=[fmts[r][b],fmts[r][a]]}
+  [colW[a],colW[b]]=[colW[b],colW[a]];
+  originalData=null;originalFmts=null;
+  document.getElementById('swapColA').value=b;
+  renderGrid();updateStatus();populateSortSel();populateSwapSels();
+  document.getElementById('swapColA').value=b;
+  showToast(lang==='ku'?`ستوونی ${cl(a)} جووڵا بۆ ${cl(b)}`:`Column ${cl(a)} shifted to ${cl(b)}`);
 }
 
 // ══ SORT ══
-function doQuickSort(dir) {
-  const c = parseInt(document.getElementById('sortColSel').value)||0;
-  if (originalData === null) { originalData = data.map(r=>[...r]); originalFmts = fmts.map(r=>r.map(f=>({...f}))); }
-  sortCol = c; sortDir = dir;
-  const workData = originalData.map(r=>[...r]); const workFmts = originalFmts.map(r=>r.map(f=>({...f})));
-  const hasHeader = workData[0].some(Boolean); const start = hasHeader ? 1 : 0;
-  let lastRow = 0; for (let r = 0; r < ROWS; r++) if (workData[r].some(Boolean)) lastRow = r;
-  const dataSlice = workData.slice(start, lastRow+1).map((r,i) => ({d:[...r],f:workFmts[i+start].map(x=>({...x}))}));
-  const blankSlice = workData.slice(lastRow+1).map((r,i) => ({d:[...r],f:workFmts[lastRow+1+i].map(x=>({...x}))}));
-  dataSlice.sort((a,b) => {
-    const av=a.d[c]||'', bv=b.d[c]||'';
-    const an=parseFloat(av.replace(/[,$%\s]/g,'')), bn=parseFloat(bv.replace(/[,$%\s]/g,''));
-    let cmp = (!isNaN(an)&&!isNaN(bn)) ? (an-bn) : av.localeCompare(bv,undefined,{sensitivity:'base'});
-    return dir === 'asc' ? cmp : -cmp;
+function getDataRange(){let lastRow=0;for(let r=0;r<ROWS;r++)if(data[r].some(c=>c!==''))lastRow=r;return lastRow}
+function doQuickSort(dir){
+  const c=parseInt(document.getElementById('sortColSel').value)||0;
+  if(originalData===null){originalData=data.map(r=>[...r]);originalFmts=fmts.map(r=>r.map(f=>({...f})))}
+  sortCol=c;sortDir=dir;
+  const workData=originalData.map(r=>[...r]);const workFmts=originalFmts.map(r=>r.map(f=>({...f})));
+  const hasHeader=workData[0].some(Boolean);const start=hasHeader?1:0;
+  let lastRow=0;for(let r=0;r<ROWS;r++)if(workData[r].some(Boolean))lastRow=r;
+  const dataSlice=workData.slice(start,lastRow+1).map((r,i)=>({d:[...r],f:workFmts[i+start].map(x=>({...x}))}));
+  const blankSlice=workData.slice(lastRow+1).map((r,i)=>({d:[...r],f:workFmts[lastRow+1+i].map(x=>({...x}))}));
+  dataSlice.sort((a,b)=>{
+    const av=a.d[c]||'',bv=b.d[c]||'';
+    const an=parseFloat(av.replace(/[,$%\s]/g,'')),bn=parseFloat(bv.replace(/[,$%\s]/g,''));
+    let cmp=(!isNaN(an)&&!isNaN(bn))?(an-bn):av.localeCompare(bv,undefined,{sensitivity:'base'});
+    return dir==='asc'?cmp:-cmp;
   });
-  const allSorted = [...dataSlice,...blankSlice];
-  allSorted.forEach((item,i) => { workData[i+start]=item.d; workFmts[i+start]=item.f; });
-  data = workData; fmts = workFmts;
-  document.getElementById('btnAZ').classList.toggle('asc-on', dir==='asc');
-  document.getElementById('btnAZ').classList.remove('desc-on');
-  document.getElementById('btnZA').classList.toggle('desc-on', dir==='desc');
-  document.getElementById('btnZA').classList.remove('asc-on');
-  const ss = document.getElementById('stSort'); ss.style.display='inline-flex';
-  ss.textContent = `${cl(c)} ${dir==='asc'?'A→Z':'Z→A'}`;
+  const allSorted=[...dataSlice,...blankSlice];
+  allSorted.forEach((item,i)=>{workData[i+start]=item.d;workFmts[i+start]=item.f});
+  data=workData;fmts=workFmts;
+  document.getElementById('btnAZ').classList.toggle('asc-on',dir==='asc');
+  document.getElementById('btnAZ').classList.toggle('desc-on',false);
+  document.getElementById('btnZA').classList.toggle('desc-on',dir==='desc');
+  document.getElementById('btnZA').classList.toggle('asc-on',false);
+  const ss=document.getElementById('stSort');ss.style.display='inline-flex';
+  ss.textContent=`${cl(c)} ${dir==='asc'?'A→Z':'Z→A'}`;
   renderGrid();
+  showToast(lang==='ku'?`ستوونی ${cl(c)} ڕیزکرا ${dir==='asc'?'A→Z':'Z→A'}`:`Column ${cl(c)} sorted ${dir==='asc'?'A→Z':'Z→A'}`);
 }
-function clearSort() {
-  if (originalData) { data=originalData.map(r=>[...r]); fmts=originalFmts.map(r=>r.map(f=>({...f}))); originalData=null; originalFmts=null; }
-  sortCol=-1; sortDir='none';
+function clearSort(){
+  if(originalData){data=originalData.map(r=>[...r]);fmts=originalFmts.map(r=>r.map(f=>({...f})));originalData=null;originalFmts=null}
+  sortCol=-1;sortDir='none';
   document.getElementById('btnAZ').classList.remove('asc-on');
   document.getElementById('btnZA').classList.remove('desc-on');
   document.getElementById('stSort').style.display='none';
-  renderGrid(); showToast(lang==='ku'?'ڕیزکردن پاككرایەوە':'Sort cleared');
+  renderGrid();showToast(lang==='ku'?'ڕیزکردن پاككرایەوە':'Sort cleared');
 }
-function colClick(c, e) {
-  if (resizing) return;
-  document.getElementById('sortColSel').value = c;
-  if (sortCol !== c) doQuickSort('asc');
-  else if (sortDir === 'asc') doQuickSort('desc');
+function colClick(c,e){
+  if(resizing)return;
+  document.getElementById('sortColSel').value=c;
+  if(sortCol!==c)doQuickSort('asc');
+  else if(sortDir==='asc')doQuickSort('desc');
   else clearSort();
 }
 
 // ══ SELECT ALL ══
-function selectAll() {
-  allSelected = !allSelected;
-  const corner = document.querySelector('th.corner');
-  if (corner) corner.classList.toggle('all-sel', allSelected);
-  if (allSelected) { document.querySelectorAll('table.xg-body td').forEach(td=>td.classList.add('all-selected')); }
-  else { document.querySelectorAll('table.xg-body td').forEach(td=>td.classList.remove('all-selected')); }
+function selectAll(){
+  allSelected=!allSelected;
+  const corner=document.querySelector('th.corner');
+  if(corner)corner.classList.toggle('all-sel',allSelected);
+  if(allSelected){document.querySelectorAll('table.xg td').forEach(td=>td.classList.add('all-selected'));showToast(lang==='ku'?'هەموو خانەکان دیاریکران':'All cells selected')}
+  else{document.querySelectorAll('table.xg td').forEach(td=>td.classList.remove('all-selected'))}
 }
 
 // ══ COLUMN RESIZE ══
-function startColResize(e, c) {
-  e.stopPropagation(); e.preventDefault();
-  resizing=true; resizeColIdx=c; resizeStartX=e.clientX; resizeStartW=colW[c];
-  const overlay=document.getElementById('resizeOverlay'); const line=document.getElementById('resizeLine');
+function startColResize(e,c){
+  e.stopPropagation();e.preventDefault();
+  resizing=true;resizeColIdx=c;resizeStartX=e.clientX;resizeStartW=colW[c];
+  const overlay=document.getElementById('resizeOverlay');const line=document.getElementById('resizeLine');
   overlay.style.display='block';
   const th=document.querySelector(`th.ch[data-c="${c}"]`);
-  if (th) { const rect=th.getBoundingClientRect(); line.style.display='block'; line.style.left=rect.left+'px'; }
-  function onMove(ev) {
-    const dx=ev.clientX-resizeStartX; const newW=Math.max(40,resizeStartW+dx); colW[resizeColIdx]=newW;
+  if(th){const rect=th.getBoundingClientRect();line.style.display='block';line.style.left=(rect.left)+'px'}
+  function onMove(ev){
+    const dx=ev.clientX-resizeStartX;const newW=Math.max(40,resizeStartW+dx);colW[resizeColIdx]=newW;
     const th2=document.querySelector(`th.ch[data-c="${resizeColIdx}"]`);
-    if (th2) { const r=th2.getBoundingClientRect(); line.style.left=r.left+'px'; }
+    if(th2){const r=th2.getBoundingClientRect();line.style.left=(r.left)+'px'}
     document.querySelectorAll(`th.ch[data-c="${resizeColIdx}"], td[data-c="${resizeColIdx}"]`).forEach(el=>{el.style.width=newW+'px';el.style.minWidth=newW+'px'});
   }
-  function onUp() {
-    resizing=false; overlay.style.display='none'; line.style.display='none';
-    document.removeEventListener('mousemove',onMove); document.removeEventListener('mouseup',onUp);
-    renderGrid();
-  }
-  document.addEventListener('mousemove',onMove); document.addEventListener('mouseup',onUp);
+  function onUp(){resizing=false;overlay.style.display='none';line.style.display='none';document.removeEventListener('mousemove',onMove);document.removeEventListener('mouseup',onUp);renderGrid()}
+  document.addEventListener('mousemove',onMove);document.addEventListener('mouseup',onUp);
 }
 
 // ══ COLUMN REORDER ══
@@ -1374,7 +1328,7 @@ function colDrop(e,toC){
   for(let r=0;r<ROWS;r++){const dRow=data[r],fRow=fmts[r];const dVal=dRow.splice(fromC,1)[0];const fVal=fRow.splice(fromC,1)[0];dRow.splice(toC,0,dVal);fRow.splice(toC,0,fVal)}
   const w=colW.splice(fromC,1)[0];colW.splice(toC,0,w);
   originalData=null;originalFmts=null;sortCol=-1;sortDir='none';
-  colDragEnd();renderGrid();updateStatus();populateSortSel();
+  colDragEnd();renderGrid();updateStatus();populateSortSel();showToast(lang==='ku'?'ستوون جێگۆڕکێ کرا':'Column moved');
 }
 
 // ══ ROW REORDER ══
@@ -1385,48 +1339,73 @@ function rowDrop(e,toR){
   e.preventDefault();const fromR=dragRowIdx;if(fromR<0||fromR===toR)return rowDragEnd();
   const dRow=data.splice(fromR,1)[0];const fRow=fmts.splice(fromR,1)[0];
   data.splice(toR,0,dRow);fmts.splice(toR,0,fRow);
-  originalData=null;originalFmts=null;rowDragEnd();renderGrid();updateStatus();
+  while(data.length<ROWS){data.push(Array(COLS).fill(''));fmts.push(Array.from({length:COLS},()=>({cls:'',numFmt:''})))}
+  originalData=null;originalFmts=null;rowDragEnd();renderGrid();updateStatus();showToast(lang==='ku'?'ڕیز جێگۆڕکێ کرا':'Row moved');
+}
+
+// ══ RENDER ══
+function renderGrid(){
+  const g=document.getElementById('xg');g.className='xg '+currentTableStyle;
+  const cornerAllSel=allSelected?' all-sel':'';
+  let h=`<thead><tr>`;
+  h+=`<th class="corner${cornerAllSel}" onclick="selectAll()" title="${lang==='ku'?'هەموو خانەکان دیاری بکە (Ctrl+A)':'Select all cells (Ctrl+A)'}"></th>`;
+  for(let c=0;c<COLS;c++){
+    let cls='ch';if(sortCol===c)cls+=sortDir==='asc'?' sort-asc':' sort-desc';
+    h+=`<th class="${cls}" data-c="${c}" style="width:${colW[c]}px;min-width:${colW[c]}px" draggable="true" onclick="colClick(${c},event)" ondragstart="colDragStart(event,${c})" ondragover="colDragOver(event,${c})" ondragend="colDragEnd()" ondrop="colDrop(event,${c})"><div class="col-resize-handle" onmousedown="startColResize(event,${c})"></div><span class="sa">↑</span><span class="sd">↓</span>${cl(c)}</th>`;
+  }
+  h+='</tr></thead><tbody>';
+  for(let r=0;r<ROWS;r++){
+    h+=`<tr><th class="rn" data-r="${r}" draggable="true" onclick="sc(${r},0)" ondragstart="rowDragStart(event,${r})" ondragover="rowDragOver(event,${r})" ondragend="rowDragEnd()" ondrop="rowDrop(event,${r})">${r+1}</th>`;
+    for(let c=0;c<COLS;c++){
+      const f=fmts[r][c];let cls=f.cls||'';
+      if(r===selR&&c===selC)cls+=' sel';if(allSelected)cls+=' all-selected';
+      const v=dv(r,c);
+      h+=`<td class="${cls}" data-r="${r}" data-c="${c}" style="width:${colW[c]}px" onclick="sc(${r},${c})" ondblclick="startEdit(${r},${c})" oncontextmenu="openCtx(event,${r},${c})"><span class="cv">${esc(v)}</span></td>`;
+    }
+    h+='</tr>';
+  }
+  h+='</tbody>';g.innerHTML=h;
+}
+function dv(r,c){
+  const v=data[r][c],f=fmts[r][c];if(!v)return '';
+  if(f.numFmt==='cur')return '$\u202f'+parseFloat(v||0).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});
+  if(f.numFmt==='pct')return parseFloat(v||0).toFixed(1)+'%';
+  if(f.numFmt==='num')return parseFloat(v||0).toLocaleString();
+  return v;
+}
+function rcell(r,c){
+  const td=document.querySelector(`td[data-r="${r}"][data-c="${c}"]`);if(!td)return;
+  const f=fmts[r][c];let cls=(f.cls||'')+(r===selR&&c===selC?' sel':'')+(allSelected?' all-selected':'');
+  td.className=cls;td.querySelector('.cv').innerHTML=esc(dv(r,c));
 }
 
 // ══ SELECTION ══
-function sc(r, c) {
-  if (editR >= 0) commitEdit();
-  if (allSelected) {
-    allSelected=false;
-    const corner=document.querySelector('th.corner');if(corner)corner.classList.remove('all-sel');
-    document.querySelectorAll('table.xg-body td.all-selected').forEach(td=>td.classList.remove('all-selected'));
-  }
-  const prev=document.querySelector('td.sel'); if(prev)prev.classList.remove('sel');
-  selR=r; selC=c;
-  ensureRows(r + VISIBLE_BUFFER);
+function sc(r,c){
+  if(editR>=0)commitEdit();
+  if(allSelected){allSelected=false;const corner=document.querySelector('th.corner');if(corner)corner.classList.remove('all-sel');document.querySelectorAll('table.xg td.all-selected').forEach(td=>td.classList.remove('all-selected'))}
+  const prev=document.querySelector('td.sel');if(prev)prev.classList.remove('sel');
+  selR=r;selC=c;
   const td=document.querySelector(`td[data-r="${r}"][data-c="${c}"]`);
-  if (td) { td.classList.add('sel'); td.scrollIntoView({block:'nearest',inline:'nearest'}); }
-  else {
-    // row not rendered — scroll to it
-    const outer=document.getElementById('gridOuter');
-    if (outer) { const headerH=document.getElementById('gridHeaderWrap').offsetHeight||28; outer.scrollTop=r*ROW_H+headerH-outer.clientHeight/2; }
-  }
-  updateFBar(); updateStatus(); updateRib();
+  if(td){td.classList.add('sel');td.scrollIntoView({block:'nearest',inline:'nearest'})}
+  updateFBar();updateStatus();updateRib();
 }
 function updateFBar(){document.getElementById('fbarRef').textContent=cl(selC)+(selR+1);document.getElementById('fbarInp').value=data[selR][selC]}
 function updateRib(){const f=fmts[selR][selC],cls=f.cls||'';document.getElementById('bBold').classList.toggle('on',cls.includes('fb'));document.getElementById('bItalic').classList.toggle('on',cls.includes('fi'));document.getElementById('bUnder').classList.toggle('on',cls.includes('fu'))}
 
 // ══ EDIT ══
-function startEdit(r, c) {
-  if (editR >= 0) commitEdit(); editR=r; editC=c;
-  const td=document.querySelector(`td[data-r="${r}"][data-c="${c}"]`); if(!td)return;
+function startEdit(r,c){
+  if(editR>=0)commitEdit();editR=r;editC=c;
+  const td=document.querySelector(`td[data-r="${r}"][data-c="${c}"]`);if(!td)return;
   td.innerHTML=`<input class="ci" id="aInp" value="${esc(data[r][c])}">`;
-  const inp=td.querySelector('input'); inp.focus(); inp.select();
-  inp.addEventListener('blur',commitEdit); inp.addEventListener('keydown',cellKD);
+  const inp=td.querySelector('input');inp.focus();inp.select();
+  inp.addEventListener('blur',commitEdit);inp.addEventListener('keydown',cellKD);
 }
-function commitEdit() {
+function commitEdit(){
   if(editR<0)return;const inp=document.getElementById('aInp');const val=inp?inp.value:'';
   const r=editR,c=editC;editR=-1;editC=-1;
   if(applySeq(r,c,val))return;
   data[r][c]=val;originalData=null;originalFmts=null;
   rcell(r,c);updateFBar();updateStatus();populateSortSel();
-  // auto-grow when editing near last row
-  ensureRows(r + VISIBLE_BUFFER);
 }
 function cellKD(e){
   if(e.key==='Enter'){e.preventDefault();commitEdit();sc(Math.min(selR+1,ROWS-1),selC)}
@@ -1436,18 +1415,12 @@ function cellKD(e){
 function fbarCommit(){const val=document.getElementById('fbarInp').value;if(applySeq(selR,selC,val))return;data[selR][selC]=val;originalData=null;originalFmts=null;rcell(selR,selC);updateStatus();populateSortSel()}
 function fbarKey(e){if(e.key==='Enter')fbarCommit()}
 
-document.addEventListener('keydown', e => {
+document.addEventListener('keydown',e=>{
   if(curTab!=='excel')return;if(editR>=0)return;
   const ae=document.activeElement?.id;if(ae==='fbarInp'||ae==='findInput'||ae==='phText')return;
   const nav={ArrowRight:[0,1],ArrowLeft:[0,-1],ArrowDown:[1,0],ArrowUp:[-1,0]};
-  if(nav[e.key]){
-    e.preventDefault();
-    const[dr,dc]=nav[e.key];
-    const nr=Math.max(0,selR+dr); const nc=Math.max(0,Math.min(COLS-1,selC+dc));
-    ensureRows(nr+VISIBLE_BUFFER);
-    sc(nr,nc);return;
-  }
-  if((e.ctrlKey||e.metaKey)&&e.key==='a'){e.preventDefault();allSelected=true;const corner=document.querySelector('th.corner');if(corner)corner.classList.add('all-sel');document.querySelectorAll('table.xg-body td').forEach(td=>td.classList.add('all-selected'));return}
+  if(nav[e.key]){e.preventDefault();const[dr,dc]=nav[e.key];sc(Math.max(0,Math.min(ROWS-1,selR+dr)),Math.max(0,Math.min(COLS-1,selC+dc)));return}
+  if((e.ctrlKey||e.metaKey)&&e.key==='a'){e.preventDefault();allSelected=true;const corner=document.querySelector('th.corner');if(corner)corner.classList.add('all-sel');document.querySelectorAll('table.xg td').forEach(td=>td.classList.add('all-selected'));showToast(lang==='ku'?'هەموو خانەکان دیاریکران':'All cells selected');return}
   if((e.key==='Delete'||e.key==='Backspace')&&!e.target.tagName.match(/INPUT|TEXTAREA/)){data[selR][selC]='';originalData=null;originalFmts=null;rcell(selR,selC);updateFBar();return}
   if(e.key==='F2'){startEdit(selR,selC);return}
   if((e.ctrlKey||e.metaKey)&&e.key==='c'){ctxCopy();return}
@@ -1463,7 +1436,7 @@ document.addEventListener('keydown', e => {
 // ══ FORMAT ══
 function toggleFmt(cls){const f=fmts[selR][selC],cur=f.cls||'';f.cls=cur.includes(cls)?cur.replace(cls,'').trim():((cur+' '+cls).trim());rcell(selR,selC);updateRib()}
 function setAlign(a){
-  if(allSelected){for(let r=0;r<ROWS;r++)for(let c=0;c<COLS;c++){const f=fmts[r][c];f.cls=(f.cls||'').replace(/\b(ac|ar|al)\b/g,'').trim();f.cls=((f.cls+' '+a).trim())}renderGrid();return}
+  if(allSelected){for(let r=0;r<ROWS;r++)for(let c=0;c<COLS;c++){const f=fmts[r][c];f.cls=(f.cls||'').replace(/\b(ac|ar|al)\b/g,'').trim();f.cls=((f.cls+' '+a).trim())}renderGrid();showToast(lang==='ku'?'هەموو خانەکان ئالیگرایی گۆڕدرا':'All cells aligned');return}
   const f=fmts[selR][selC];f.cls=(f.cls||'').replace(/\b(ac|ar|al)\b/g,'').trim();f.cls=((f.cls+' '+a).trim());rcell(selR,selC);
 }
 function setNumFmt(v){fmts[selR][selC].numFmt=v;rcell(selR,selC)}
@@ -1472,11 +1445,10 @@ function setNumFmt(v){fmts[selR][selC].numFmt=v;rcell(selR,selC)}
 function applySeq(r,c,val){
   const m=val.match(/^SEQ\((\d+)(?:,(\d+))?\)$/i);if(!m)return false;
   const count=parseInt(m[1]);const start=m[2]!==undefined?parseInt(m[2]):1;
-  if(isNaN(count)||count<1)return false;
-  ensureRows(r+count+VISIBLE_BUFFER);
+  if(isNaN(count)||count<1||count>ROWS)return false;
   for(let i=0;i<count;i++){const tr=r+i;if(tr>=ROWS)break;data[tr][c]=String(start+i)}
   originalData=null;originalFmts=null;renderGrid();updateFBar();updateStatus();populateSortSel();
-  showToast(`SEQ: ${count} ${lang==='ku'?'ژمارە داچووک':'numbers filled'}`);return true;
+  showToast(lang==='ku'?`SEQ: ${count} ژمارە داچووک`:`SEQ: ${count} numbers filled`);return true;
 }
 
 // ══ STATUS ══
@@ -1493,8 +1465,8 @@ function updateStatus(){
 // ══ INSERT / DELETE ══
 function emptyRow(){return Array(COLS).fill('')}
 function emptyFmt(){return Array.from({length:COLS},()=>({cls:'',numFmt:''}))}
-function insertRow(){data.splice(selR,0,emptyRow());ROWS++;fmts.splice(selR,0,emptyFmt());originalData=null;originalFmts=null;renderGrid();updateStatus()}
-function insertCol(){for(let r=0;r<ROWS;r++){data[r].splice(selC,0,'');data[r].splice(COLS);fmts[r].splice(selC,0,{cls:'',numFmt:''});fmts[r].splice(COLS)}originalData=null;originalFmts=null;renderGrid();updateStatus()}
+function insertRow(){data.splice(selR,0,emptyRow());data.pop();fmts.splice(selR,0,emptyFmt());fmts.pop();originalData=null;originalFmts=null;renderGrid();updateStatus()}
+function insertCol(){for(let r=0;r<ROWS;r++){data[r].splice(selC,0,'');data[r].pop();fmts[r].splice(selC,0,{cls:'',numFmt:''});fmts[r].pop()}originalData=null;originalFmts=null;renderGrid();updateStatus()}
 function deleteRow(){data.splice(selR,1);data.push(emptyRow());fmts.splice(selR,1);fmts.push(emptyFmt());originalData=null;originalFmts=null;renderGrid();updateStatus()}
 function deleteCol(){for(let r=0;r<ROWS;r++){data[r].splice(selC,1);data[r].push('');fmts[r].splice(selC,1);fmts[r].push({cls:'',numFmt:''})}originalData=null;originalFmts=null;renderGrid();updateStatus()}
 
@@ -1512,8 +1484,8 @@ function autoFit(){
 
 // ══ CLEAR ══
 function clearSheet(){
-  if(!confirm(lang==='ku'?'دڵنیایت؟':'Clear all data?'))return;
-  ROWS=ROW_CHUNK;initData();renderGrid();updateStatus();
+  if(!confirm(lang==='ku'?'دڵنیایت دەتەوێت هەموو داتاکان بسڕدرێتەوە؟':'Clear all data?'))return;
+  initData();renderGrid();updateStatus();
   document.getElementById('stSort').style.display='none';
   document.getElementById('btnAZ').classList.remove('asc-on');
   document.getElementById('btnZA').classList.remove('desc-on');
@@ -1583,7 +1555,7 @@ function renderColOrderBox(){
   const box=document.getElementById('colOrderBox');box.innerHTML='';
   ppColOrder.forEach((col,idx)=>{
     const div=document.createElement('div');div.className='col-order-item';div.draggable=true;div.dataset.idx=idx;
-    div.innerHTML=`<i class="ti ti-grip-vertical col-handle"></i><input class="col-vis-chk" type="checkbox" ${col.visible?'checked':''} onchange="ppToggleCol(${idx},this.checked)"><span class="col-name-span">${esc(col.label)}</span><select class="col-dir-sel" onchange="ppSetDir(${idx},this.value)"><option value="rtl" ${col.dir==='rtl'?'selected':''}>← ڕاست</option><option value="ltr" ${col.dir==='ltr'?'selected':''}>→ چەپ</option></select>`;
+    div.innerHTML=`<i class="ti ti-grip-vertical col-handle" aria-hidden="true"></i><input class="col-vis-chk" type="checkbox" ${col.visible?'checked':''} onchange="ppToggleCol(${idx},this.checked)"><span class="col-name-span">${esc(col.label)}</span><select class="col-dir-sel" onchange="ppSetDir(${idx},this.value)"><option value="rtl" ${col.dir==='rtl'?'selected':''}>← ڕاست</option><option value="ltr" ${col.dir==='ltr'?'selected':''}>→ چەپ</option></select>`;
     div.addEventListener('dragstart',e=>{e.dataTransfer.setData('text/plain',idx);div.classList.add('dragging')});
     div.addEventListener('dragend',()=>div.classList.remove('dragging'));
     div.addEventListener('dragover',e=>{e.preventDefault();div.classList.add('drag-over')});
@@ -1632,7 +1604,7 @@ function executePrint(){
   const borderStyle=border?`td,th{border:1px solid rgba(0,0,0,0.15)!important}`:`td,th{border:none!important}`;
   const fitStyle=fitPage?`table{width:100%!important}`:'';
   const win=window.open('','_blank');
-  win.document.write(`<!DOCTYPE html><html dir="${pageDir}"><head><meta charset="UTF-8"><link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;600;700&family=Noto+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet"><title>Data Table</title><style>*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Noto Kufi Arabic','Noto Sans Arabic','Segoe UI',Arial,sans-serif;font-size:${fontSize}px;direction:${pageDir};padding:0}h2{font-size:${+fontSize+2}px;font-weight:700;margin-bottom:4px;color:${headerColor};display:${showTitle?'block':'none'}}.meta{font-size:${+fontSize-1}px;color:#666;margin-bottom:8px;display:${showTitle?'block':'none'}}.page-block{padding:${marginV}mm ${marginH}mm}.pg-break{page-break-after:always;break-after:page}table{border-collapse:collapse;font-size:${fontSize}px;${fitPage?'width:100%':''}}thead tr{background:${headerColor}!important}th{background:${headerColor};color:#fff;padding:4px 8px;font-weight:700;white-space:nowrap;font-size:${fontSize}px}td{padding:3px 8px;color:#111;white-space:nowrap;font-size:${fontSize}px}${borderStyle}${fitStyle}@media print{${pageCSS}.pg-break{page-break-after:always;break-after:page}tr{page-break-inside:avoid}${repeatHeader?'thead{display:table-header-group}':''}}</style></head><body>${bodyHTML}<script>window.onload=()=>{window.print()}<\/script></body></html>`);
+  win.document.write(`<!DOCTYPE html><html dir="${pageDir}"><head><meta charset="UTF-8"><link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;600;700&family=Noto+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet"><title>${lang==='ku'?'خشتەی داتاکان':'Data Table'}</title><style>*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Noto Kufi Arabic','Noto Sans Arabic','Segoe UI',Tahoma,Arial,sans-serif;font-size:${fontSize}px;direction:${pageDir};padding:0;-webkit-font-feature-settings:"liga" 1,"calt" 1;font-feature-settings:"liga" 1,"calt" 1}h2{font-size:${+fontSize+2}px;font-weight:700;margin-bottom:4px;color:${headerColor};display:${showTitle?'block':'none'}}.meta{font-size:${+fontSize-1}px;color:#666;margin-bottom:8px;display:${showTitle?'block':'none'}}.page-block{padding:${marginV}mm ${marginH}mm}.pg-break{page-break-after:always;break-after:page}table{border-collapse:collapse;font-size:${fontSize}px;${fitPage?'width:100%':''}}thead tr{background:${headerColor}!important}th{background:${headerColor};color:#fff;padding:4px 8px;font-weight:700;white-space:nowrap;font-size:${fontSize}px}td{padding:3px 8px;color:#111;white-space:nowrap;font-size:${fontSize}px}${borderStyle}${fitStyle}@media print{${pageCSS}.pg-break{page-break-after:always;break-after:page}tr{page-break-inside:avoid}${repeatHeader?'thead{display:table-header-group}':''}}</style></head><body>${bodyHTML}<script>window.onload=()=>{window.print()}<\/script></body></html>`);
   win.document.close();closePrintPreview();
 }
 function buildTable(rows,headers,dirs,headerColor,altColor,zebra,border,startIdx,fontSize,fitPage,repeatHeader,extraHeader=''){
@@ -1654,22 +1626,23 @@ const LS_KEY='pdf2excel_saved_lists';
 function getSavedLists(){try{return JSON.parse(localStorage.getItem(LS_KEY)||'[]')}catch{return[]}}
 function putSavedLists(arr){try{localStorage.setItem(LS_KEY,JSON.stringify(arr))}catch(e){showToast(lang==='ku'?'هەڵەی خەزنکردن':'Storage error')}}
 function saveCurrentList(){
-  const raw=document.getElementById('listInput').value.trim();if(!raw){showToast(lang==='ku'?'لیستێک بنووسە':'Write a list first');return}
+  const raw=document.getElementById('listInput').value.trim();if(!raw){showToast(lang==='ku'?'لیستێک بنووسە پێش خەزنکردن':'Write a list first');return}
   let name=document.getElementById('saveListName').value.trim();if(!name)name=new Date().toLocaleString('ku');
   const lists=getSavedLists();const sep=document.getElementById('listSep').value;const startCol=document.getElementById('listStartCol').value||'A';
   lists.unshift({id:Date.now(),name,text:raw,sep,startCol,date:new Date().toLocaleDateString()});
   putSavedLists(lists);document.getElementById('saveListName').value='';renderSavedLists();
-  showToast(`"${name}" ${lang==='ku'?'خەزنکرا ✓':'saved ✓'}`);
+  showToast(lang==='ku'?`"${name}" خەزنکرا ✓`:`"${name}" saved ✓`);
 }
 function loadSavedList(id){
   const lists=getSavedLists();const item=lists.find(x=>x.id===id);if(!item)return;
   document.getElementById('listInput').value=item.text;if(item.sep)document.getElementById('listSep').value=item.sep;if(item.startCol)document.getElementById('listStartCol').value=item.startCol;
+  showToast(lang==='ku'?`"${item.name}" بارکرا`:`"${item.name}" loaded`);
 }
-function deleteSavedList(id){const lists=getSavedLists().filter(x=>x.id!==id);putSavedLists(lists);renderSavedLists();}
+function deleteSavedList(id){const lists=getSavedLists().filter(x=>x.id!==id);putSavedLists(lists);renderSavedLists();showToast(lang==='ku'?'سڕایەوە':'Deleted')}
 function renderSavedLists(){
   const lists=getSavedLists();const el=document.getElementById('savedListItems');const cnt=document.getElementById('savedCount');cnt.textContent=lists.length;
   if(!lists.length){el.innerHTML=`<div class="no-saved"><i class="ti ti-bookmark-off"></i><span>${lang==='ku'?'هیچ لیستێک خەزن نەکراوە':'No saved lists yet'}</span></div>`;return}
-  el.innerHTML=lists.map(item=>`<div class="saved-list-item" onclick="loadSavedList(${item.id})"><i class="ti ti-file-text sli-icon"></i><div class="sli-info"><div class="sli-name">${esc(item.name)}</div><div class="sli-meta">${item.date} · ${item.text.split('\n').filter(Boolean).length} ${lang==='ku'?'ڕیز':'rows'}</div></div><button class="sli-load" onclick="event.stopPropagation();loadSavedList(${item.id})"><i class="ti ti-download"></i> ${lang==='ku'?'بارکردن':'Load'}</button><button class="sli-del" onclick="event.stopPropagation();deleteSavedList(${item.id})"><i class="ti ti-trash"></i></button></div>`).join('');
+  el.innerHTML=lists.map(item=>`<div class="saved-list-item" onclick="loadSavedList(${item.id})"><i class="ti ti-file-text sli-icon"></i><div class="sli-info"><div class="sli-name">${esc(item.name)}</div><div class="sli-meta">${item.date} · ${item.text.split('\n').filter(Boolean).length} ${lang==='ku'?'ڕیز':'rows'}</div></div><button class="sli-load" onclick="event.stopPropagation();loadSavedList(${item.id})"><i class="ti ti-download"></i> ${lang==='ku'?'بارکردن':'Load'}</button><button class="sli-del" onclick="event.stopPropagation();deleteSavedList(${item.id})" title="${lang==='ku'?'سڕینەوە':'Delete'}"><i class="ti ti-trash"></i></button></div>`).join('');
 }
 
 // ══ LIST → EXCEL ══
@@ -1679,11 +1652,8 @@ function listToExcel(){
   const sc0=Math.max(0,lc(document.getElementById('listStartCol').value||'A'));
   const sep={comma:',',tab:'\t',pipe:'|'}[sepKey];
   const lines=raw.split('\n').map(l=>l.trim()).filter(Boolean);
-  // grow data if needed
-  ensureRows(lines.length + VISIBLE_BUFFER);
-  // reset
-  for(let r=0;r<ROWS;r++) data[r]=Array(COLS).fill(''), fmts[r]=Array.from({length:COLS},()=>({cls:'',numFmt:''}));
-  lines.forEach((line,r)=>{const cells=sepKey==='newline'?[line]:line.split(sep);cells.forEach((cell,ci)=>{const c=sc0+ci;if(c<COLS)data[r][c]=cell.trim()})});
+  initData();
+  lines.forEach((line,r)=>{if(r>=ROWS)return;const cells=sepKey==='newline'?[line]:line.split(sep);cells.forEach((cell,ci)=>{const c=sc0+ci;if(c<COLS)data[r][c]=cell.trim()})});
   switchTab('excel');showToast(lang==='ku'?`${lines.length} ڕیز ئامادەکرا`:`${lines.length} rows loaded`);
 }
 
@@ -1721,34 +1691,23 @@ async function extractPDF(file,onPage){
   return{rows:allRows,pages:pdf.numPages};
 }
 async function convertAll(){
-  if(!files.length)return;document.getElementById('convertBtn').disabled=true;document.getElementById('pgWrap').style.display='block';
-  // reset data but keep it growable
-  ROWS=ROW_CHUNK;initData();
+  if(!files.length)return;document.getElementById('convertBtn').disabled=true;document.getElementById('pgWrap').style.display='block';initData();
   let totalRow=0;const merge=document.getElementById('chkMerge').checked;let allRows=[];
   for(let i=0;i<files.length;i++){
     setFP(i,'fpill fp-p',lang==='ku'?'پرۆسەکردن...':'Processing...');
     try{
       const{rows}=await extractPDF(files[i],(p,total)=>{const base=(i/files.length)*100,inc=(p/total)*(100/files.length);setPg(base+inc,`${files[i].name} · ${p}/${total}`)});
-      if(merge){allRows.push(...rows,[]);}
-      else{
-        ensureRows(totalRow+rows.length+VISIBLE_BUFFER);
-        rows.forEach((row,ri)=>{const r=totalRow+ri;if(r<ROWS)row.forEach((cell,c)=>{if(c<COLS)data[r][c]=cell})});
-        totalRow+=rows.length+1;
-      }
+      if(merge){allRows.push(...rows,[])}else{rows.forEach((row,ri)=>{const r=totalRow+ri;if(r<ROWS)row.forEach((cell,c)=>{if(c<COLS)data[r][c]=cell})});totalRow+=rows.length+1}
       setFP(i,'fpill fp-d',lang==='ku'?'تەواو ✓':'Done ✓');
     }catch(e){setFP(i,'fpill fp-e',lang==='ku'?'هەڵە ✗':'Error ✗')}
   }
-  if(merge){
-    ensureRows(allRows.length+VISIBLE_BUFFER);
-    allRows.forEach((row,ri)=>{if(ri<ROWS)row.forEach((cell,c)=>{if(c<COLS)data[ri][c]=cell})});
-  }
+  if(merge)allRows.forEach((row,ri)=>{if(ri<ROWS)row.forEach((cell,c)=>{if(c<COLS)data[ri][c]=cell})});
   setPg(100,lang==='ku'?'تەواو بوو!':'Done!');document.getElementById('convertBtn').disabled=false;
   showToast(lang==='ku'?'گواستنەوە تەواو بوو ✓':'Conversion complete ✓');autoSortAfterLoad();switchTab('excel');
 }
 
-// ══ INIT ══
+// Init
 renderSavedLists();
-setupVirtScroll();
 </script>
 </body>
 </html>
